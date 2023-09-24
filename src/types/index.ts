@@ -11,3 +11,15 @@ export interface route {
 	path: string;
 	component: FC;
 }
+
+export interface personalDetails {
+	name:string,
+	email:string,
+	github?:string,
+	linkedIn?:string,
+	twitter?:string
+}
+export interface skills {
+	title: string;
+	image: string;
+}
