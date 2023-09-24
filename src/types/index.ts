@@ -1,4 +1,5 @@
 import { FC, ReactElement } from "react";
+import { IconType } from "react-icons";
 
 export interface SuspenseWrapperProps {
 	children: ReactElement;
@@ -13,13 +14,15 @@ export interface route {
 }
 
 export interface personalDetails {
-	name:string,
-	email:string,
-	github?:string,
-	linkedIn?:string,
-	twitter?:string
+	name: string;
+	email: string;
 }
 export interface skills {
 	title: string;
 	image: string;
+}
+
+export interface social {
+	link: string;
+	icon: IconType;
 }
