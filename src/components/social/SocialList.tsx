@@ -3,7 +3,7 @@ import { social } from "types";
 
 const SocialList = () => {
 	return (
-		 <div className="w-[100px] h-[93vh] hidden 1000:flex  fcc  animate-slideup42 items-center justify-end fixed bottom-5">
+		 <div className="w-[100px] h-[93vh] hidden 1000:flex  fcc  animate-slideup42 items-center justify-end fixed bottom-0">
 			{Social.map((val: social) => {
 				return (
 					<a

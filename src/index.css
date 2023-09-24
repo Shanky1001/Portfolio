@@ -17,32 +17,20 @@
 		@apply transition-all duration-75;
 	}
 
-	.btn-learn-more {
-		@apply px-[27px] text-[18px] py-[15px] bg-red-600 rounded mt-[15px] hover:scale-105
-		transition-all duration-75  cursor-pointer text-white;
-	}
-
-	.sub-hero-desc {
-		@apply w-[100%] 400:w-[61%] 760:w-[50%] text-[15px] 330:text-[15px]  400:text-[16px] 1400:text-[19px] text-center text-white tracking-wide;
-	}
-
-	.latest-news-card {
-		@apply w-[367px] ml-0 720:ml-[15px] mt-[25px] 745:mt-[25px] h-[500px] 1225:h-[85%] cursor-pointer bg-[#161616] relative fcc;
-	}
-
-	.form-input {
-		@apply h-full p-[20px]  border-[2px] rounded-[3px] border-black  outline-none bg-transparent text-[17px];
-	}
-	.btn-signUp {
-		@apply text-white bg-red-600 hover:scale-105 transition-all duration-75 cursor-pointer rounded-[3px] px-[30px] py-[15px];
-	}
-
 	.nav_link {
-		@apply w-auto h-auto text-[18px] frc hover:text-teal-400 hover:scale-125 transition-all duration-75 cursor-pointer ;
+		@apply w-auto h-auto text-[18px] frc hover:text-teal-400 hover:scale-125 transition-all duration-75 cursor-pointer;
 	}
 
 	.nav_link-mob {
 		@apply w-full h-[60px] text-white frc justify-center text-[20px] hover:text-teal-400 cursor-pointer;
+	}
+
+	.btn-cta {
+		@apply px-[35px] py-[12px] border hover:scale-110 transition-all duration-75 cursor-pointer bg-teal-500 mt-[30px] justify-center rounded-[5px];
+	}
+
+	.skill_img-list {
+		@apply w-[50px] h-auto hover:animate-slideTop transition-all duration-75 cursor-pointer m-[10px] mb-0;
 	}
 }
 

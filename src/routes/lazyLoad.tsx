@@ -3,7 +3,7 @@ import { route } from "types";
 
 const Home = React.lazy(() => import("../pages/home/Home"));
 const Detail = React.lazy(() => import("../pages/detail/Detail"));
-const About = React.lazy(() => import("../pages/about/About"));
+const About = React.lazy(() => import("../components/about/About"));
 
 
 const PageNotFound = React.lazy(

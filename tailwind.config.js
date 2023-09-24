@@ -18,10 +18,10 @@ module.exports = {
       },
       animation: {
         slideup: 'slideup 1s ease-in-out',
+        slideTop: 'slideTop 1s ease-in-out',
         slideup42: 'slideup42 1s ease-in-out',
         slideup422: 'slideup42 0.6s ease-in-out',
         slideup423: 'slideup42 2s ease-in-out',
-
         slidedown: 'slidedown 1s ease-in-out',
         slidedown2: 'slidedown2 1s ease-in-out',
         slideleft: 'slideleft 0.7s ease-in-out',
@@ -69,6 +69,10 @@ module.exports = {
         slideup: {
           from: { opacity: 0, transform: 'translateY(25%)' },
           to: { opacity: 1, transform: 'none' },
+        },
+        slideTop: {
+          from: { transform: 'translateY(25%)' },
+          to: { transform: 'none' },
         },
         slideup42: {
           from: { opacity: 0, transform: 'translateY(100%)' },

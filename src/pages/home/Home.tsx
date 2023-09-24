@@ -1,14 +1,16 @@
 import SocialList from "components/social/SocialList";
-import React from "react";
+import About from "components/about/About";
+import Skill from "components/skills/Skill";
 
 const Home = () => {
 	return (
-		<div
-			className="w-full h-[93vh] frc justify-between relative overflow-x-hidden scroll-smooth"
-		>
+		<main className="w-full dark:bg-black frc justify-between relative overflow-x-hidden scroll-smooth">
 			<SocialList />
-
-		</div>
+			<section className="w-full h-auto mx-auto p-[15px] gap-20 fcc justify-center">
+				<About />
+				<Skill />
+			</section>
+		</main>
 	);
 };
 

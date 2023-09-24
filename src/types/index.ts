@@ -17,12 +17,22 @@ export interface personalDetails {
 	name: string;
 	email: string;
 }
-export interface skills {
+export interface skill {
 	title: string;
 	image: string;
+}
+export interface skills {
+	frontend?: skill[];
+	backend?: skill[];
+	fullStack?: skill[];
 }
 
 export interface social {
 	link: string;
 	icon: IconType;
+}
+
+
+export interface skillCardProps {
+	keys:string,value:skill[]
 }

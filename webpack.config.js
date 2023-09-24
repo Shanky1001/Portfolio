@@ -38,13 +38,13 @@ module.exports = () => {
           type: "asset/resource",
         },
         {
-          test: /\.mp4$/,
+          test: /\.(mp4|pdf)$/,
           use: [
             {
               loader: "file-loader",
               options: {
                 name: "[name].[ext]",
-                outputPath: "video"
+                outputPath: "files"
               }
             }
           ]

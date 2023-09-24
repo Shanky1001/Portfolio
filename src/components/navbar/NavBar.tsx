@@ -8,7 +8,7 @@ const NavBar = () => {
 	return (
 		<nav
 			id="monospace"
-			className="w-full h-[7vh] z-[999] shadow-lg  dark:shadow-cyan-500/50 flex flex-row items-center justify-between"
+			className="w-full h-[7vh] bg-white dark:bg-black sticky top-0 z-[9999]  shadow-lg  dark:shadow-cyan-500/50 flex flex-row items-center justify-between"
 		>
 			<NavLink
 				to="/"
@@ -24,8 +24,8 @@ const NavBar = () => {
 			</NavLink>
 			<div className="w-auto 800:w-[500px] group h-[60px] animate-slidedown  rounded-[5px] frc justify-between select-none">
 				<div className="w-full h-full hidden 800:flex frc justify-around ">
-					<NavLink
-						to="/about"
+					<NavHashLink
+						to="#about"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -35,7 +35,7 @@ const NavBar = () => {
 						}
 					>
 						About
-					</NavLink>
+					</NavHashLink>
 					<NavHashLink
 						to="/#Skills"
 						className={(state) =>
@@ -102,7 +102,7 @@ const MobileNav = () => {
 				{/* <div className="absolute right-0 top-[-16px] mr-[9px] ">
 					<VscTriangleUp className=" text-[25px] text-[#dedcdc] dark:text-[#10141e] " />
 				</div> */}
-				<NavLink to="/about" className="nav_link-mob">
+				<NavLink to="/#about" className="nav_link-mob">
 					About
 				</NavLink>
 				<NavHashLink to="/#Skills" className="nav_link-mob">
