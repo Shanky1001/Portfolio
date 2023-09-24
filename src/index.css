@@ -36,6 +36,14 @@
 	.btn-signUp {
 		@apply text-white bg-red-600 hover:scale-105 transition-all duration-75 cursor-pointer rounded-[3px] px-[30px] py-[15px];
 	}
+
+	.nav_link {
+		@apply w-auto h-auto text-[18px] frc hover:text-teal-400 hover:scale-125 transition-all duration-75 cursor-pointer ;
+	}
+
+	.nav_link-mob {
+		@apply w-full h-[60px] text-white frc justify-center text-[20px] hover:text-teal-400 cursor-pointer;
+	}
 }
 
 #monospace {

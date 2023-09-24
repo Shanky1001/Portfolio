@@ -1,22 +1,22 @@
 {
-  "name": "apexlegends",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "a clone of apex legends website",
+  "description": "portfolio website for developer",
   "main": "src/index.tsx",
+  "author": "shashank rai",
+  "license": "ISC",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shanky1001/Apex_Legends_Clone.git"
+    "url": "git+https://github.com/Shanky1001/Portfolio.git"
   },
-  "author": "shashank rai",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Shanky1001/Apex_Legends_Clone/issues"
+    "url": "https://github.com/Shanky1001/Portfolio/issues"
   },
-  "homepage": "https://github.com/Shanky1001/Apex_Legends_Clone#readme",
+  "homepage": "https://github.com/Shanky1001/Portfolio#readme",
   "devDependencies": {
     "@babel/cli": "^7.22.15",
     "@babel/core": "^7.22.15",
@@ -25,6 +25,7 @@
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
     "@babel/runtime": "^7.22.15",
+    "@types/react-router-hash-link": "^2.4.6",
     "autoprefixer": "^10.4.15",
     "clean-webpack-plugin": "^4.0.0",
     "eslint-webpack-plugin": "^4.0.1",
@@ -47,6 +48,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.15.0",
+    "react-router-hash-link": "^2.4.3",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",

@@ -12,7 +12,7 @@ const App = () => {
 
 	return (
 		<Routes>
-			<Route path="/" element={<LayoutWrapper />}>
+			<Route  path="/" element={<LayoutWrapper />}>
 				{PUBLIC_ROUTES.map((route: any) => (
 					<Route
 						path={route.path}
