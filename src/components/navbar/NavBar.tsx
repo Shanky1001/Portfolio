@@ -11,7 +11,7 @@ const NavBar = () => {
 			className="w-full h-[7vh] bg-white dark:bg-black sticky top-0 z-[9999]  shadow-lg  dark:shadow-cyan-500/50 flex flex-row items-center justify-between"
 		>
 			<NavLink
-				to="/"
+				to="/" 
 				className={(state) =>
 					`nav_link mx-3 ${
 						state.isActive
@@ -24,7 +24,7 @@ const NavBar = () => {
 			</NavLink>
 			<div className="w-auto 800:w-[500px] group h-[60px] animate-slidedown  rounded-[5px] frc justify-between select-none">
 				<div className="w-full h-full hidden 800:flex frc justify-around ">
-					<NavHashLink
+					<NavHashLink smooth
 						to="#about"
 						className={(state) =>
 							`nav_link ${
@@ -36,8 +36,8 @@ const NavBar = () => {
 					>
 						About
 					</NavHashLink>
-					<NavHashLink
-						to="/#Skills"
+					<NavHashLink smooth
+						to="#skills"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -48,8 +48,8 @@ const NavBar = () => {
 					>
 						Skills
 					</NavHashLink>
-					<NavHashLink
-						to="/#Projects"
+					<NavHashLink smooth
+						to="#projects"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -60,8 +60,8 @@ const NavBar = () => {
 					>
 						Projects
 					</NavHashLink>
-					<NavHashLink
-						to="/#Contact"
+					<NavHashLink smooth
+						to="#contact"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -102,16 +102,16 @@ const MobileNav = () => {
 				{/* <div className="absolute right-0 top-[-16px] mr-[9px] ">
 					<VscTriangleUp className=" text-[25px] text-[#dedcdc] dark:text-[#10141e] " />
 				</div> */}
-				<NavLink to="/#about" className="nav_link-mob">
+				<NavHashLink to="#about" smooth className="nav_link-mob">
 					About
-				</NavLink>
-				<NavHashLink to="/#Skills" className="nav_link-mob">
+				</NavHashLink>
+				<NavHashLink to="#skills" smooth className="nav_link-mob">
 					Skills
 				</NavHashLink>
-				<NavHashLink to="/#Projects" className="nav_link-mob">
+				<NavHashLink to="#projects" smooth className="nav_link-mob">
 					Projects
 				</NavHashLink>
-				<NavHashLink to="/#Contact" className="nav_link-mob">
+				<NavHashLink to="#contact" smooth className="nav_link-mob">
 					Contact
 				</NavHashLink>
 			</div>

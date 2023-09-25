@@ -1,4 +1,4 @@
-import { Social } from "../../constants";
+import { Social } from "../../constant";
 import { social } from "types";
 
 const SocialList = () => {
