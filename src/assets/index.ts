@@ -23,6 +23,9 @@ import VERCEL from "./images/vercel.svg";
 // General Images
 import SIDEMENU from "./images/sidebar.svg";
 
+// Project
+import Imagine from "./images/Imagine.png"
+
 
 export {
 	firebase,
@@ -44,5 +47,5 @@ export {
 	MYSQL,
 	STRIPE,
 	VERCEL,
-	SIDEMENU,
+	SIDEMENU,Imagine
 };

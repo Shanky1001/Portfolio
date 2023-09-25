@@ -1,6 +1,4 @@
-import React from "react";
 import { NavHashLink } from "react-router-hash-link";
-import { IoHomeOutline } from "react-icons/io5";
 import { SIDEMENU } from "assets";
 import { NavLink } from "react-router-dom";
 
@@ -25,7 +23,7 @@ const NavBar = () => {
 			<div className="w-auto 800:w-[500px] group h-[60px] animate-slidedown  rounded-[5px] frc justify-between select-none">
 				<div className="w-full h-full hidden 800:flex frc justify-around ">
 					<NavHashLink smooth
-						to="#about"
+						to="/#about"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -37,7 +35,7 @@ const NavBar = () => {
 						About
 					</NavHashLink>
 					<NavHashLink smooth
-						to="#skills"
+						to="/#skills"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -49,7 +47,7 @@ const NavBar = () => {
 						Skills
 					</NavHashLink>
 					<NavHashLink smooth
-						to="#projects"
+						to="/#projects"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
@@ -61,7 +59,7 @@ const NavBar = () => {
 						Projects
 					</NavHashLink>
 					<NavHashLink smooth
-						to="#contact"
+						to="/#contact"
 						className={(state) =>
 							`nav_link ${
 								state.isActive
