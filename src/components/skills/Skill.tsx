@@ -1,4 +1,4 @@
-import { Skills } from "../../constants";
+import { Skills } from "../../constant";
 import { BsCircleFill, BsGear } from "react-icons/bs";
 import { Typewriter } from "react-simple-typewriter";
 import { skill, skillCardProps } from "types";
@@ -57,8 +57,10 @@ const SkillCard = ({ keys, value }: skillCardProps) => {
 						/>
 					</span>
 					<span className="text-teal-400  text-[17px] frc justify-center flex-wrap 550:hidden">
-						{value.map((val: skill) => (
-							<span key={val.title} className="mr-[5px]">{val.title+", "}</span>
+						{value.map((val: skill, i: number) => (
+							<span key={i * 2} className="mr-[5px]">
+								{val.title + ", "}
+							</span>
 						))}
 					</span>
 					<span className=" text-blue-600">]</span>
@@ -66,7 +68,7 @@ const SkillCard = ({ keys, value }: skillCardProps) => {
 				<div className="w-full h-auto frc justify-around flex-wrap p-[18px]">
 					{value.map((val: skill) => {
 						return (
-							<div className="skill_img-list">
+							<div key={val.title} className="skill_img-list">
 								<img
 									src={val.image}
 									width={"40px"}

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       transitionProperty: {
         'height': 'height',
+        'width': 'width'
       },
       fontFamily: {
         roboto: "Roboto",
@@ -40,6 +41,7 @@ module.exports = {
         slowfade3: 'slowfade2 4s ease-in-out',
         slowfadehidden: 'slowfadehidden 2s ease-in-out',
         Fastspin: 'slowspin 1s linear infinite',
+        widthChangeDesc: "widthChangeDesc 2s ease"
       },
       keyframes: {
         slowspin: {
@@ -109,6 +111,10 @@ module.exports = {
         widthChange: {
           from: { opacity: 0, transform: 'w-[63%]' },
           to: { opacity: 1, transform: 'w-[100%]' },
+        },
+        widthChangeDesc: {
+          from: { width: '100%' },
+          to: {  width: '70%' },
         },
         wave: {
           '0%': { transform: 'scale(0)' },

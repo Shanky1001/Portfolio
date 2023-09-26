@@ -32,7 +32,27 @@ export interface social {
 	icon: IconType;
 }
 
-
 export interface skillCardProps {
-	keys:string,value:skill[]
+	keys: string;
+	value: skill[];
+}
+
+export interface project {
+	id: string;
+	PROJECT_NAME: string;
+	PROJECT_SHORT_DESC?: string;
+	PROJECT_DESC: string;
+	Bullet_Features?: string[];
+	PROJECT_IMG: string;
+	PROJECT_VIDEO?: string;
+	Repo_Link: string;
+	Live_Link?: string;
+	USER_LANGUAGE_IMG: string[];
+	Language_Frontend?: string[];
+	Language_Backend?: string[];
+	show:boolean;
+}
+
+export interface projectCardProps {
+	data: project;
 }
