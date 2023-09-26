@@ -54,13 +54,13 @@ export const Skills: skills = {
 };
 
 export const Projects: project[] = [
-	{	
-		id:"1",
+	{
+		id: "1",
 		PROJECT_NAME: "Imagine AI",
 		PROJECT_SHORT_DESC: "Prompt Based Image Generation Tool",
 		PROJECT_DESC:
 			"A Full Stack Prompt Based Image Generation Tool leveraging OPEN AI apis for generating dynamic images, giving options to choose your image size. It also consists facility to share within a community page.",
-		Bullet_Features:[],
+		Bullet_Features: [],
 		PROJECT_IMG: Imagine,
 		PROJECT_VIDEO: "",
 		Repo_Link: "",
@@ -75,6 +75,7 @@ export const Projects: project[] = [
 			"React-icons",
 		],
 		Language_Backend: ["MongoDb", "Firebase"],
+		show: true,
 	},
 ];
 

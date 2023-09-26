@@ -50,6 +50,7 @@ export interface project {
 	USER_LANGUAGE_IMG: string[];
 	Language_Frontend?: string[];
 	Language_Backend?: string[];
+	show:boolean;
 }
 
 export interface projectCardProps {

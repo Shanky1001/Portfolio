@@ -19,7 +19,7 @@ const Project = () => {
 				</div>
 			</div>
 			{Projects.map((val: project) => (
-				<ProjectCard key={val.id} data={val} />
+				val.show && <ProjectCard key={val.id} data={val} />
 			))}
 		</section>
 	);
