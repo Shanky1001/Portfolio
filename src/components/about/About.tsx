@@ -53,7 +53,8 @@ const About = () => {
 					</p>
 					<div className="btn-cta">
 						<a
-							href={`/resume.pdf`}
+							href={`/Shashank_Rai_Frontend_Developer.pdf`}
+							download={"Shashank_Rai_Frontend_Developer.pdf"}
 							target="_blank"
 							className="text-white"
 						>
