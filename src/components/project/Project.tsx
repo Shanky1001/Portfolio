@@ -29,7 +29,7 @@ export default Project;
 
 const ProjectCard = ({ data }: projectCardProps) => {
 	return (
-		<div id={data.PROJECT_NAME} className="w-full frc my-[40px] 400:my-0">
+		<div id={data.PROJECT_NAME} className="w-full frc my-[40px]">
 			<div
 				id="monospace"
 				className="w-full h-auto bg-slate-200 dark:bg-[#1e2439] rounded-[5px] shadow-lg "
@@ -81,7 +81,7 @@ const ProjectCard = ({ data }: projectCardProps) => {
 					)}
 					<div className="w-[95%] h-[1px] bg-teal-800 m-auto "></div>
 					<div className="w-full h-[60px] frc justify-end">
-						<a
+						{data.Repo_Link && <a
 							href={data.Repo_Link}
 							className="w-auto relative  group"
 						>
@@ -89,7 +89,7 @@ const ProjectCard = ({ data }: projectCardProps) => {
 								Github
 							</div>
 							<VscGithubAlt className="text-[25px]  text-teal-400  cursor-pointer mr-[25px] ScaleAnimation" />
-						</a>
+						</a>}
 						{/* <a
 								href={data.Backend_Repo_Link}
 								className={`w-auto relative ${
@@ -107,18 +107,19 @@ const ProjectCard = ({ data }: projectCardProps) => {
 								<GoMarkGithub className="text-[25px]  text-teal-400  cursor-pointer mr-[25px] ScaleAnimation" />
 							</a> */}
 
-						<Link
-							to={`/${data.id}`}
+						{data.Live_Link && <a
+							href={data.Live_Link}
+							target={"_blank"}
 							className="w-auto z-50 relative  group"
 						>
 							<div
 								className="w-auto text-[10px] text-white absolute left-[-13px] hidden group-hover:flex top-[-25px] animate-slideup 
                                rounded-[20px] bg-black frc pl-[8px] pr-[8px] py-[1px] "
 							>
-								Detail
+								Live
 							</div>
 							<BsBoxArrowUpRight className="text-[25px]  text-teal-400  cursor-pointer mr-[25px] ScaleAnimation" />
-						</Link>
+						</a>}
 					</div>
 				</div>
 			</div>

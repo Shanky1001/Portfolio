@@ -4,6 +4,7 @@ import CSS from "./images/css.png";
 import JS from "./images/js.png";
 import TS from "./images/ts.png";
 import TAILWIND from "./images/tailwind.png";
+import SCSS from "./images/scss.png"
 
 import REACT from "./images/react.png";
 import REDUX from "./images/redux.png";
@@ -24,13 +25,15 @@ import VERCEL from "./images/vercel.svg";
 import SIDEMENU from "./images/sidebar.svg";
 
 // Project
-import Imagine from "./images/Imagine.png"
-
+import Imagine from "./images/Imagine.png";
+import Magenative from "./images/Magenative.png";
+import APEX from "./images/Apex.png"
 
 export {
 	firebase,
 	HTML,
 	CSS,
+	SCSS,
 	JS,
 	TS,
 	TAILWIND,
@@ -47,5 +50,7 @@ export {
 	MYSQL,
 	STRIPE,
 	VERCEL,
-	SIDEMENU,Imagine
+	SIDEMENU,
+	Imagine,
+	Magenative,APEX
 };
