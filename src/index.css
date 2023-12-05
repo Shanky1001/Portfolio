@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .frc {
+    @apply flex flex-row items-center;
+  }
+  .fcc {
+    @apply flex  flex-col items-center;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#26405E] px-2 py-1 capitalize font-semibold rounded-sm;
+  }
+
+  .btn-filled {
+    @apply text-white px-2 py-1 capitalize bg-[#3FC1C9] font-semibold rounded-sm;
+  }
+}
