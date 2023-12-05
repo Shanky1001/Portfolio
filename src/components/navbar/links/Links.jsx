@@ -10,7 +10,7 @@ const Links = () => {
       {sideLinks.map((item) => (
         <motion.a
           href={`#${item.link}`}
-          className="hover:text-green-400"
+          className="hover:text-green-400 active:text-orange-600"
           key={item.link}
           variants={itemVariants}
           whileHover={{ scale: 1.1 }}

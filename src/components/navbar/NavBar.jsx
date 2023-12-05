@@ -6,10 +6,7 @@ import Links from "./links/Links";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <motion.nav
-      className="bg-orange-600 h-screen px-4 relative"
-      animate={open ? "open" : "closed"}
-    >
+    <motion.nav className="px-4 relative" animate={open ? "open" : "closed"}>
       <motion.div
         className="fixed inset-0 z-50 w-72 bg-slate-600 dark:bg-white"
         variants={variants}

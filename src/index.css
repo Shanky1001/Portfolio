@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lugrasimo&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,4 +19,11 @@
   .btn-filled {
     @apply text-white px-2 py-1 capitalize bg-[#3FC1C9] font-semibold rounded-sm;
   }
+}
+:root {
+  font-family: "Roboto", serif;
+}
+
+.Lugrasimo {
+  font-family: "Lugrasimo", "Roboto" !important;
 }
