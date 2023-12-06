@@ -3,6 +3,7 @@ import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import NavBar from "./components/navbar/NavBar";
 import Portfolio from "./components/portfolio/Portfolio";
+
 import { motion, useScroll } from "framer-motion";
 
 function App() {
