@@ -4,7 +4,7 @@ const MenuButton = ({ setOpen }) => {
   return (
     <button
       onClick={() => setOpen((prev) => !prev)}
-      className="fixed top-10 left-9 bg-transparent h-6 w-6 rounded-full z-[100] text-black dark:text-white"
+      className="fixed top-7 left-6 frc justify-center bg-white h-16 w-16 rounded-full z-[100] text-black dark:text-white"
     >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <motion.path

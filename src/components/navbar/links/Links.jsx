@@ -5,7 +5,7 @@ const Links = () => {
   return (
     <motion.div
       variants={variants}
-      className="absolute z-50 fcc gap-5 justify-center h-full w-full text-[20px] 500:text-[30px] text-white dark:text-black"
+      className="absolute z-50 fcc gap-5 justify-center h-full w-full text-[20px] 500:text-[30px] text-black dark:text-white"
     >
       {sideLinks.map((item) => (
         <motion.a

@@ -1,19 +1,16 @@
 import { motion } from "framer-motion";
-import Reveal from "../../wrapper/reveal/Reveal";
 
 const Hero = () => {
   return (
     <section
       id="#"
-      className="sticky top-0 dark:text-white h-screen w-full overflow-clip"
+      className="sticky top-0 z-0 dark:text-white h-screen w-full overflow-clip"
     >
-      <div className="frc justify-center h-full">
-        <Reveal>
-          <h1 className="text-3xl">Hello Mona</h1>
-        </Reveal>
+      <div className="">
+        
       </div>
       <motion.div
-        className="text-[10rem] absolute uppercase bottom-5 z-10 font-extrabold text-[#ffffff09] dark:text-[#cacaca] whitespace-nowrap opacity-50 Lugrasimo"
+        className="text-[10rem] cursor-default absolute max-w-screen-1600 uppercase bottom-5 z-10 font-extrabold text-[#ffffff09] whitespace-nowrap Lugrasimo"
         variants={textSliderVariants}
         initial="initial"
         animate="animate"

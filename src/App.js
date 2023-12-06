@@ -1,6 +1,8 @@
+import About from "./components/about/About";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import NavBar from "./components/navbar/NavBar";
+import Portfolio from "./components/portfolio/Portfolio";
 import { motion, useScroll } from "framer-motion";
 
 function App() {
@@ -16,7 +18,11 @@ function App() {
       />
       <Cursor />
       <NavBar />
-      <Hero />
+      <main className="max-w-screen-1600 w-full m-auto">
+        <Hero />
+        <About />
+        <Portfolio />
+      </main>
     </div>
   );
 }

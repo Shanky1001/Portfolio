@@ -8,10 +8,16 @@ const Reveal = ({ children, width = "fit-content" }) => {
   const slideControl = useAnimation();
 
   useEffect(() => {
+    let timeout = null;
     if (inView) {
-      animateControl.start("animate");
-      slideControl.start("animate");
+      timeout = setTimeout(() => {
+        animateControl.start("animate");
+        slideControl.start("animate");
+      }, 200);
     }
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [inView, animateControl, slideControl]);
 
   return (
@@ -58,5 +64,6 @@ const sliderVariants = {
     left: "100%",
     duration: 0.5,
     ease: "easeIn",
+    delay: 0.5,
   },
 };
