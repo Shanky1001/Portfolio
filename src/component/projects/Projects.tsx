@@ -4,6 +4,7 @@ import { project } from "../../types/index.ts";
 import { motion, useInView } from "framer-motion";
 import { FaGithub, FaVideo } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
+import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
 
 interface Props {
   projectsData: project[];
@@ -146,11 +147,15 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
       </div>
 
       <div className="my-2 flex flex-col gap-3">
-        <h3 className="text-xl font-medium">{name}</h3>
-        <p className="text-sm text-gray-400">
-          {" "}
-          <span className="font-medium">Tech Stack:</span> {techstack}
-        </p>
+        <RevealAnimation>
+          <h3 className="text-xl font-medium">{name}</h3>
+        </RevealAnimation>
+        <RevealAnimation>
+          <p className="text-sm text-gray-400">
+            {" "}
+            <span className="font-medium">Tech Stack:</span> {techstack}
+          </p>
+        </RevealAnimation>
       </div>
     </motion.div>
   );

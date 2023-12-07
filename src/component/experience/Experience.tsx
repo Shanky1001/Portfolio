@@ -3,6 +3,7 @@ import { education, experience } from "../../types/index.ts";
 import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { MdSchool, MdWork } from "react-icons/md";
 import { motion, useInView } from "framer-motion";
+import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
 interface Props {
   experienceData: experience[];
   educationData: education[];
@@ -41,7 +42,7 @@ const Experience = ({ experienceData, educationData }: Props) => {
 
       <div className="lg:container sm:mx-4 lg:mx-auto lg:w-5/6 2xl:w-3/4">
         <div className="relative wrap overflow-hidden p-4 md:py-10 md:px-0">
-          <div className="left-6 md:left-1/2 absolute border-opacity-20 border-gray-400 dark:border-grey-800 h-full border"></div>
+          <div className="left-6 md:left-1/2 absolute border-opacity-20 border-gray-400 dark:border-grey-800 h-[70%] border"></div>
 
           {Details.map((e: any, i: number) => (
             // @ts-ignore
@@ -118,20 +119,26 @@ const ExperienceCard = ({
         animate={isInView ? "visible" : "hidden"}
         className="order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
       >
-        <h3 className="mb-2 font-medium text-lg md:text-xl">
-          {company || institute}
-        </h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-          {position || degree} | {duration}
-        </p>
-        <ul className="text-sm text-gray-400 mt-2 ml-4 list-disc">
-          {desc &&
-            desc.map((d, i) => (
-              <li key={i} className="mb-0.5">
-                {d}
-              </li>
-            ))}
-        </ul>
+        <RevealAnimation>
+          <h3 className="mb-2 font-medium text-lg md:text-xl">
+            {company || institute}
+          </h3>
+        </RevealAnimation>
+        <RevealAnimation>
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+            {position || degree} | {duration}
+          </p>
+        </RevealAnimation>
+        <RevealAnimation>
+          <ul className="text-sm text-gray-400 mt-2 ml-4 list-disc">
+            {desc &&
+              desc.map((d, i) => (
+                <li key={i} className="mb-0.5">
+                  {d}
+                </li>
+              ))}
+          </ul>
+        </RevealAnimation>
       </motion.div>
     </div>
   );

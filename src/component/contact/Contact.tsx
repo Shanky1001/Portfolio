@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { BiLoaderAlt } from "react-icons/bi";
+import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
 
 const Contact = () => {
   const [values, setValues] = useState({
@@ -41,11 +42,15 @@ const Contact = () => {
           className="hidden md:block w-1/2 h-full object-cover"
         />
         <div className="flex-1">
-          <h3 className="text-2xl">Get in touch</h3>
-          <p className="text-gray-400 mb-4 text-sm md:text-base">
-            My inbox is always open. Whether you have a question or just want to
-            say hello, I will try my best to get back to you!
-          </p>
+          <RevealAnimation>
+            <h3 className="text-2xl">Get in touch</h3>
+          </RevealAnimation>
+          <RevealAnimation>
+            <p className="text-gray-400 mb-4 text-sm md:text-base">
+              My inbox is always open. Whether you have a question or just want
+              to say hello, I will try my best to get back to you!
+            </p>
+          </RevealAnimation>
 
           <form
             onSubmit={handleSubmit}
