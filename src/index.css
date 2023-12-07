@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Lugrasimo&family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .frc {
+    @apply flex flex-row items-center;
+  }
+  .fcc {
+    @apply flex  flex-col items-center;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth !important;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6565656a;
+}
+
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
