@@ -40,6 +40,7 @@ const Contact = () => {
           alt="contact"
           src="/contact.png"
           className="hidden md:block w-1/2 h-full object-cover"
+          loading="lazy"
         />
         <div className="flex-1">
           <RevealAnimation>

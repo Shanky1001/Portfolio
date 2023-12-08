@@ -62,6 +62,7 @@ const SkillCard = ({ name, image }: skill) => {
           alt="skill"
           className={`h-12 w-12 md:h-14 md:w-14 object-contain`}
           src={image}
+          loading="lazy"
         />
       </div>
       <p className="text-sm md:text-base">{name}</p>

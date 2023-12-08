@@ -13,7 +13,7 @@ const Home = ({ data }) => {
   return (
     <>
       <Header logo={data.main.name} />
-      <Hero mainData={data.main} />
+      <Hero mainData={data.main} resumeUrl={data.about.resumeUrl} />
       <Socials socials={data.socials} />
       <About aboutData={data.about} name={data.main.name} />
       <Skills skillData={data.skills} />
