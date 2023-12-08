@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { skill } from "../../types";
-
+import { motion, useInView } from "framer-motion";
 interface Props {
   skillData: skill[];
 }
@@ -51,8 +51,29 @@ const Skills = ({ skillData }: Props) => {
 export default Skills;
 
 const SkillCard = ({ name, image }: skill) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const cardVariants = {
+    hidden: { y: 80, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.75,
+        type: "spring",
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
-    <div className="flex flex-col justify-center items-center gap-2">
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      ref={ref}
+      className="flex flex-col justify-center items-center gap-2"
+    >
       <div
         title={name}
         className={
@@ -67,6 +88,6 @@ const SkillCard = ({ name, image }: skill) => {
         />
       </div>
       <p className="text-sm md:text-base">{name}</p>
-    </div>
+    </motion.div>
   );
 };

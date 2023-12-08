@@ -24,7 +24,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         />
       </div>
 
-      <div className="py-16 lg:py-48 flex flex-col-reverse lg:flex-row justify-around gap-10 lg:gap-0">
+      <div className="py-16 lg:py-48 flex flex-col-reverse items-center lg:flex-row justify-around gap-16 lg:gap-0">
         <div className="flex flex-col gap-4 md:gap-6 text-left lg:w-1/2 2xl:w-1/3 mx-4 md:mx-6 xl:mx-0">
           <RevealAnimation>
             <div className="flex items-center gap-1">
@@ -92,7 +92,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid top-0 -right-12 lg:-right-8 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid top-0 -right-20 lg:-right-8 lg:-top-14 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-8 w-8 md:h-10 md:w-10 object-cover"
@@ -100,7 +100,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid bottom-[4rem] md:bottom-24 -right-16 md:-right-20 lg:bottom-[8.5rem] lg:-right-20 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid bottom-[3rem] -right-24 md:bottom-24  md:-right-28 lg:bottom-[8.5rem] lg:-right-20 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-6 w-6 md:h-10 md:w-10 object-cover"
@@ -108,7 +108,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid -bottom-10 -right-8 lg:-bottom-4 lg:right-8 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid -bottom-12 -right-10 lg:-bottom-4 lg:right-0 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-10 w-10 object-cover"
