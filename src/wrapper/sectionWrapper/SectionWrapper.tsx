@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 const SectionWrapper = ({ children, id, className }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
-  
+
   return (
     <motion.section
       ref={ref}
@@ -23,5 +23,8 @@ export default SectionWrapper;
 
 const sectionVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.6, ease: "easeInOut" } },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: "easeInOut", delay: 0.25 },
+  },
 };

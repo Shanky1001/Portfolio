@@ -5,14 +5,14 @@
     "titles": ["Frontend Development", "Frontend Designer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
     "techStackImages": [
-      "https://img.icons8.com/color/144/000000/material-ui.png",
       "/react.png",
+      "/nextjs.png",
       "/redux.png",
-      "/nextjs.png"
+      "/mui.png"
     ]
   },
   "about": {
-    "aboutImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+    "aboutImage": "/about-2.jpg",
     "aboutImageCaption": "< I create Frontend Magic 🚀/>",
     "title": "Frontend Developer",
     "about": "I am a Frontend developer based in UP, India. I'm a Master's graduate from KNIT, and my journey in web development began after by graduation of B.Sc From a college in my hometown.",
@@ -32,11 +32,6 @@
   ],
   "skills": [
     {
-      "name": "JavaScript",
-      "image": "https://img.icons8.com/color/144/null/javascript--v1.png",
-      "category": "Frontend"
-    },
-    {
       "name": "Reactjs",
       "image": "/react.png",
       "category": "Frontend"
@@ -52,13 +47,68 @@
       "category": "Frontend"
     },
     {
+      "name": "Material UI",
+      "image": "/mui.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "JavaScript",
+      "image": "/javascript.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Typescript",
+      "image": "/typescript.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Webpack",
+      "image": "/webpack.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "SASS",
+      "image": "/sass.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "CSS3",
+      "image": "/css3.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "HTML5",
+      "image": "/html5.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Nodejs",
+      "image": "/nodejs.png",
+      "category": "Backend"
+    },
+    {
+      "name": "MongoDB",
+      "image": "/mongodb.png",
+      "category": "Backend"
+    },
+    {
       "name": "Firebase",
-      "image": "https://img.icons8.com/color/144/null/firebase.png",
+      "image": "/firebase.png",
       "category": "Backend"
     },
     {
       "name": "GitHub",
-      "image": "https://img.icons8.com/material-outlined/96/null/github.png",
+      "image": "/github.png",
+      "category": "Tools"
+    },
+    {
+      "name": "Git",
+      "image": "/git.png",
+      "category": "Tools"
+    },
+    {
+      "name": "VS Code",
+      "image": "/vscode.png",
       "category": "Tools"
     }
   ],
@@ -82,7 +132,7 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://shanky-agency.netlify.app/"
       }
     },
     {
@@ -93,7 +143,7 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-3",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://biz-news.netlify.app/"
       }
     },
     {
@@ -104,7 +154,7 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-1",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://cloudopia.netlify.app/"
       }
     },
     {
@@ -115,12 +165,12 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://apex-legends-clone.netlify.app/"
       }
     },
     {
       "name": "Dil-O-Cious",
-      "techstack": "Reactjs, Redux, JavaScript, SCSS,",
+      "techstack": "Reactjs, Redux, JavaScript, SCSS",
       "category": "React",
       "image": "/sweetshop-dark.png",
       "links": {
@@ -137,7 +187,7 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://hamleys-shanky.netlify.app/"
       }
     },
     {
@@ -148,7 +198,7 @@
       "links": {
         "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": "https://pouseidon.netlify.app/"
+        "visit": "https://search-any-books.netlify.app/"
       }
     },
     {
@@ -169,36 +219,49 @@
       "degree": "MCA",
       "duration": "2020 - 2022",
       "desc": [
-        "Pursuing IT Engineering course from KNIT",
+        "Completed Master in Computer Application from KNIT, Sultanpur.",
+        "Familiar with software development methodologies and project management practices, including Agile and Waterfall methodologies.",
         "Worked on web application development using HTML, CSS, and JavaScript, designing a database system using SQL",
-        "Familiar with software development methodologies and project management practices, including Agile and Waterfall methodologies."
+        "Familiarity with Machine Learning, Neural Networks and Soft Computing methodologies."
       ]
     },
     {
-      "institute": "XYZ School | CBSE",
-      "degree": "HSC Science",
-      "duration": "2014 - 2016"
+      "institute": "NEILIT, INDIA",
+      "degree": "O Level",
+      "duration": "2015 - 2016",
+      "desc": [
+        "Completed certification course O level provided by NEILIT Society, India.",
+        "Familiarity with web development technologies HTML, CSS, JavaScript.",
+        "Familiarity with Programming language C and C++."
+      ]
+    },
+    {
+      "institute": "Deen Dayal Upadhyay GKP University",
+      "degree": "B.Sc (PC)",
+      "duration": "2013 - 2017",
+      "desc": ["Completed Bachelor in Science from DDUGU, Gorakhpur."]
     }
   ],
   "experiences": [
     {
-      "company": "Cedcoss Technologies",
+      "company": "Cedcoss Technologies Pvt. Ltd.",
       "position": "Associate Software Engineer",
       "duration": "June 2022 - Sep 2023",
       "desc": [
-        "Assisted with design and development of project.",
+        "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of Shopify based SASS product.",
         "Worked on building the product from scratch and built multiple dashboards.",
-        "Skills: HTML · CSS · JavaScript · TailwindCSS · ReactJS · NodeJS · MySQL · REST APIs"
+        "Worked with other teams to create a system to collect and sync data in real time using Rest-API, GraphQL and Firebase.",
+        "Skills: ReactJS · Redux · JavaScript · Typescript · SCSS · MaterialUI · REST APIs · GraphQL "
       ]
     },
     {
-      "company": "Ace Softronics ",
+      "company": "Ace Softronics Pvt. Ltd.",
       "position": "Frontend Designer",
       "duration": "2018 - 2019",
       "desc": [
         "Assisted with design and development of project.",
-        "Worked on building the product from scratch and built multiple dashboards.",
-        "Skills: HTML · CSS · JavaScript · TailwindCSS · ReactJS · NodeJS · MySQL · REST APIs"
+        "Implemented transitions, animations and created responsive designs, which led to a remarkable 15% - 40% boost in user engagement and notable decrease in bounce rates.",
+        "Skills: HTML · CSS · JavaScript · Bootstrap · SCSS · GSAP"
       ]
     }
   ]

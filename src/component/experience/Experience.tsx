@@ -4,6 +4,7 @@ import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { MdSchool, MdWork } from "react-icons/md";
 import { motion, useInView } from "framer-motion";
 import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
+import { ViewAll } from "../button/ViewAll.tsx";
 interface Props {
   experienceData: experience[];
   educationData: education[];
@@ -21,8 +22,8 @@ const Experience = ({ experienceData, educationData }: Props) => {
   }, [viewAll, show, experienceData, educationData]);
 
   return (
-    <SectionWrapper id="experience" className="min-h-screen">
-      <h2 className="text-4xl text-center">Experience</h2>
+    <SectionWrapper id="experience" className="min-h-screen py-10">
+      <h2 className="text-4xl font-semibold text-center">Experience</h2>
 
       <div className="w-fit mx-auto mt-6 p-2 bg-white dark:bg-grey-800 rounded-md flex gap-2 items-center">
         {["Experience", "Education"].map((e, i) => (
@@ -51,13 +52,13 @@ const Experience = ({ experienceData, educationData }: Props) => {
         </div>
       </div>
 
-      {/* {(show === "Experience" ? experiences : educations).length > 2 && (
+      {(show === "Experience" ? experienceData : educationData).length > 2 && (
         <ViewAll
-          scrollTo="experience"
+          scrollTo="#experience"
           title={viewAll ? "Okay, I got it" : "View All"}
           handleClick={() => setViewAll(!viewAll)}
         />
-      )} */}
+      )}
     </SectionWrapper>
   );
 };

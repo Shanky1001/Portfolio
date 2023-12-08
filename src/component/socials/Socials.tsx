@@ -6,7 +6,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
   return (
     <section
       id="socials"
-      className="fixed xl:bottom-4 xl:left-4 2xl:bottom-10 2xl:left-10 hidden lg:flex flex-col items-center gap-3 z-20"
+      className="fixed xl:bottom-20 xl:left-4 2xl:bottom-20 2xl:left-10 hidden lg:flex flex-col items-center gap-3 z-20"
     >
       {socials.map((s: social) => {
         return (
@@ -24,7 +24,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
           </a>
         );
       })}
-      <span className="w-[2px] h-20  bg-[#7C3AED]"></span>
+      <span className="w-[2px] h-24  bg-[#7C3AED]"></span>
     </section>
   );
 };
