@@ -70,15 +70,15 @@ const Header = ({ logo }: { logo: string }) => {
 
       <nav className="p-4 flex sm:hidden items-center justify-between">
         {<span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">{logo.split(" ")[0]}</span>}
-        {/* <div className="flex items-center gap-4">
-          <span
+        <div className="flex items-center gap-4">
+          {/* <span
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="bg-gray-100 dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
-          </span>
+          </span> */}
           <CgMenuRight size={20} onClick={() => setNavCollapse(false)} />
-        </div> */}
+        </div>
       </nav>
 
       <div
@@ -90,7 +90,7 @@ const Header = ({ logo }: { logo: string }) => {
 
         <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
           <CgClose
-            className="self-end my-2"
+            className="self-end my-2 dark:text-white"
             size={20}
             onClick={() => setNavCollapse(true)}
           />
