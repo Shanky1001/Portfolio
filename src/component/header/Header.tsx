@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { FiSun, FiMoon } from "react-icons/fi";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { motion, useScroll } from "framer-motion";
 import CustomCursor from "../cursor/CustomCursor.tsx";
@@ -7,7 +7,8 @@ import CustomCursor from "../cursor/CustomCursor.tsx";
 const Header = ({ logo }: { logo: string }) => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
-  const [theme, setTheme] = useState(localStorage.theme || "light");
+  const [theme, setTheme] = useState(localStorage.theme ?? "dark");
+  const colorTheme = theme === "dark" ? "light" : "dark";
   const { scrollYProgress } = useScroll();
 
   useEffect(() => {
@@ -20,7 +21,18 @@ const Header = ({ logo }: { logo: string }) => {
     };
   }, []);
 
+  const handleSetTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   const navs = ["home", "about", "projects", "experience", "contact"];
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(colorTheme);
+    root.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme, colorTheme]);
 
   return (
     <header
@@ -59,24 +71,28 @@ const Header = ({ logo }: { logo: string }) => {
               </a>
             </li>
           ))}
-          {/* <span
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hover:bg-gray-100 hover:dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
+          <span
+            onClick={() => handleSetTheme()}
+            className="hover:bg-gray-100 hover:dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors toggle"
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
-          </span> */}
+          </span>
         </ul>
       </nav>
 
       <nav className="p-4 flex sm:hidden items-center justify-between">
-        {<span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">{logo.split(" ")[0]}</span>}
+        {
+          <span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">
+            {logo.split(" ")[0]}
+          </span>
+        }
         <div className="flex items-center gap-4">
-          {/* <span
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="bg-gray-100 dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
+          <span
+            onClick={() => handleSetTheme()}
+            className="bg-gray-100 dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors toggle"
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
-          </span> */}
+          </span>
           <CgMenuRight size={20} onClick={() => setNavCollapse(false)} />
         </div>
       </nav>
