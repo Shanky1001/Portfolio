@@ -6,9 +6,9 @@
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
     "techStackImages": [
       "https://img.icons8.com/color/144/000000/material-ui.png",
-      "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
-      "https://img.icons8.com/color/144/000000/redux.png",
-      "https://static-00.iconduck.com/assets.00/next-js-icon-2048x2048-5dqjgeku.png"
+      "/react.png",
+      "/redux.png",
+      "/nextjs.png"
     ]
   },
   "about": {
@@ -37,6 +37,21 @@
       "category": "Frontend"
     },
     {
+      "name": "Reactjs",
+      "image": "/react.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Nextjs",
+      "image": "/nextjs.png",
+      "category": "Frontend"
+    },
+    {
+      "name": "Redux",
+      "image": "/redux.png",
+      "category": "Frontend"
+    },
+    {
       "name": "Firebase",
       "image": "https://img.icons8.com/color/144/null/firebase.png",
       "category": "Backend"
@@ -49,36 +64,102 @@
   ],
   "projects": [
     {
-      "name": "Project Title",
-      "techstack": "HTML5, CSS3, JavaScript, jQuery",
-      "category": "MERN Stack",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "name": "Pouseidon",
+      "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery",
+      "category": "Basic",
+      "image": "/pouseidon.png",
       "links": {
-        "code": "",
+        "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": ""
+        "visit": "https://pouseidon.netlify.app/"
       }
     },
     {
-      "name": "Project Title",
-      "techstack": "Flutter, Dart, Firebase",
-      "category": "Flutter",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "name": "Shanky",
+      "techstack": "Reactjs, JavaScript, CSS, HTML",
+      "category": "React",
+      "image": "/Shanky.png",
       "links": {
-        "code": "",
+        "code": "https://github.com/Shanky1001/Template-2",
         "video": "",
-        "visit": ""
+        "visit": "https://pouseidon.netlify.app/"
       }
     },
     {
-      "name": "Project Title",
-      "techstack": "PHP, MySQL, HTML5, CSS3, Bootstrap, JavaScript",
-      "category": "LAMP Stack",
-      "image": "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210114225740/10-Best-Web-Development-Project-Ideas-For-Beginners-in-2021.png",
+      "name": "Biz News",
+      "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery",
+      "category": "Basic",
+      "image": "/biznews.png",
       "links": {
-        "code": "",
+        "code": "https://github.com/Shanky1001/Template-3",
         "video": "",
-        "visit": ""
+        "visit": "https://pouseidon.netlify.app/"
+      }
+    },
+    {
+      "name": "Cloudopia",
+      "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery",
+      "category": "Basic",
+      "image": "/CloudoPiya.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Template-1",
+        "video": "",
+        "visit": "https://pouseidon.netlify.app/"
+      }
+    },
+    {
+      "name": "Apex Legends",
+      "techstack": "Reactjs, JavaScript, CSS, HTML",
+      "category": "React",
+      "image": "/apexlegends.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Template-2",
+        "video": "",
+        "visit": "https://pouseidon.netlify.app/"
+      }
+    },
+    {
+      "name": "Dil-O-Cious",
+      "techstack": "Reactjs, Redux, JavaScript, SCSS,",
+      "category": "React",
+      "image": "/sweetshop-dark.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/React-Sweet-Shop",
+        "video": "",
+        "visit": "https://dil-o-cious.netlify.app/"
+      }
+    },
+    {
+      "name": "Hamleys",
+      "techstack": "Reactjs, Redux, JavaScript, SCSS",
+      "category": "React",
+      "image": "/hamleys.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Template-2",
+        "video": "",
+        "visit": "https://pouseidon.netlify.app/"
+      }
+    },
+    {
+      "name": "Online Library",
+      "techstack": "Reactjs, Axios, JavaScript, CSS, HTML",
+      "category": "React",
+      "image": "/library.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Template-2",
+        "video": "",
+        "visit": "https://pouseidon.netlify.app/"
+      }
+    },
+    {
+      "name": "Imagine AI",
+      "techstack": "Nextjs, Reactjs, MongoDB, Firebase, JavaScript",
+      "category": "Full Stack",
+      "image": "/Imagine-1.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Imagine-AI",
+        "video": "",
+        "visit": "https://imagine-shanky.vercel.app/"
       }
     }
   ],

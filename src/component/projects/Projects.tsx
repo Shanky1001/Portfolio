@@ -5,42 +5,34 @@ import { motion, useInView } from "framer-motion";
 import { FaGithub, FaVideo } from "react-icons/fa";
 import { BiLinkExternal } from "react-icons/bi";
 import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
+import { ViewAll } from "../button/ViewAll.tsx";
 
 interface Props {
   projectsData: project[];
 }
 
 const Projects = ({ projectsData }: Props) => {
-  const [projects, setProjects] = useState(
-    [...projectsData].reverse() as project[]
-  );
+  const [projects] = useState<project[]>([...projectsData]);
 
   // const categories = ['All', ...Array.from(new Set(projects.map((s) => s.category)))]
   const categories = [...Array.from(new Set(projects.map((s) => s.category)))];
-
-  // const [category, setCategory] = useState(categories[0] || "All")
   const [category, setCategory] = useState(categories[0]);
 
-  const [filteredProjects, setFilteredProjects] = useState(
-    projects as project[]
-  );
+  const [filteredProjects, setFilteredProjects] = useState<project[]>([]);
   const [viewAll, setViewAll] = useState(false);
 
   const filterProjects = (cat: string) => {
     setViewAll(false);
     setCategory(cat);
-    // cat === "All" ? setFilteredProjects(projects) :
-    setFilteredProjects(
-      projects.filter(
+    setFilteredProjects([
+      ...projects.filter(
         (p: project) => p.category.toLowerCase() === cat.toLowerCase()
-      )
-    );
+      ),
+    ]);
   };
 
   useEffect(() => {
-    filterProjects(
-      categories.includes("MERN Stack") ? "MERN Stack" : categories[0]
-    );
+    filterProjects(categories[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -72,13 +64,13 @@ const Projects = ({ projectsData }: Props) => {
           ))}
       </div>
 
-      {/* {filteredProjects.length > 6 && (
+      {filteredProjects.length > 6 && (
         <ViewAll
           scrollTo="projects"
           title={viewAll ? "Okay, I got it" : "View All"}
           handleClick={() => setViewAll(!viewAll)}
         />
-      )} */}
+      )}
     </SectionWrapper>
   );
 };
@@ -102,16 +94,18 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="flex flex-col gap-2 bg-white dark:bg-grey-800 rounded-lg p-4"
+      className="flex relative flex-col gap-2 group bg-white dark:bg-grey-800 rounded-lg p-4"
     >
-      <div className="relative group rounded-lg bg-violet-50">
-        <img
-          alt={name}
-          className="max-w-full h-48 max-h-full object-cover object-top rounded-lg"
-          src={image}
-        />
+      <div className="rounded-lg bg-violet-50 overflow-hidden">
+        <div
+          style={{
+            backgroundImage: `url(${image})`,
+            transition: "ease-in-out 8s",
+          }}
+          className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
+        ></div>
         {(links.visit.trim() || links.code.trim() || links.video.trim()) && (
-          <div className="absolute top-0 scale-x-0 group-hover:scale-100 transition-transform origin-left duration-200 ease-linear bg-gray-800 bg-opacity-60 w-full h-full rounded-lg flex items-center gap-4 justify-center">
+          <div className="absolute bottom-0 bg-gray-800 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[120px] rounded-lg flex items-center gap-4 justify-end">
             {links.visit.trim() && (
               <a
                 href={links.visit}
@@ -145,7 +139,6 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
           </div>
         )}
       </div>
-
       <div className="my-2 flex flex-col gap-3">
         <RevealAnimation>
           <h3 className="text-xl font-medium">{name}</h3>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { FaNodeJs } from "react-icons/fa";
+// import { FiSun, FiMoon } from "react-icons/fi";
 import { CgClose, CgMenuRight } from "react-icons/cg";
 import { motion, useScroll } from "framer-motion";
 import CustomCursor from "../cursor/CustomCursor.tsx";
@@ -60,21 +59,17 @@ const Header = ({ logo }: { logo: string }) => {
               </a>
             </li>
           ))}
-          <span
+          {/* <span
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="hover:bg-gray-100 hover:dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
-          </span>
+          </span> */}
         </ul>
       </nav>
 
       <nav className="p-4 flex sm:hidden items-center justify-between">
-        {logo === "Jigar Sable" ? (
-          <FaNodeJs size={28} />
-        ) : (
-          <span className="text-lg font-medium">{logo.split(" ")[0]}</span>
-        )}
+        {<span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">{logo.split(" ")[0]}</span>}
         {/* <div className="flex items-center gap-4">
           <span
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
