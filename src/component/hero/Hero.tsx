@@ -63,7 +63,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               <IoIosArrowForward className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              className="w-fit text-sm md:text-base py-2 px-4 cursor-pointer font-medium flex items-center gap-1 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-100 hover:dark:bg-neutral-800 transition-colors group text-violet-600"
+              className="w-fit text-sm md:text-base py-2 px-4 cursor-pointer font-medium flex items-center gap-1 rounded-md bg-neutral-200 hover:bg-neutral-200 dark:bg-neutral-100 hover:dark:bg-neutral-800 transition-colors group text-violet-600"
               href={resumeUrl}
               target="_blank"
               download={"ShashankRai_resume.pdf"}
@@ -76,15 +76,15 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         </div>
 
         <div className="relative mx-auto lg:mx-0 mt-12 md:mt-16 lg:mt-0">
-          <div className="w-56 h-56 md:w-80 md:h-80 lg:-translate-x-16">
+          <div className="w-48 h-48 md:w-72 md:h-72 lg:-translate-x-16 ">
             <img
               alt="avatar"
-              className="rounded-full w-full h-full object-cover"
+              className="rounded-full w-full h-full object-cover solar-image"
               src={"/hero-img.gif"}
             />
           </div>
 
-          <div className="absolute grid -top-6 -left-12 lg:-top-14 lg:-left-32 w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid -top-14 -left-14 lg:-top-24 lg:-left-32 w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-8 w-8 md:h-10 md:w-10 object-cover"
@@ -92,7 +92,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid top-0 -right-12 lg:-right-4 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid top-0 -right-12 lg:-right-8 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-8 w-8 md:h-10 md:w-10 object-cover"
@@ -100,7 +100,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid bottom-[4rem] md:bottom-24 -right-16 md:-right-20 lg:bottom-[8.5rem] lg:-right-12 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid bottom-[4rem] md:bottom-24 -right-16 md:-right-20 lg:bottom-[8.5rem] lg:-right-20 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-6 w-6 md:h-10 md:w-10 object-cover"
@@ -108,7 +108,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute grid -bottom-10 -right-8 lg:-bottom-0 lg:right-6 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
+          <div className="absolute grid -bottom-10 -right-8 lg:-bottom-4 lg:right-8 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
             <img
               alt="tech-stack"
               className="h-10 w-10 object-cover"

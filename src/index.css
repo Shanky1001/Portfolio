@@ -33,3 +33,30 @@ html {
 .scroll-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes solarEffect {
+  0% {
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.8), 0 0 20px rgba(124, 58, 237, 0.6),
+      0 0 30px rgba(124, 58, 237, 0.4);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.8), 0 0 30px rgba(124, 58, 237, 0.6),
+      0 0 40px rgba(124, 58, 237, 0.4);
+    transform: scale(1.1) rotate(180deg);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.8), 0 0 20px rgba(124, 58, 237, 0.6),
+      0 0 30px rgba(124, 58, 237, 0.4);
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.solar-image {
+  animation: solarEffect 3s infinite alternate;
+  transition: transform 0.3s ease-in-out;
+}
+
+.solar-image:hover {
+  transform: scale(1.1) rotate(180deg);
+}
