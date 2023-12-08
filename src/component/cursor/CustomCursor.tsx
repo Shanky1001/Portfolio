@@ -28,7 +28,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className="cursor fixed w-10 h-10 rounded-full border border-black dark:border-white z-50"
+      className="cursor fixed w-10 h-10 rounded-full border pointer-events-none border-black dark:border-white z-50"
       animate={{ x: position.x, y: position.y }}
     ></motion.div>
   );

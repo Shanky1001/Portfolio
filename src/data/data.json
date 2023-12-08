@@ -2,17 +2,13 @@
   "main": {
     "name": "Shashank Rai",
     "shortDesc": "I focus on developing user-friendly web applications that meet the client's requirements, with attention to detail, scalability, and performance.",
-    "titles": [
-      "Frontend Development",
-      "Backend Development",
-      "App Development"
-    ],
+    "titles": ["Frontend Development", "Frontend Designer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
     "techStackImages": [
       "https://img.icons8.com/color/144/000000/material-ui.png",
-      "https://img.icons8.com/color/144/000000/html-5--v1.png",
+      "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
       "https://img.icons8.com/color/144/000000/redux.png",
-      "https://img.icons8.com/color/144/000000/chakra-ui.png"
+      "https://static-00.iconduck.com/assets.00/next-js-icon-2048x2048-5dqjgeku.png"
     ]
   },
   "about": {

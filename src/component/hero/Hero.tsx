@@ -69,7 +69,7 @@ const Hero = ({ mainData }: HeroProps) => {
               alt="avatar"
               className="rounded-full w-full h-full object-cover"
               src={
-                "http://www.gifvideos.net/files/photos/2017/11/mesmerizing-art-from-a-master-of-the-animated-gif-codesign-business-design.gif"
+                "/hero-img.gif"
               }
             />
           </div>

@@ -75,7 +75,7 @@ const Header = ({ logo }: { logo: string }) => {
         ) : (
           <span className="text-lg font-medium">{logo.split(" ")[0]}</span>
         )}
-        <div className="flex items-center gap-4">
+        {/* <div className="flex items-center gap-4">
           <span
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="bg-gray-100 dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors"
@@ -83,7 +83,7 @@ const Header = ({ logo }: { logo: string }) => {
             {theme === "dark" ? <FiSun /> : <FiMoon />}
           </span>
           <CgMenuRight size={20} onClick={() => setNavCollapse(false)} />
-        </div>
+        </div> */}
       </nav>
 
       <div
