@@ -14,7 +14,7 @@ const About = ({ aboutData, name }: Props) => {
   return (
     <SectionWrapper
       id="about"
-      className="min-h-[80vh] pt-12 bg-gradient-to-b from-white to-gray-100/20 dark:from-grey-900 dark:to-grey-900"
+      className="pt-12 bg-gradient-to-b from-white to-gray-100/20 dark:from-grey-900 dark:to-grey-900"
     >
       <h2 className="text-4xl font-semibold text-center">About Me</h2>
 

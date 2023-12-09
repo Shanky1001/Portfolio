@@ -22,7 +22,7 @@ const Experience = ({ experienceData, educationData }: Props) => {
   }, [viewAll, show, experienceData, educationData]);
 
   return (
-    <SectionWrapper id="experience" className="min-h-screen py-10">
+    <SectionWrapper id="experience" className="py-10">
       <h2 className="text-4xl font-semibold text-center">Experience</h2>
 
       <div className="w-fit mx-auto mt-6 p-2 bg-white dark:bg-grey-800 rounded-md flex gap-2 items-center">

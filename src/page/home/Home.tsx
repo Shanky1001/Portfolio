@@ -23,7 +23,7 @@ const About = React.lazy(() => import("../../component/about/About.tsx"));
 
 const Home = ({ data }) => {
   return (
-    <>
+    <div className="w-full max-w-[1600px] mx-auto">
       <Header logo={data.main.name} />
       <Hero mainData={data.main} resumeUrl={data.about.resumeUrl} />
       <Suspense fallback={<Loading />}>
@@ -38,7 +38,7 @@ const Home = ({ data }) => {
         <Contact />
         <Footer socials={data.socials} name={data.main.name} />
       </Suspense>
-    </>
+    </div>
   );
 };
 

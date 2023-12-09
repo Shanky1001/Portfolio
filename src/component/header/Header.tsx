@@ -47,7 +47,7 @@ const Header = ({ logo }: { logo: string }) => {
         }}
       />
       <CustomCursor />
-
+      {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
         <a
           href={"/"}
@@ -60,16 +60,21 @@ const Header = ({ logo }: { logo: string }) => {
           }
         </a>
 
-        <ul className="flex items-center gap-8">
+        <motion.ul
+          variants={topVariants}
+          initial={"visible"}
+          animate={"animate"}
+          className="flex items-center gap-8"
+        >
           {navs.map((e, i) => (
-            <li key={i}>
+            <motion.li variants={childVariants} key={i}>
               <a
                 className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
                 href={`#${e}`}
               >
                 {e}
               </a>
-            </li>
+            </motion.li>
           ))}
           <span
             onClick={() => handleSetTheme()}
@@ -77,9 +82,10 @@ const Header = ({ logo }: { logo: string }) => {
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
           </span>
-        </ul>
+        </motion.ul>
       </nav>
 
+      {/* Mobile Navigation (mobile) */}
       <nav className="p-4 flex sm:hidden items-center justify-between">
         {
           <span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">
@@ -93,7 +99,11 @@ const Header = ({ logo }: { logo: string }) => {
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
           </span>
-          <CgMenuRight size={20} onClick={() => setNavCollapse(false)} />
+          <CgMenuRight
+            size={20}
+            className="cursor-pointer"
+            onClick={() => setNavCollapse(false)}
+          />
         </div>
       </nav>
 
@@ -106,7 +116,7 @@ const Header = ({ logo }: { logo: string }) => {
 
         <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
           <CgClose
-            className="self-end my-2 dark:text-white"
+            className="self-end my-2 cursor-pointer dark:text-white"
             size={20}
             onClick={() => setNavCollapse(true)}
           />
@@ -135,3 +145,16 @@ const Header = ({ logo }: { logo: string }) => {
 };
 
 export default Header;
+
+const topVariants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const childVariants = {
+  visible: { opacity: 0, y: -50 },
+  animate: { opacity: 1, y: 0 },
+};

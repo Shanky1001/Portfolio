@@ -13,9 +13,9 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
   return (
     <section
       id="home"
-      className={`dark:bg-grey-900 relative min-h-screen w-full mx-auto overflow-hidden`}
+      className={`dark:bg-grey-900 relative w-full mx-auto overflow-hidden`}
     >
-      <div className="absolute -z-10 min-h-screen h-full w-full">
+      <div className="absolute -z-10 h-full w-full">
         <img
           src="/herobgc.jpg"
           loading="lazy"
