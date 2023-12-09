@@ -25,7 +25,7 @@ const Experience = ({ experienceData, educationData }: Props) => {
     <SectionWrapper id="experience" className="py-10">
       <h2 className="text-4xl font-semibold text-center">Experience</h2>
 
-      <div className="w-fit mx-auto mt-6 p-2 bg-white dark:bg-grey-800 rounded-md flex gap-2 items-center">
+      <div className="w-fit mx-auto mt-6 p-2 shadow-sm bg-white dark:bg-grey-800 rounded-md flex gap-2 items-center">
         {["Experience", "Education"].map((e, i) => (
           <button
             key={i}
@@ -118,7 +118,7 @@ const ExperienceCard = ({
         variants={cardVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="order-1 rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
+        className="order-1 shadow-md rounded-lg w-full ml-3 md:ml-0 bg-white dark:bg-grey-800 md:w-5/12 p-3 md:px-4 md:py-4"
       >
         <RevealAnimation>
           <h3 className="mb-2 font-medium text-lg md:text-xl">

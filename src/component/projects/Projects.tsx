@@ -40,7 +40,7 @@ const Projects = ({ projectsData }: Props) => {
     <SectionWrapper id="projects" className="mx-4 md:mx-0 py-10">
       <h2 className="text-4xl font-semibold text-center">Projects</h2>
 
-      <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md">
+      <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md shadow-sm">
         {categories.map((c: string = "", i: number) => (
           <span
             key={i}
@@ -94,7 +94,7 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className="flex relative flex-col gap-2 group bg-white dark:bg-grey-800 rounded-lg p-4"
+      className="flex relative flex-col gap-2 group shadow-md bg-white dark:bg-grey-800 rounded-lg p-4"
     >
       <div className="rounded-lg bg-violet-50 overflow-hidden">
         <div
@@ -105,7 +105,7 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
           className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
         ></div>
         {(links.visit.trim() || links.code.trim() || links.video.trim()) && (
-          <div className="absolute bottom-0 bg-gray-800 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[120px] rounded-lg flex items-center gap-4 justify-end">
+          <div className="absolute bottom-0 bg-slate-400 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[80px] rounded-lg flex items-center gap-4 justify-end">
             {links.visit.trim() && (
               <a
                 href={links.visit}

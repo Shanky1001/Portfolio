@@ -41,7 +41,7 @@ const Header = ({ logo }: { logo: string }) => {
       } dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}
     >
       <motion.div
-        className="fixed h-2 top-0 origin-left z-30 w-full bg-blue-600"
+        className="fixed h-1 top-0 origin-left z-30 w-full bg-blue-600"
         style={{
           scaleX: scrollYProgress,
         }}
@@ -51,17 +51,17 @@ const Header = ({ logo }: { logo: string }) => {
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
         <a
           href={"/"}
-          className="2xl:ml-6 hover:text-white hover:dark:text-violet-500 transition-colors duration-300"
+          className="2xl:ml-6"
         >
           {
-            <span className="text-2xl font-medium text-[#7C3AED] hover:text-white capitalize">
+            <span className="text-2xl font-medium text-violet-800 hover:text-violet-500 transition-colors duration-300 capitalize">
               {logo.split(" ")[0]}
             </span>
           }
         </a>
 
         <motion.ul
-          variants={topVariants}
+          variants={variants}
           initial={"visible"}
           animate={"animate"}
           className="flex items-center gap-8"
@@ -106,7 +106,6 @@ const Header = ({ logo }: { logo: string }) => {
           />
         </div>
       </nav>
-
       <div
         className={`flex min-h-screen w-screen absolute md:hidden top-0 ${
           !navCollapse ? "right-0" : "right-[-100%]"
@@ -146,7 +145,7 @@ const Header = ({ logo }: { logo: string }) => {
 
 export default Header;
 
-const topVariants = {
+const variants = {
   animate: {
     transition: {
       staggerChildren: 0.1,
