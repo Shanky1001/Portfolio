@@ -36,7 +36,7 @@ npm start
 ```
 
 ## Demo
-For a live demonstration, you can visit [Shashank's Portfolio](https://shashank.dev).
+For a live demonstration, you can visit [Shashank's Portfolio](https://shashank-frontend-portfolio.netlify.app/).
 
 ## Feedback
 If you have any feedback or suggestions, feel free to reach out. Your input is highly appreciated!

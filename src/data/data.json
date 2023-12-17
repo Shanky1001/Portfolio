@@ -125,17 +125,6 @@
       }
     },
     {
-      "name": "Shanky",
-      "techstack": "Reactjs, JavaScript, CSS, HTML",
-      "category": "React",
-      "image": "/Shanky.png",
-      "links": {
-        "code": "https://github.com/Shanky1001/Template-2",
-        "video": "",
-        "visit": "https://shanky-agency.netlify.app/"
-      }
-    },
-    {
       "name": "Biz News",
       "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery",
       "category": "Basic",
@@ -177,6 +166,28 @@
         "code": "https://github.com/Shanky1001/React-Sweet-Shop",
         "video": "",
         "visit": "https://dil-o-cious.netlify.app/"
+      }
+    },
+    {
+      "name": "Crypto",
+      "techstack": "Reactjs, JavaScript, Bootstrap, CSS, HTML",
+      "category": "React",
+      "image": "/Crypto.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/crypto-template",
+        "video": "",
+        "visit": "https://crypto-template-shanky.netlify.app/"
+      }
+    },
+    {
+      "name": "Shanky",
+      "techstack": "Reactjs, JavaScript, CSS, HTML",
+      "category": "React",
+      "image": "/Shanky.png",
+      "links": {
+        "code": "https://github.com/Shanky1001/Template-2",
+        "video": "",
+        "visit": "https://shanky-agency.netlify.app/"
       }
     },
     {
