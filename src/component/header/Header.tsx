@@ -10,7 +10,7 @@ const Header = ({ logo }: { logo: string }) => {
   const [theme, setTheme] = useState(localStorage.theme ?? "dark");
   const colorTheme = theme === "dark" ? "light" : "dark";
   const { scrollYProgress } = useScroll();
-
+  const [path, setPath] = useState(window.location.hash || "");
   useEffect(() => {
     const updateScroll = () => {
       window.scrollY >= 90 ? setScroll(true) : setScroll(false);
@@ -49,10 +49,7 @@ const Header = ({ logo }: { logo: string }) => {
       <CustomCursor />
       {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
-        <a
-          href={"/"}
-          className="2xl:ml-6"
-        >
+        <a href={"/"} className="2xl:ml-6">
           {
             <span className="text-2xl font-medium text-violet-800 hover:text-violet-500 transition-colors duration-300 capitalize">
               {logo.split(" ")[0]}
@@ -69,9 +66,16 @@ const Header = ({ logo }: { logo: string }) => {
           {navs.map((e, i) => (
             <motion.li variants={childVariants} key={i}>
               <a
-                className="hover:text-violet-700 hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
+                className="hover:text-violet-700 relative hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
                 href={`#${e}`}
+                onClick={() => setPath(`#${e}`)}
               >
+                {path === `#${e}` && (
+                  <motion.span
+                    layoutId="underline"
+                    className="absolute left-0 top-full h-[1px] bg-violet-700 w-full"
+                  />
+                )}
                 {e}
               </a>
             </motion.li>
