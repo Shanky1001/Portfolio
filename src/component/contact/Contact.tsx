@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { BiLoaderAlt } from "react-icons/bi";
 import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
   const [values, setValues] = useState({
@@ -10,15 +13,40 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!values.name.trim() || !values.email.trim() || !values.message.trim()) {
       return false;
     }
 
     setLoading(true);
+    const templatePrams = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+    emailjs
+      .send(
+        process.env.MAIL_SERVICE_ID!,
+        process.env.MAIL_TEMPLATE_ID!,
+        templatePrams,
+        process.env.MAIL_PUBLIC_KEY!
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          toast.success("Thank you for contacting.");
+        } else {
+          toast.error(response.text);
+        }
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleChange = (
@@ -31,6 +59,7 @@ const Contact = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
   return (
     <SectionWrapper id="contact" className="mb-16 mx-4 lg:mx-0">
       <h2 className="text-center font-semibold text-4xl">Contact Me</h2>
@@ -86,6 +115,7 @@ const Contact = () => {
             />
             <button
               disabled={loading}
+              type="submit"
               className="px-4 py-2 bg-violet-600 hover:bg-violet-700 transition-colors text-white rounded-lg disabled:cursor-not-allowed self-end"
             >
               {loading ? (
@@ -99,6 +129,16 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnHover
+        theme={"colored"}
+      />
     </SectionWrapper>
   );
 };
