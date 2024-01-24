@@ -100,7 +100,7 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
         <div
           style={{
             backgroundImage: `url(${image})`,
-            transition: "ease-in-out 8s",
+            transition: "ease-in-out 3s",
           }}
           className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
         ></div>

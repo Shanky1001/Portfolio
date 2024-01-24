@@ -18,7 +18,7 @@
     "about": "I am a frontend developer residing in Uttar Pradesh, India. My journey in web development started after completing my Master's degree from KNIT, following my graduation in B.Sc from a college in my hometown.",
     "about_work": "My enthusiasm lies in crafting aesthetically pleasing, functional, and user-friendly websites and applications. Continual self-improvement is a core aspect of my approach, as I am dedicated to learning and evolving as a developer. I find joy in developing full-stack websites and engaging in various side projects.",
     "callUrl": "",
-    "resumeUrl": "https://drive.google.com/file/d/1zHSwZe1srm4nFi0ejxMiwynWFTjphUN-/view?usp=sharing"
+    "resumeUrl": "https://drive.google.com/file/d/1CmVFi74x0wfoYDWdzKwrvbx2CR0OiZEg/view?usp=drive_link"
   },
   "socials": [
     {
@@ -263,16 +263,6 @@
         "Worked on building the product from scratch and built multiple dashboards.",
         "Worked with other teams to create a system to collect and sync data in real time using Rest-API, GraphQL and Firebase.",
         "Skills: ReactJS · Redux · JavaScript · Typescript · SCSS · MaterialUI · REST APIs · GraphQL "
-      ]
-    },
-    {
-      "company": "Ace Softronics Pvt. Ltd.",
-      "position": "Frontend Designer",
-      "duration": "2018 - 2019",
-      "desc": [
-        "Assisted with design and development of project.",
-        "Implemented transitions, animations and created responsive designs, which led to a remarkable 15% - 40% boost in user engagement and notable decrease in bounce rates.",
-        "Skills: HTML · CSS · JavaScript · Bootstrap · SCSS · GSAP"
       ]
     }
   ]

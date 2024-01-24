@@ -16,6 +16,10 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (parseInt(process.env.CONTACT!) === 0) {
+      toast.warning("This feature is yet to be implemented.");
+      return
+    }
 
     if (!values.name.trim() || !values.email.trim() || !values.message.trim()) {
       return false;
