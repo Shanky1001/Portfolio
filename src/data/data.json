@@ -254,6 +254,20 @@
     }
   ],
   "experiences": [
+{
+      "company": "Buopso Pvt. Ltd.",
+      "position": "Software Engineer",
+      "duration": "Feb 2024 - Current",
+      "desc": [
+        "Responsible for creating an end to end dynamic automation workflow which facilitates seamless data transfer among different pipelines and modules.",
+        "Engineered dynamic frontend components to manage & process data
+on specific triggers and conditions, ensuring smooth automation
+workflows among our CRM software and other tools suits.",
+        " Collaborated with backend developers to integrate api enabling
+efficient data communication and synchronization.",
+        "Skills: ReactJS · Redux · JavaScript · Typescript · MaterialUI · REST APIs • CRM tools "
+      ]
+    },
     {
       "company": "Cedcoss Technologies Pvt. Ltd.",
       "position": "Associate Software Engineer",
