@@ -4,21 +4,16 @@
     "shortDesc": "I focus on developing user-friendly web applications that meet the client's requirements, with attention to detail, scalability, and performance.",
     "titles": ["Frontend Development", "Frontend Designer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
-    "techStackImages": [
-      "/react.png",
-      "/nextjs.png",
-      "/redux.png",
-      "/mui.png"
-    ]
+    "techStackImages": ["/react.png", "/nextjs.png", "/redux.png", "/mui.png"]
   },
   "about": {
     "aboutImage": "/about-2.jpg",
-    "aboutImageCaption": "< I create Frontend Magic 🚀/>",
+    "aboutImageCaption": "< I create Magic on Frontend 🚀/>",
     "title": "Frontend Developer",
-    "about": "I am a frontend developer residing in Uttar Pradesh, India. My journey in web development started after completing my Master's degree from KNIT, following my graduation in B.Sc from a college in my hometown.",
-    "about_work": "My enthusiasm lies in crafting aesthetically pleasing, functional, and user-friendly websites and applications. Continual self-improvement is a core aspect of my approach, as I am dedicated to learning and evolving as a developer. I find joy in developing full-stack websites and engaging in various side projects.",
+    "about": "I am a frontend developer residing in Uttar Pradesh, India. My journey in web development started after completing my Master's degree from KNIT, following my graduation in B.Sc in Mathematics.",
+    "about_work": "My enthusiasm lies in crafting aesthetically pleasing, functional, and user-friendly websites. Continual self-improvement is a core aspect of my approach, as I am dedicated to learning and evolving as a developer. I find joy in developing full-stack websites and engaging in various side projects.",
     "callUrl": "",
-    "resumeUrl": "https://drive.google.com/file/d/1CmVFi74x0wfoYDWdzKwrvbx2CR0OiZEg/view?usp=drive_link"
+    "resumeUrl": "https://drive.google.com/file/d/1_3C60Ml_-hNKcMpyXRjHzW57UtIga_-w/view?usp=drive_link"
   },
   "socials": [
     {
@@ -254,13 +249,14 @@
     }
   ],
   "experiences": [
-{
+    {
       "company": "Buopso Pvt. Ltd.",
-      "position": "Software Engineer",
+      "position": "Software Engineer 2",
       "duration": "Feb 2024 - Current",
       "desc": [
-        "Responsible for creating an end to end dynamic automation workflow which facilitates seamless data transfer among different pipelines and modules.",
-        "Engineered dynamic frontend components to manage & process data on specific triggers and conditions, ensuring smooth automation workflows among our CRM software and other tools suits.",
+        "Implemented a fully customizable UI architecture which helps the user to easily create custom forms according to their requirements just by drag-n-drop.",
+        "Implemented an automation system based on specific triggers and conditions for automated data transfer among various modules and pipelines in the software.",
+        "Responsible for creating dynamic and reusable base components which runs on config driven ui and helps in making unanimous design across our platform.",
         "Collaborated with backend developers to integrate api enabling efficient data communication and synchronization.",
         "Skills: ReactJS · Redux · JavaScript · Typescript · MaterialUI · REST APIs • CRM tools "
       ]
