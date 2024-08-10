@@ -1,7 +1,7 @@
 {
   "main": {
     "name": "Shashank Rai",
-    "shortDesc": "I focus on developing user-friendly web applications that meet the client's requirements, with attention to detail, scalability, and performance.",
+    "shortDesc": "I love to design and develope user-friendly web applications that are user-friendly, scalable and optimised for greater performance.",
     "titles": ["Frontend Development", "Frontend Designer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
     "techStackImages": ["/react.png", "/nextjs.png", "/redux.png", "/mui.png"]
@@ -10,7 +10,7 @@
     "aboutImage": "/about-2.jpg",
     "aboutImageCaption": "< I create Magic on Frontend 🚀/>",
     "title": "Frontend Developer",
-    "about": "I am a frontend developer residing in Uttar Pradesh, India. My journey in web development started after completing my Master's degree from KNIT, following my graduation in B.Sc in Mathematics.",
+    "about": "I am a frontend developer residing in Noida, Uttar Pradesh, India.",
     "about_work": "My enthusiasm lies in crafting aesthetically pleasing, functional, and user-friendly websites. Continual self-improvement is a core aspect of my approach, as I am dedicated to learning and evolving as a developer. I find joy in developing full-stack websites and engaging in various side projects.",
     "callUrl": "",
     "resumeUrl": "https://drive.google.com/file/d/1_3C60Ml_-hNKcMpyXRjHzW57UtIga_-w/view?usp=drive_link"
@@ -258,7 +258,7 @@
         "Implemented an automation system based on specific triggers and conditions for automated data transfer among various modules and pipelines in the software.",
         "Responsible for creating dynamic and reusable base components which runs on config driven ui and helps in making unanimous design across our platform.",
         "Collaborated with backend developers to integrate api enabling efficient data communication and synchronization.",
-        "Skills: ReactJS · Redux · JavaScript · Typescript · MaterialUI · REST APIs • CRM tools "
+        "Skills: ReactJS • Redux • JavaScript • Typescript • MaterialUI • REST APIs • CRM tools "
       ]
     },
     {
@@ -266,10 +266,11 @@
       "position": "Associate Software Engineer",
       "duration": "June 2022 - Sep 2023",
       "desc": [
-        "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of Shopify based SASS product.",
-        "Worked on building the product from scratch and built multiple dashboards.",
-        "Worked with other teams to create a system to collect and sync data in real time using Rest-API, GraphQL and Firebase.",
-        "Skills: ReactJS · Redux · JavaScript · Typescript · SCSS · MaterialUI · REST APIs · GraphQL "
+"Responsible for creating a Mobile app builder platform where shopify users can easily customise and create their Android and Ios application.",
+"Created an analytics dashboard where our clients can see the performance and engagement of their respective application.",
+"Implemented a push notification page where clients can create, customise and schedule push notifications for their application",
+        "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of the web application.",
+        "Skills: ReactJS • Redux • Nodejs • Expressjs • MongoDb • JavaScript • Typescript • SCSS • MaterialUI • Webpack • REST APIs • GraphQL"
       ]
     }
   ]
