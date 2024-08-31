@@ -1,7 +1,7 @@
 {
   "main": {
     "name": "Shashank Rai",
-    "shortDesc": "I love to design and develope user-friendly web applications that are user-friendly, scalable and optimised for greater performance.",
+    "shortDesc": "I love to design and develope web applications that are user-friendly, scalable and optimised for greater performance.",
     "titles": ["Frontend Development", "Frontend Designer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
     "techStackImages": ["/react.png", "/nextjs.png", "/redux.png", "/mui.png"]
