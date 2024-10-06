@@ -1,6 +1,8 @@
 {
+
   "main": {
-    "name": "Shashank Rai",
+
+   "name": "Shashank Rai",
     "shortDesc": "I love to design and develope web applications that are user-friendly, scalable and optimised for greater performance.",
     "titles": ["FullStack Development","MEARN Stack Developer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
@@ -11,9 +13,7 @@
     "aboutImageCaption": "< I create Magical Web Experiences 🚀/>",
     "title": "FullStack Developer",
     "about": "I am a fullstack developer residing in Noida, Uttar Pradesh, India.",
-    "about_work": "As a passionate Full-stack developer, I specialize in creating robust and scalable web applications using modern JavaScript frameworks and libraries.
-With deep expertise in frontend technologies like React, Next.js, Redux, and backend frameworks such as Node.js and Express.js, I am well-versed in building seamless user interfaces and efficient server-side applications. I thrive on solving complex problems, optimizing performance, and delivering high-quality solutions that meet business needs. Whether it's building a responsive frontend or a powerful backend API, I enjoy leveraging my technical skills to create impactful digital experiences.
-Connect with me to explore, how I can bring value to your next project!",
+    "about_work": "As a passionate Full-stack developer, I specialize in creating robust and scalable web applications using modern JavaScript frameworks and libraries. With deep expertise in frontend technologies like React, Next.js, Redux, and backend frameworks such as Node.js and Express.js, I am well-versed in building seamless user interfaces and efficient server-side applications. I thrive on solving complex problems, optimizing performance, and delivering high-quality solutions that meet business needs. Whether it's building a responsive frontend or a powerful backend API, I enjoy leveraging my technical skills to create impactful digital experiences. Connect with me to explore, how I can bring value to your next project!",
     "callUrl": "",
     "resumeUrl": "https://drive.google.com/file/d/1HtWrNvhYhHlzoskE10Eu4iFQ3RbMNWYn/view?usp=drivesdk"
   },
@@ -277,3 +277,4 @@ Connect with me to explore, how I can bring value to your next project!",
     }
   ]
 }
+
