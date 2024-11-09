@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-
-// Set a variable to hold the timeout ID
-// let timeoutId: any;
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef(null);
   //   // Debounce function to limit the rate of execution
   //   const debounce = (func, delay:number) => {
   //     clearTimeout(timeoutId);
@@ -39,6 +37,7 @@ const CustomCursor = () => {
 
   return (
     <motion.div
+      ref={cursorRef}
       className="cursor fixed w-3 h-3 rounded-full border pointer-events-none bg-black dark:bg-white z-50"
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
