@@ -1,12 +1,15 @@
 {
-
   "main": {
-
-   "name": "Shashank Rai",
-    "shortDesc": "I love to design and develope web applications that are user-friendly, scalable and optimised for greater performance.",
-    "titles": ["FullStack Development","MEARN Stack Developer"],
+    "name": "Shashank Rai",
+    "shortDesc": "I love to design and develope web applications that are user-friendly, scalable and optimized for greater performance.",
+    "titles": ["FullStack Development", "MERN Stack Developer"],
     "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
-    "techStackImages": ["/react.png", "/nextjs.png", "/mongodb.png", "/nodejs.png"]
+    "techStackImages": [
+      "/react.png",
+      "/nextjs.png",
+      "/mongodb.png",
+      "/nodejs.png"
+    ]
   },
   "about": {
     "aboutImage": "/about-2.jpg",
@@ -268,13 +271,12 @@
       "position": "Associate Software Engineer",
       "duration": "June 2022 - Sep 2023",
       "desc": [
-"Responsible for creating a Mobile app builder platform where shopify users can easily customise and create their Android and Ios application.",
-"Created an analytics dashboard where our clients can see the performance and engagement of their respective application.",
-"Implemented a push notification page where clients can create, customise and schedule push notifications for their application",
+        "Responsible for creating a Mobile app builder platform where shopify users can easily customise and create their Android and Ios application.",
+        "Created an analytics dashboard where our clients can see the performance and engagement of their respective application.",
+        "Implemented a push notification page where clients can create, customise and schedule push notifications for their application",
         "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of the web application.",
         "Skills: ReactJS • Redux • Nodejs • Expressjs • MongoDb • JavaScript • Typescript • SCSS • MaterialUI • Webpack • REST APIs • GraphQL"
       ]
     }
   ]
 }
-
