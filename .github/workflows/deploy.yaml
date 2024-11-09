@@ -32,4 +32,4 @@ jobs:
       - name: Deploy to GitHub Pages
         run: npm install gh-pages --save-dev && npm run deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically created by GitHub Actions
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} # This is automatically created by GitHub Actions
