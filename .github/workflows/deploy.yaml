@@ -23,6 +23,11 @@ jobs:
 
       - name: Build the app
         run: npm run build
+      # Configure Git user for gh-pages with secrets
+      - name: Configure Git
+        run: |
+          git config --global user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git config --global user.name "${{ secrets.GIT_USER_NAME }}"
 
       - name: Deploy to GitHub Pages
         run: npm install gh-pages --save-dev && npm run deploy
