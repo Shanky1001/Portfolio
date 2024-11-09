@@ -1,0 +1,16 @@
+{
+  "short_name": "Shashank Rai",
+  "name": "Shashank Rai | Software Developer",
+  "description": "Explore the portfolio of Shashank, a software developer with expertise in React, Next.js, Redux, Node.js, Express.js, MongoDB, Webpack, Jest, and AWS.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0073e6",
+  "icons": [
+    {
+      "src": "./about-2.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
