@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
 import { project } from "../../types/index.ts";
 import { motion, useInView } from "framer-motion";
@@ -14,27 +20,31 @@ interface Props {
 const Projects = ({ projectsData }: Props) => {
   const [projects] = useState<project[]>([...projectsData]);
 
-  // const categories = ['All', ...Array.from(new Set(projects.map((s) => s.category)))]
-  const categories = [...Array.from(new Set(projects.map((s) => s.category)))];
+  const categories = useMemo(
+    () => [...Array.from(new Set(projects.map((s) => s.category)))],
+    [projects]
+  );
   const [category, setCategory] = useState(categories[0]);
 
   const [filteredProjects, setFilteredProjects] = useState<project[]>([]);
   const [viewAll, setViewAll] = useState(false);
 
-  const filterProjects = (cat: string) => {
-    setViewAll(false);
-    setCategory(cat);
-    setFilteredProjects([
-      ...projects.filter(
-        (p: project) => p.category.toLowerCase() === cat.toLowerCase()
-      ),
-    ]);
-  };
+  const filterProjects = useCallback(
+    (cat: string) => {
+      setViewAll(false);
+      setCategory(cat);
+      setFilteredProjects([
+        ...projects.filter(
+          (p: project) => p.category.toLowerCase() === cat.toLowerCase()
+        ),
+      ]);
+    },
+    [projects]
+  );
 
   useEffect(() => {
     filterProjects(categories[0]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [filterProjects, categories]);
 
   return (
     <SectionWrapper id="projects" className="mx-4 md:mx-0 py-10">
