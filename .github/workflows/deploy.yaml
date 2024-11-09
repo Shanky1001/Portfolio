@@ -1,0 +1,49 @@
+name: Lint and Deploy
+
+on:
+  push:
+    branches:
+      - portfolio # Trigger on push to 'main' branch
+  pull_request:
+    branches:
+      - portfolio # Trigger on PR to 'main' branch for linting
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest # Run the linting job on the latest Ubuntu
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Checkout the repository's code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Specify Node.js version you want to use
+
+      - name: Install dependencies
+        run: npm install # Install npm dependencies
+
+      - name: Run linting
+        run: npm run lint # Run linting command
+
+  deploy:
+    runs-on: ubuntu-latest # Run the deploy job on the latest Ubuntu
+    needs: lint # Ensure deployment only happens after linting
+    if: github.event_name == 'push' # Ensure deploy job runs only on push, not PR
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Checkout the repository's code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # Specify Node.js version you want to use
+
+      - name: Install dependencies
+        run: npm install # Install npm dependencies
+
+      - name: Build the app
+        run: npm run build # Build the app
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy # Deploy the build to GitHub Pages
