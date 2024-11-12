@@ -226,7 +226,7 @@
   ],
   "educations": [
     {
-      "institute": "Kamla Nehru Institue of Technology",
+      "institute": "Kamla Nehru Institute of Technology",
       "degree": "MCA",
       "duration": "2020 - 2022",
       "desc": [
@@ -247,7 +247,7 @@
       ]
     },
     {
-      "institute": "Deen Dayal Upadhyay GKP University",
+      "institute": "Deen Dayal Upadhyay Gorakhpur University",
       "degree": "B.Sc (PC)",
       "duration": "2013 - 2017",
       "desc": ["Completed Bachelor in Science from DDUGU, Gorakhpur."]
@@ -271,9 +271,9 @@
       "position": "Associate Software Engineer",
       "duration": "June 2022 - Sep 2023",
       "desc": [
-        "Responsible for creating a Mobile app builder platform where shopify users can easily customise and create their Android and Ios application.",
+        "Responsible for creating a Mobile app builder platform where shopify users can easily customize and create their Android and Ios application.",
         "Created an analytics dashboard where our clients can see the performance and engagement of their respective application.",
-        "Implemented a push notification page where clients can create, customise and schedule push notifications for their application",
+        "Implemented a push notification page where clients can create, customize and schedule push notifications for their application",
         "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of the web application.",
         "Skills: ReactJS • Redux • Nodejs • Expressjs • MongoDb • JavaScript • Typescript • SCSS • MaterialUI • Webpack • REST APIs • GraphQL"
       ]
