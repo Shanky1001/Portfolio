@@ -6,18 +6,18 @@ import Firebase from "./Firebase.tsx";
 
 function App() {
   return (
-    <RouterProvider>
-      <Route
-        path="/"
-        element={
-          <div className="bg-gray-100/50 relative dark:bg-grey-900 text-black dark:text-white overflow-x-hidden">
-            <Firebase>
+    <Firebase>
+      <RouterProvider>
+        <Route
+          path="/"
+          element={
+            <div className="bg-gray-100/50 relative dark:bg-grey-900 text-black dark:text-white overflow-x-hidden">
               <Home data={data} />
-            </Firebase>
-          </div>
-        }
-      />
-    </RouterProvider>
+            </div>
+          }
+        />
+      </RouterProvider>
+    </Firebase>
   );
 }
 
