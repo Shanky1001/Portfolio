@@ -21,7 +21,6 @@ console.log(REACT_APP_PROJECT_ID)
 console.log(REACT_APP_STORAGE_BUCKET)
 console.log(REACT_APP_MESSAGING_SENDER_ID)
 console.log(REACT_APP_APP_ID)
-console.log(REACT_APP_MEASUREMENT_ID)
 console.log(REACT_APP_API_KEY)
 
 // Initialize Firebase
