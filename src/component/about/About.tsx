@@ -11,6 +11,23 @@ interface Props {
 const About = ({ aboutData, name }: Props) => {
   const { aboutImage, aboutImageCaption, title, about, about_work, resumeUrl } =
     aboutData;
+
+  const renderAboutWork = Array.isArray(about_work) ? (
+    about_work.map((ab) => (
+      <RevealAnimation key={ab}>
+        <p className="text-sm md:text-base my-1 text-gray-600 dark:text-gray-300">
+          {ab}
+        </p>
+      </RevealAnimation>
+    ))
+  ) : (
+    <RevealAnimation>
+      <p className="text-sm md:text-base my-2 text-gray-600 dark:text-gray-300">
+        {about_work}
+      </p>
+    </RevealAnimation>
+  );
+
   return (
     <SectionWrapper
       id="about"
@@ -44,11 +61,7 @@ const About = ({ aboutData, name }: Props) => {
                 {about}
               </p>
             </RevealAnimation>
-            <RevealAnimation>
-              <p className="text-sm md:text-base my-2 text-gray-600 dark:text-gray-300">
-                {about_work}
-              </p>
-            </RevealAnimation>
+            {renderAboutWork}
             <div className="flex items-center gap-4 md:mt-4">
               {resumeUrl.trim() && (
                 <a

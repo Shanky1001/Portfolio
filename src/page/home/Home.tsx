@@ -1,9 +1,9 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { lazy, useCallback, useEffect, useState } from "react";
 import Header from "../../component/header/Header.tsx";
 import Hero from "../../component/hero/Hero.tsx";
 import WithSuspense from "../../hoc/WithSuspense.tsx";
 import Loading from "../../component/Loading/Loading.tsx";
-import { ref, get } from "firebase/database";
+import { ref, get, onValue } from "firebase/database";
 import { db } from "../../firebaseConfig.ts";
 
 const About = WithSuspense(
@@ -28,25 +28,30 @@ const Footer = WithSuspense(
   lazy(() => import("../../component/footer/Footer.tsx"))
 );
 
+const dataRef = ref(db, "data");
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
 
+  const fetch = useCallback(async () => {
+    const snapshot = await get(dataRef);
+    if (snapshot.exists()) {
+      const result = snapshot.val();
+      setData(result);
+      setLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     setLoading(true);
-    const fetch = async () => {
-      const dataRef = ref(db, "data");
-      const snapshot = await get(dataRef);
-      if (snapshot.exists()) {
-        const result = snapshot.val();
-        console.log({ result });
-        setData(result);
-        setLoading(false);
-      }
-    };
     fetch();
-  }, []);
-  console.log({ loading });
+  }, [fetch]);
+
+  useEffect(() => {
+    onValue(dataRef, fetch);
+  }, [fetch]);
+
   return (
     <>
       {loading ? (

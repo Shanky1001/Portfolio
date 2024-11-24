@@ -44,7 +44,7 @@ type about = {
   aboutImageCaption: string;
   title: string;
   about: string;
-  about_work?: string;
+  about_work?: string | string[];
   resumeUrl: string;
   callUrl: string;
 };
