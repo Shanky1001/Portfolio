@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface Props {
   children: React.ReactNode;
@@ -8,12 +8,7 @@ interface Props {
 
 const SwipeUpWrapper = ({ children, className }: Props) => {
   return (
-    <motion.div
-      variants={childrenVariants}
-      initial={"initial"}
-      animate={"animate"}
-      className={className}
-    >
+    <motion.div variants={childrenVariants} initial="initial" animate="animate" className={className}>
       {children}
     </motion.div>
   );
@@ -33,13 +28,13 @@ const childrenVariants = {
       duration: 1,
       delayChildren: 0.25,
       staggerChildren: 0.25,
-      type: "spring",
+      type: 'spring',
       bounce: 0.25,
     },
   },
 };
 
-export const itemVariants = {
+const itemVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
 };

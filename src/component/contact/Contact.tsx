@@ -1,63 +1,35 @@
-import React, { useState } from "react";
-import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
-import { BiLoaderAlt } from "react-icons/bi";
-import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
-import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from 'react';
+import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
+import { BiLoaderAlt } from 'react-icons/bi';
+import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useMailService from '../../hooks/useMailService.ts';
 
+const initValue = {
+  name: '',
+  email: '',
+  message: '',
+};
 const Contact = () => {
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState(false);
+  const [values, setValues] = useState(initValue);
+  const { loading, sendMail } = useMailService();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (parseInt(process.env.CONTACT!) === 0) {
-      toast.warning("This feature is yet to be implemented.");
-      return
-    }
-
     if (!values.name.trim() || !values.email.trim() || !values.message.trim()) {
       return false;
     }
-
-    setLoading(true);
-    const templatePrams = {
+    const templateParams = {
       name: values.name,
       email: values.email,
       message: values.message,
     };
-    emailjs
-      .send(
-        process.env.MAIL_SERVICE_ID!,
-        process.env.MAIL_TEMPLATE_ID!,
-        templatePrams,
-        process.env.MAIL_PUBLIC_KEY!
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          toast.success("Thank you for contacting.");
-        } else {
-          toast.error(response.text);
-        }
-      })
-      .catch(() => {
-        toast.error("Something went wrong.");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const success = await sendMail(templateParams);
+    if (success) setValues(initValue);
   };
 
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setValues((prevInput) => ({
       ...prevInput,
       [e.target.name]: e.target.value,
@@ -69,27 +41,19 @@ const Contact = () => {
       <h2 className="text-center font-semibold text-4xl">Contact Me</h2>
 
       <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
-        <img
-          alt="contact"
-          src="/contact.png"
-          className="hidden md:block w-1/2 h-full object-cover"
-          loading="lazy"
-        />
+        <img alt="contact" src="/contact.png" className="hidden md:block w-1/2 h-full object-cover" loading="lazy" />
         <div className="flex-1">
           <RevealAnimation>
             <h3 className="text-2xl">Get in touch</h3>
           </RevealAnimation>
           <RevealAnimation>
             <p className="text-gray-400 mb-4 text-sm md:text-base">
-              My inbox is always open. Whether you have a question or just want
-              to say hello, I will try my best to get back to you!
+              My inbox is always open. Whether you have a question or just want to say hello, I will try my best to get
+              back to you!
             </p>
           </RevealAnimation>
 
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 rounded-xl"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl">
             <input
               onChange={handleChange}
               required
@@ -127,7 +91,7 @@ const Contact = () => {
                   Say Hello <BiLoaderAlt className="animate-spin" />
                 </span>
               ) : (
-                "Say Hello 👋"
+                'Say Hello 👋'
               )}
             </button>
           </form>
@@ -141,7 +105,7 @@ const Contact = () => {
         closeOnClick
         rtl={false}
         pauseOnHover
-        theme={"colored"}
+        theme={'colored'}
       />
     </SectionWrapper>
   );
