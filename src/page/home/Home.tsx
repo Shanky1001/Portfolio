@@ -18,7 +18,7 @@ const dataRef = ref(db, 'data');
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<any>();
 
   const fetch = useCallback(async () => {
     const snapshot = await get(dataRef);

@@ -1,0 +1,303 @@
+{
+  "data": {
+    "about": {
+      "about": "I am a Software developer residing in Noida, Uttar Pradesh, India.",
+      "aboutImage": "/about-2.jpg",
+      "aboutImageCaption": "< I create Magical Web & App Experiences 🚀/>",
+      "about_work": [
+        "Frontend Developer with expertise in building robust, scalable web and mobile applications using modern JavaScript frameworks and libraries.",
+        "Proficient in React.js, Next.js, Redux, and React Native, I specialize in creating seamless user interfaces, responsive designs, and efficient server-side solutions.",
+        "Passionate about solving complex challenges, optimizing performance, and delivering high-quality digital experiences tailored to business needs. Skilled in tools like TypeScript, Jest, Webpack, TailwindCSS, SCSS, and MUI, I thrive on crafting impactful solutions for web and mobile platforms.",
+        "Let’s connect to discuss how I can contribute to your next project!"
+      ],
+      "callUrl": "",
+      "resumeUrl": "https://drive.google.com/file/d/1LQpcl-f-rs77p0f4y8Td7ij-Tmw5k-a6/view?usp=drive_link",
+      "title": ["Frontend Developer"]
+    },
+    "educations": [
+      {
+        "degree": "MCA",
+        "desc": [
+          "Completed Master in Computer Application from KNIT, Sultanpur.",
+          "Familiar with software development methodologies and project management practices, including Agile and Waterfall methodologies.",
+          "Worked on web application development using HTML, CSS, and JavaScript, designing a database system using SQL",
+          "Familiarity with Machine Learning, Neural Networks and Soft Computing methodologies."
+        ],
+        "duration": "2020 - 2022",
+        "institute": "Kamala Nehru Institute of Technology"
+      },
+      {
+        "degree": "O Level",
+        "desc": [
+          "Completed certification course O level provided by NEILIT Society, India.",
+          "Familiarity with web development technologies HTML, CSS, JavaScript.",
+          "Familiarity with Programming language C and C++."
+        ],
+        "duration": "2015 - 2016",
+        "institute": "NEILIT, INDIA"
+      },
+      {
+        "degree": "B.Sc (PC)",
+        "desc": ["Completed Bachelor in Science from DDU GU, Gorakhpur."],
+        "duration": "2013 - 2017",
+        "institute": "Deen Dayal Upadhyay Gorakhpur University"
+      }
+    ],
+    "experiences": [
+      {
+        "company": "Buopso Pvt. Ltd.",
+        "desc": [
+          "Led the development of a CRM suit having tools like. Lead Management, Approval Management, CRM, Product and Inventory Management and Form Builder using React and Redux Toolkit.",
+          "Developed a feature to create and manage custom forms, allowing users to define fields, field types, and validation rules dynamically.",
+          "Configured role-based access control to secure sensitive lead data and align with business requirements.",
+          "Enabled customization of field settings, allowing users to adjust field properties like type, visibility, and required status, providing flexibility throughout CRM suit",
+          "Skills: ReactJS • Redux Toolkit • React Native • JavaScript • Typescript • MaterialUI • REST APIs • CRM tools "
+        ],
+        "duration": "Feb 2024 - Current",
+        "position": "Software Engineer 2"
+      },
+      {
+        "company": "Cedcoss Technologies Pvt. Ltd.",
+        "desc": [
+          "Responsible for creating a Mobile app builder platform where shopify users can easily customize and create their Android and Ios application.",
+          "Created an analytics dashboard where our clients can see the performance and engagement of their respective application.",
+          "Implemented a push notification page where clients can create, customize and schedule push notifications for their application",
+          "Responsible for migrating legacy codebase as well as creating reusable components, designing and optimizing the performance of the web application.",
+          "Skills: ReactJS • Redux • Nodejs • Expressjs • MongoDb • JavaScript • Typescript • SCSS • MaterialUI • Webpack • REST APIs • GraphQL"
+        ],
+        "duration": "June 2022 - Sep 2023",
+        "position": "Associate Software Engineer"
+      }
+    ],
+    "main": {
+      "heroImage": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+      "name": "Shashank Rai",
+      "shortDesc": "I love to design and develop web applications that are user-friendly, scalable and optimized for greater performance.",
+      "techStackImages": [
+        "/react.png",
+        "/nextjs.png",
+        "/mongodb.png",
+        "/nodejs.png"
+      ],
+      "titles": [
+        "Software Development",
+        "Frontend Developer",
+        "Mobile App Developer"
+      ]
+    },
+    "projects": [
+      {
+        "category": "Basic",
+        "image": "/pouseidon.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-2",
+          "video": "",
+          "visit": "https://pouseidon.netlify.app/"
+        },
+        "name": "Pouseidon",
+        "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery"
+      },
+      {
+        "category": "Basic",
+        "image": "/biznews.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-3",
+          "video": "",
+          "visit": "https://biz-news.netlify.app/"
+        },
+        "name": "Biz News",
+        "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery"
+      },
+      {
+        "category": "Basic",
+        "image": "/CloudoPiya.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-1",
+          "video": "",
+          "visit": "https://cloudopia.netlify.app/"
+        },
+        "name": "Cloudopia",
+        "techstack": "HTML5, CSS3, Bootstrap, JavaScript, jQuery"
+      },
+      {
+        "category": "React",
+        "image": "/apexlegends.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-2",
+          "video": "",
+          "visit": "https://apex-legends-clone.netlify.app/"
+        },
+        "name": "Apex Legends",
+        "techstack": "Reactjs, JavaScript, CSS, HTML"
+      },
+      {
+        "category": "React",
+        "image": "/sweetshop-dark.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/React-Sweet-Shop",
+          "video": "",
+          "visit": "https://dil-o-cious.netlify.app/"
+        },
+        "name": "Dil-O-Cious",
+        "techstack": "Reactjs, Redux, JavaScript, SCSS"
+      },
+      {
+        "category": "React",
+        "image": "/Crypto.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/crypto-template",
+          "video": "",
+          "visit": "https://crypto-template-shanky.netlify.app/"
+        },
+        "name": "Crypto",
+        "techstack": "Reactjs, JavaScript, Bootstrap, CSS, HTML"
+      },
+      {
+        "category": "React",
+        "image": "/Shanky.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-2",
+          "video": "",
+          "visit": "https://shanky-agency.netlify.app/"
+        },
+        "name": "Shanky",
+        "techstack": "Reactjs, JavaScript, CSS, HTML"
+      },
+      {
+        "category": "React",
+        "image": "/hamleys.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-2",
+          "video": "",
+          "visit": "https://hamleys-shanky.netlify.app/"
+        },
+        "name": "Hamleys",
+        "techstack": "Reactjs, Redux, JavaScript, SCSS"
+      },
+      {
+        "category": "React",
+        "image": "/library.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Template-2",
+          "video": "",
+          "visit": "https://search-any-books.netlify.app/"
+        },
+        "name": "Online Library",
+        "techstack": "Reactjs, Axios, JavaScript, CSS, HTML"
+      },
+      {
+        "category": "Full Stack",
+        "image": "/Imagine-1.png",
+        "links": {
+          "code": "https://github.com/Shanky1001/Imagine-AI",
+          "video": "",
+          "visit": "https://imagine-shanky.vercel.app/"
+        },
+        "name": "Imagine AI",
+        "techstack": "Nextjs, Reactjs, MongoDB, Firebase, JavaScript"
+      }
+    ],
+    "skills": [
+      {
+        "category": "Frontend",
+        "image": "/react.png",
+        "name": "Reactjs"
+      },
+      {
+        "category": "Frontend",
+        "image": "/nextjs.png",
+        "name": "Nextjs"
+      },
+      {
+        "category": "Frontend",
+        "image": "/redux.png",
+        "name": "Redux"
+      },
+      {
+        "category": "Frontend",
+        "image": "/framer.webp",
+        "name": "Framer Motion"
+      },
+      {
+        "category": "Frontend",
+        "image": "/gsap.png",
+        "name": "GSAP"
+      },
+      {
+        "category": "Frontend",
+        "image": "/mui.png",
+        "name": "Material UI"
+      },
+      {
+        "category": "Frontend",
+        "image": "/javascript.png",
+        "name": "JavaScript"
+      },
+      {
+        "category": "Frontend",
+        "image": "/typescript.png",
+        "name": "Typescript"
+      },
+      {
+        "category": "Frontend",
+        "image": "/webpack.png",
+        "name": "Webpack"
+      },
+      {
+        "category": "Frontend",
+        "image": "/sass.png",
+        "name": "SASS"
+      },
+      {
+        "category": "Frontend",
+        "image": "/css3.png",
+        "name": "CSS3"
+      },
+      {
+        "category": "Frontend",
+        "image": "/html5.png",
+        "name": "HTML5"
+      },
+      {
+        "category": "Backend",
+        "image": "/nodejs.png",
+        "name": "Nodejs"
+      },
+      {
+        "category": "Backend",
+        "image": "/mongodb.png",
+        "name": "MongoDB"
+      },
+      {
+        "category": "Backend",
+        "image": "/firebase.png",
+        "name": "Firebase"
+      },
+      {
+        "category": "Tools",
+        "image": "/github.png",
+        "name": "GitHub"
+      },
+      {
+        "category": "Tools",
+        "image": "/git.png",
+        "name": "Git"
+      },
+      {
+        "category": "Tools",
+        "image": "/vscode.png",
+        "name": "VS Code"
+      }
+    ],
+    "socials": [
+      {
+        "icon": "FaLinkedin",
+        "link": "https://www.linkedin.com/in/shashankrai01"
+      },
+      {
+        "icon": "FaGithub",
+        "link": "https://github.com/shanky1001"
+      }
+    ]
+  }
+}

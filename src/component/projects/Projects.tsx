@@ -1,17 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
-import SectionWrapper from "../../wrapper/sectionWrapper/SectionWrapper.tsx";
-import { project } from "../../types/index.ts";
-import { motion, useInView } from "framer-motion";
-import { FaGithub, FaVideo } from "react-icons/fa";
-import { BiLinkExternal } from "react-icons/bi";
-import RevealAnimation from "../../wrapper/reveal/RevealAnimation.tsx";
-import { ViewAll } from "../button/ViewAll.tsx";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
+import { project } from '../../types/index.ts';
+import { motion, useInView } from 'framer-motion';
+import { FaGithub, FaVideo } from 'react-icons/fa';
+import { BiLinkExternal } from 'react-icons/bi';
+import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
+import { ViewAll } from '../button/ViewAll.tsx';
 
 interface Props {
   projectsData: project[];
@@ -20,10 +14,7 @@ interface Props {
 const Projects = ({ projectsData }: Props) => {
   const [projects] = useState<project[]>([...projectsData]);
 
-  const categories = useMemo(
-    () => [...Array.from(new Set(projects.map((s) => s.category)))],
-    [projects]
-  );
+  const categories = useMemo(() => [...Array.from(new Set(projects.map((s) => s.category)))], [projects]);
   const [category, setCategory] = useState(categories[0]);
 
   const [filteredProjects, setFilteredProjects] = useState<project[]>([]);
@@ -33,11 +24,7 @@ const Projects = ({ projectsData }: Props) => {
     (cat: string) => {
       setViewAll(false);
       setCategory(cat);
-      setFilteredProjects([
-        ...projects.filter(
-          (p: project) => p.category.toLowerCase() === cat.toLowerCase()
-        ),
-      ]);
+      setFilteredProjects([...projects.filter((p: project) => p.category.toLowerCase() === cat.toLowerCase())]);
     },
     [projects]
   );
@@ -51,14 +38,14 @@ const Projects = ({ projectsData }: Props) => {
       <h2 className="text-4xl font-semibold text-center">Projects</h2>
 
       <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md shadow-sm">
-        {categories.map((c: string = "", i: number) => (
+        {categories.map((c: string = '', i: number) => (
           <span
             key={i}
             onClick={() => filterProjects(c)}
             className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md ${
               category.toLowerCase() === c.toLowerCase()
-                ? "bg-violet-600 text-white"
-                : "hover:bg-gray-100 hover:dark:bg-grey-900"
+                ? 'bg-violet-600 text-white'
+                : 'hover:bg-gray-100 hover:dark:bg-grey-900'
             } cursor-pointer transition-all`}
           >
             {c}
@@ -67,17 +54,15 @@ const Projects = ({ projectsData }: Props) => {
       </div>
 
       <div className="md:mx-6 lg:mx-auto lg:w-5/6 2xl:w-3/4 my-4 md:my-8 mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-        {filteredProjects
-          .slice(0, viewAll ? filteredProjects.length : 6)
-          .map((p: project, i: number) => (
-            <ProjectCard key={i} {...p} />
-          ))}
+        {filteredProjects.slice(0, viewAll ? filteredProjects.length : 6).map((p: project, i: number) => (
+          <ProjectCard key={i} {...p} />
+        ))}
       </div>
 
       {filteredProjects.length > 6 && (
         <ViewAll
           scrollTo="projects"
-          title={viewAll ? "Okay, I got it" : "View All"}
+          title={viewAll ? 'Okay, I got it' : 'View All'}
           handleClick={() => setViewAll(!viewAll)}
         />
       )}
@@ -87,7 +72,7 @@ const Projects = ({ projectsData }: Props) => {
 
 export default Projects;
 
-const ProjectCard = ({ name, image, category, techstack, links }: project) => {
+const ProjectCard = ({ name, image, techstack, links }: project) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const cardVariants = {
@@ -95,7 +80,7 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeInOut" },
+      transition: { duration: 0.6, ease: 'easeInOut' },
     },
   };
   return (
@@ -103,14 +88,14 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
       ref={ref}
       variants={cardVariants}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isInView ? 'visible' : 'hidden'}
       className="flex relative flex-col gap-2 group shadow-md bg-white dark:bg-grey-800 rounded-lg p-4"
     >
       <div className="rounded-lg bg-violet-50 overflow-hidden">
         <div
           style={{
             backgroundImage: `url(${image})`,
-            transition: "ease-in-out 3s",
+            transition: 'ease-in-out 3s',
           }}
           className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
         ></div>
@@ -155,7 +140,6 @@ const ProjectCard = ({ name, image, category, techstack, links }: project) => {
         </RevealAnimation>
         <RevealAnimation>
           <p className="text-sm text-gray-400">
-            {" "}
             <span className="font-medium">Tech Stack:</span> {techstack}
           </p>
         </RevealAnimation>
