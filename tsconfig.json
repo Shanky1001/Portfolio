@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationDir": "dist",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["index.tsx", "./src/**/*.{js,ts,jsx,tsx}"],
+  "exclude": ["tailwind.config.js"]
+}

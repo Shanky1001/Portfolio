@@ -42,7 +42,7 @@ type main = {
 type about = {
   aboutImage: string;
   aboutImageCaption: string;
-  title: string;
+  title: string[];
   about: string;
   about_work?: string | string[];
   resumeUrl: string;
@@ -65,13 +65,4 @@ type data = {
   socials: social[];
 };
 
-export type {
-  data,
-  main,
-  about,
-  skill,
-  project,
-  experience,
-  education,
-  social,
-};
+export type { data, main, about, skill, project, experience, education, social };
