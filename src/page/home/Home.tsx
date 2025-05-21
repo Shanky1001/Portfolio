@@ -17,7 +17,7 @@ const Footer = WithSuspense(lazy(() => import('../../component/footer/Footer.tsx
 const dataRef = ref(db, 'data');
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any>({});
 
   const fetch = useCallback(async () => {

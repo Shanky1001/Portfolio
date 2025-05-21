@@ -6,11 +6,11 @@ import Root from './Root.tsx';
 
 function App() {
   return (
-    // <Firebase>
-    <RouterProvider>
-      <Route path="/" element={<Root />} />
-    </RouterProvider>
-    // </Firebase>
+    <Firebase>
+      <RouterProvider>
+        <Route path="/" element={<Root />} />
+      </RouterProvider>
+    </Firebase>
   );
 }
 
