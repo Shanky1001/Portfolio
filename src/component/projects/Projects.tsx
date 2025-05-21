@@ -38,9 +38,9 @@ const Projects = ({ projectsData }: Props) => {
       <h2 className="text-4xl font-semibold text-center">Projects</h2>
 
       <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md shadow-sm">
-        {categories.map((c: string = '', i: number) => (
+        {categories.map((c: string = '') => (
           <span
-            key={i}
+            key={c}
             onClick={() => filterProjects(c)}
             className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md ${
               category.toLowerCase() === c.toLowerCase()
@@ -54,8 +54,8 @@ const Projects = ({ projectsData }: Props) => {
       </div>
 
       <div className="md:mx-6 lg:mx-auto lg:w-5/6 2xl:w-3/4 my-4 md:my-8 mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-        {filteredProjects.slice(0, viewAll ? filteredProjects.length : 6).map((p: project, i: number) => (
-          <ProjectCard key={i} {...p} />
+        {filteredProjects.slice(0, viewAll ? filteredProjects.length : 6).map((p: project) => (
+          <ProjectCard key={p.name} {...p} />
         ))}
       </div>
 
@@ -83,6 +83,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
       transition: { duration: 0.6, ease: 'easeInOut' },
     },
   };
+  const { video, visit, code } = links;
   return (
     <motion.div
       ref={ref}
@@ -99,11 +100,11 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
           }}
           className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
         ></div>
-        {(links.visit.trim() || links.code.trim() || links.video.trim()) && (
+        {(visit.trim() || code.trim() || video.trim()) && (
           <div className="absolute bottom-0 bg-slate-400 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[80px] rounded-lg flex items-center gap-4 justify-end">
-            {links.visit.trim() && (
+            {visit && (
               <a
-                href={links.visit}
+                href={visit}
                 target="_blank"
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
                 rel="noreferrer"
@@ -111,9 +112,9 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
                 <BiLinkExternal size={20} />
               </a>
             )}
-            {links.code.trim() && (
+            {code && (
               <a
-                href={links.code}
+                href={code}
                 target="_blank"
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
                 rel="noreferrer"
@@ -121,9 +122,9 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
                 <FaGithub size={20} />
               </a>
             )}
-            {links.video.trim() && (
+            {video && (
               <a
-                href={links.video}
+                href={video}
                 target="_blank"
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
                 rel="noreferrer"

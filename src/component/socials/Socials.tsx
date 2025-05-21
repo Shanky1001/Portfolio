@@ -1,6 +1,6 @@
-import React from "react";
-import { social } from "../../types";
-import * as Fa from "react-icons/fa";
+import React from 'react';
+import { social } from '../../types';
+import * as Fa from 'react-icons/fa';
 
 const Socials = ({ socials }: { socials: social[] }) => {
   return (
@@ -17,10 +17,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
             key={s.icon}
             className="grid place-items-center p-3 hover:animate-bounce rounded-full bg-violet-700 text-white"
           >
-            {
-              //@ts-ignore
-              React.createElement(Fa[`${s.icon}`])
-            }
+            {React.createElement(Fa[`${s.icon}`])}
           </a>
         );
       })}

@@ -15,9 +15,9 @@ const Skills = ({ skillData }: Props) => {
       <h2 className="text-4xl font-semibold text-center">Tech Stack</h2>
 
       <div className="md:w-1/2 overflow-x-auto scroll-hide lg:w-1/3 mx-auto mt-6 bg-white dark:bg-grey-800 p-2 flex justify-between items-center gap-3 rounded-md">
-        {categories.map((c: string, i: number) => (
+        {categories.map((c: string) => (
           <span
-            key={i}
+            key={c}
             onClick={() => setCategory(c)}
             className={`p-1.5 md:p-2 text-sm md:text-base w-full text-center cursor-pointer rounded-md ${
               category.toLowerCase() === c.toLowerCase()
@@ -33,8 +33,8 @@ const Skills = ({ skillData }: Props) => {
       <div className="lg:w-3/4 2xl:w-3/5 my-8 mx-auto md:px-12 grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 place-items-center gap-8">
         {skillData
           .filter((s: skill) => s.category.toLowerCase() === category.toLowerCase())
-          .map((s: any, i: number) => (
-            <SkillCard key={i} {...s} />
+          .map((s: skill, i: number) => (
+            <SkillCard key={s.name} index={i} {...s} />
           ))}
       </div>
     </SectionWrapper>
@@ -43,7 +43,7 @@ const Skills = ({ skillData }: Props) => {
 
 export default Skills;
 
-const SkillCard = ({ name, image }: skill) => {
+const SkillCard = ({ name, image, index }: skill & { index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const cardVariants = {
@@ -52,6 +52,7 @@ const SkillCard = ({ name, image }: skill) => {
       y: 0,
       opacity: 1,
       transition: {
+        delay: index * 0.15,
         duration: 0.75,
         type: 'spring',
       },
