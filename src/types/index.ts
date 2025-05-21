@@ -36,6 +36,7 @@ type main = {
   titles: string[];
   heroImage: string;
   shortDesc: string;
+  longDesc: string;
   techStackImages: string[];
 };
 

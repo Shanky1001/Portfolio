@@ -41,7 +41,12 @@ const Contact = () => {
       <h2 className="text-center font-semibold text-4xl">Contact Me</h2>
 
       <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
-        <img alt="contact" src="/contact.png" className="hidden md:block w-1/2 h-full object-cover" loading="lazy" />
+        <img
+          alt="contact"
+          src="/images/contact.png"
+          className="hidden md:block w-1/2 h-full object-cover"
+          loading="lazy"
+        />
         <div className="flex-1">
           <RevealAnimation>
             <h3 className="text-2xl">Get in touch</h3>
@@ -105,7 +110,7 @@ const Contact = () => {
         closeOnClick
         rtl={false}
         pauseOnHover
-        theme={'colored'}
+        theme="colored"
       />
     </SectionWrapper>
   );

@@ -1,5 +1,5 @@
-import React from "react";
-import * as Fa from "react-icons/fa";
+import React from 'react';
+import * as Fa from 'react-icons/fa';
 
 const Footer = ({ socials, name }) => {
   return (
@@ -9,7 +9,7 @@ const Footer = ({ socials, name }) => {
           Made with
           <span className="animate-pulse"> ❤️ </span>
           by
-          <span className="text-violet-600">{" " + name}</span>
+          <span className="text-violet-600">{' ' + name}</span>
         </p>
 
         {/* Social Links */}
@@ -22,10 +22,7 @@ const Footer = ({ socials, name }) => {
               key={s.icon}
               className="grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
             >
-              {
-                // @ts-ignore
-                React.createElement(Fa[`${s.icon}`])
-              }
+              {React.createElement(Fa[`${s.icon}`])}
             </a>
           ))}
         </div>

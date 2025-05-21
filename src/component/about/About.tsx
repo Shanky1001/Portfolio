@@ -35,7 +35,7 @@ const About = ({ aboutData, name }: Props) => {
         <div className="p-3 w-56 self-start md:w-2/5 lg:w-72 bg-white dark:bg-grey-800 flex flex-col gap-2 items-center rounded-2xl mx-auto lg:mx-16 hover:-translate-y-2 transition-transform duration-300 lg:-rotate-3">
           <img
             alt="profile"
-            loading={'lazy'}
+            loading="lazy"
             className="w-full h-60 md:h-80 rounded-2xl object-cover grayscale hover:grayscale-0 transition-all bg-violet-100"
             src={aboutImage}
           />
@@ -58,8 +58,8 @@ const About = ({ aboutData, name }: Props) => {
               <p className="text-sm md:text-base my-2 text-gray-600 dark:text-gray-300">{about}</p>
             </RevealAnimation>
             {renderAboutWork}
-            <div className="flex items-center gap-4 md:mt-4">
-              {resumeUrl.trim() && (
+            {resumeUrl.trim() && (
+              <div className="flex items-center gap-4 md:mt-4">
                 <a
                   href={resumeUrl}
                   target="_blank"
@@ -68,8 +68,8 @@ const About = ({ aboutData, name }: Props) => {
                 >
                   Resume
                 </a>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

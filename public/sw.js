@@ -1,55 +1,112 @@
-// Install event: Cache the static assets
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open("static-v1").then((cache) => {
-      return cache.addAll([
-        "/", // The root HTML file
-        "/index.html", // HTML
-        "/static/js/main.js", // Main JavaScript bundle
-        "/static/css/main.css", // Main CSS bundle
-        "/manifest.json", // Manifest file
-        "/about-1.jpg",
-        "/about-2.jpg",
-        "/public/apexlegends.png",
-        "/public/biznews.png",
-        "/public/CloudoPiya.png",
-        "/public/contact.png",
-        "/public/Crypto.png",
-        "/public/hamleys.png",
-        "/public/hero-img.gif",
-        "/public/pouseidon.png",
-        "/public/sweetshop-dark.png",
-        "/public/sweetshop.png",
-        "/public/Shanky.png",
-        "/public/social-media.png",
-        "/public/library.png",
-      ]);
-    })
-  );
+const STATIC_CACHE = 'static-v1';
+const DYNAMIC_CACHE = 'dynamic-v1';
+
+const STATIC_ASSETS = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/fallback.png',
+
+  // Static assets
+  '/about-1.jpg',
+  '/about-2.jpg',
+  '/apexlegends.png',
+  '/biznews.png',
+  '/CloudoPiya.png',
+  '/contact.png',
+  '/Crypto.png',
+  '/hamleys.png',
+  '/hero-img.gif',
+  '/pouseidon.png',
+  '/sweetshop-dark.png',
+  '/sweetshop.png',
+  '/Shanky.png',
+  '/social-media.png',
+  '/library.png',
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_ASSETS)));
+  self.skipWaiting();
 });
 
-// Fetch event: Serve cached files if available
-self.addEventListener("fetch", (event) => {
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys.filter((key) => key !== STATIC_CACHE && key !== DYNAMIC_CACHE).map((key) => caches.delete(key))
+        )
+      )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+
+  if (request.method !== 'GET') return;
+
+  const isFirebase = request.url.includes('firebase');
+
+  if (isFirebase) {
+    event.respondWith(
+      caches.open(DYNAMIC_CACHE).then(async (cache) => {
+        const cachedResponse = await cache.match(request);
+        const fetchPromise = fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse.ok) {
+              if (cachedResponse) {
+                networkResponse
+                  .clone()
+                  .text()
+                  .then((newData) => {
+                    cachedResponse.text().then((oldData) => {
+                      if (newData !== oldData) {
+                        notifyClientOfUpdate();
+                      }
+                    });
+                  });
+              }
+              cache.put(request, networkResponse.clone());
+            }
+            return networkResponse;
+          })
+          .catch(() => {});
+
+        return cachedResponse || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // Static files - cache-first
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // If a cached response exists, return it
-      return cachedResponse || fetch(event.request);
-    })
-  );
-});
-
-// Activate event: Update cache if there are new assets
-self.addEventListener("activate", (event) => {
-  const cacheWhitelist = ["static-v1"]; // Keep only this cache version
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName); // Delete old caches
-          }
-        })
+    caches.match(request).then((cached) => {
+      return (
+        cached ||
+        fetch(request)
+          .then((res) =>
+            caches.open(DYNAMIC_CACHE).then((cache) => {
+              if (res.status === 200) cache.put(request, res.clone());
+              return res;
+            })
+          )
+          .catch(() => {
+            if (request.destination === 'image') return caches.match('/fallback.png');
+            if (request.mode === 'navigate') return caches.match('/index.html');
+          })
       );
     })
   );
 });
+
+// 🔔 Notifies all clients (open tabs) about update
+function notifyClientOfUpdate() {
+  self.clients.matchAll().then((clients) => {
+    clients.forEach((client) => {
+      client.postMessage({ type: 'UPDATE_AVAILABLE' });
+    });
+  });
+}
