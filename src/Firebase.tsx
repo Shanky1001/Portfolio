@@ -4,6 +4,7 @@ import { analytics, logEvent, setUserProperties } from "./firebaseConfig.ts";
 const Firebase = ({ children }) => {
   // Initialize Firebase Analytics
   useEffect(() => {
+    if(!analytics) return
     // Example: Log an event when a user clicks a button
     logEvent(analytics, "button_click");
 
@@ -24,6 +25,7 @@ const Firebase = ({ children }) => {
 
     // Log event when a user scrolls past 50% of the page
     const handleScroll = () => {
+    if(!analytics) return
       const scrollPercentage =
         (window.scrollY / document.documentElement.scrollHeight) * 100;
       if (scrollPercentage > 50) {
@@ -37,6 +39,7 @@ const Firebase = ({ children }) => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if(!analytics) return
       logEvent(analytics, "sign_out");
     };
   }, []);

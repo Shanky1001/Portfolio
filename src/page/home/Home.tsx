@@ -4,7 +4,11 @@ import Hero from '../../component/hero/Hero.tsx';
 import WithSuspense from '../../hoc/WithSuspense.tsx';
 import Loading from '../../component/Loading/Loading.tsx';
 import { ref, get, onValue } from 'firebase/database';
-import { db } from '../../firebaseConfig.ts';
+import { analytics, db, logEvent } from '../../firebaseConfig.ts';
+
+import { data } from '../../types/index.ts';
+import Certification from '../../component/certification/Certification.tsx';
+import { Analytics } from 'firebase/analytics';
 
 const Socials = WithSuspense(lazy(() => import('../../component/socials/Socials.tsx')));
 const About = WithSuspense(lazy(() => import('../../component/about/About.tsx')));
@@ -18,13 +22,17 @@ const dataRef = ref(db, 'data');
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<data | null>(null);
 
   const fetch = useCallback(async () => {
-    const snapshot = await get(dataRef);
-    if (snapshot.exists()) {
-      const result = snapshot.val();
-      setData(result);
+    try {
+      const snapshot = await get(dataRef);
+      if (snapshot.exists()) {
+        const result = snapshot.val();
+        setData(result);
+      }
+    } catch (error) {
+      logEvent(analytics as Analytics, "failed to fetch data")
     }
   }, []);
 
@@ -39,7 +47,7 @@ const Home = () => {
     onValue(dataRef, fetch);
   }, [fetch]);
 
-  if (loading) {
+  if (loading || !data) {
     return (
       <div className="w-screen h-screen flex items-center justify-center">
         <Loading />
@@ -48,16 +56,19 @@ const Home = () => {
   }
 
   return (
+    <div className="bg-gray-100/50 relative dark:bg-grey-900 text-black dark:text-white overflow-x-hidden">
     <div className="w-full max-w-[1600px] mx-auto">
       <Header logo={data.main.name} />
       <Hero mainData={data.main} resumeUrl={data.about.resumeUrl} />
       <Socials socials={data.socials} />
       <About aboutData={data.about} name={data.main.name} />
-      <Skills skillData={data.skills} />
-      <Projects projectsData={data.projects} />
       <Experience experienceData={data.experiences} educationData={data.educations} />
+      {data.skills && <Skills skillData={data.skills} />}
+      {data.projects && <Projects projectsData={data.projects} />}
+      {data.certifications && <Certification certifications={data.certifications}/>}
       <Contact />
       <Footer socials={data.socials} name={data.main.name} />
+    </div>
     </div>
   );
 };

@@ -73,7 +73,7 @@ const SkillCard = ({ name, image, index }: skill & { index: number }) => {
           'h-20 w-20 md:h-24 md:w-24 rounded-full bg-gray-100 dark:bg-grey-800 flex items-center justify-center'
         }
       >
-        <img alt={name} className={`h-12 w-12 md:h-14 md:w-14 object-contain`} src={image} loading="lazy" />
+        <img alt={name} className={`h-12 w-12 md:h-14 md:w-14 object-contain`} src={image} loading="lazy" title={name} />
       </div>
       <p className="text-sm md:text-base">{name}</p>
     </motion.div>
