@@ -11,24 +11,22 @@ type project = {
   category: string;
   links: {
     visit: string;
-    code: string;
-    video: string;
+    code?: string;
+    video?: string;
   };
 };
 
 type experience = {
   company: string;
   position: string;
-  startDate: string;
-  endDate: string;
+  duration: string;
   desc: string[];
 };
 
 type education = {
   institute: string;
   degree: string;
-  startDate: string;
-  endDate: string;
+  duration: string;
 };
 
 type main = {
@@ -51,19 +49,27 @@ type about = {
 };
 
 type social = {
-  name: string;
+  name?: string;
   icon: string;
   link: string;
 };
 
+type certification = {
+  title:string,
+  desc:string,
+  link:string,
+  issuer:string
+}
+
 type data = {
   main: main;
   about: about;
-  skills: skill[];
-  projects: project[];
+  skills?: skill[];
+  projects?: project[];
   experiences: experience[];
   educations: education[];
   socials: social[];
+  certifications?:certification[]
 };
 
-export type { data, main, about, skill, project, experience, education, social };
+export type { data, main, about, skill, project, experience, education, social, certification };

@@ -1,6 +1,6 @@
 import { getDatabase } from "firebase/database";
 import { initializeApp } from "firebase/app";
-import { getAnalytics, logEvent, setUserProperties } from "firebase/analytics";
+import { getAnalytics, logEvent, setUserProperties, setAnalyticsCollectionEnabled, Analytics } from "firebase/analytics";
 
 // Firebase config
 const firebaseConfig = {
@@ -17,6 +17,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const analytics = getAnalytics(app);
+
+let analytics:Analytics | null = null;
+if (process.env.NODE_ENV === 'production') {
+  analytics = getAnalytics(app);
+} else {
+  // Optional: still initialize but disable sending data
+  analytics = getAnalytics(app);
+  setAnalyticsCollectionEnabled(analytics, false);
+}
 
 export { db, analytics, logEvent, setUserProperties };

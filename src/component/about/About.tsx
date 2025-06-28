@@ -29,7 +29,7 @@ const About = ({ aboutData, name }: Props) => {
       id="about"
       className="pt-12 bg-gradient-to-b from-white to-gray-100/20 dark:from-grey-900 dark:to-grey-900"
     >
-      <h2 className="text-4xl font-semibold text-center">About Me</h2>
+      <h2 className="sectionTitle">About Me</h2>
 
       <div className="w-full lg:w-11/12 2xl:w-4/5 mt-2 lg:mt-20 mx-auto flex flex-col md:gap-4 lg:flex-row justify-between items-center">
         <div className="p-3 w-56 self-start md:w-2/5 lg:w-72 bg-white dark:bg-grey-800 flex flex-col gap-2 items-center rounded-2xl mx-auto lg:mx-16 hover:-translate-y-2 transition-transform duration-300 lg:-rotate-3">

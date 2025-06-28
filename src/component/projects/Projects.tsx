@@ -35,7 +35,7 @@ const Projects = ({ projectsData }: Props) => {
 
   return (
     <SectionWrapper id="projects" className="mx-4 md:mx-0 py-10">
-      <h2 className="text-4xl font-semibold text-center">Projects</h2>
+      <h2 className="sectionTitle">Projects</h2>
 
       <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md shadow-sm">
         {categories.map((c: string = '') => (
@@ -60,11 +60,13 @@ const Projects = ({ projectsData }: Props) => {
       </div>
 
       {filteredProjects.length > 6 && (
-        <ViewAll
-          scrollTo="projects"
-          title={viewAll ? 'Okay, I got it' : 'View All'}
-          handleClick={() => setViewAll(!viewAll)}
-        />
+        <div className='mt-16'>
+          <ViewAll
+            scrollTo="#projects"
+            title={viewAll ? 'Okay, I got it' : 'View All'}
+            handleClick={() => setViewAll(!viewAll)}
+          />
+        </div>
       )}
     </SectionWrapper>
   );
@@ -100,7 +102,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
           }}
           className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
         ></div>
-        {(visit.trim() || code.trim() || video.trim()) && (
+        {(visit.trim() || code?.trim() || video?.trim()) && (
           <div className="absolute bottom-0 bg-slate-400 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[80px] rounded-lg flex items-center gap-4 justify-end">
             {visit && (
               <a

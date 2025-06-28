@@ -9,7 +9,6 @@ const STATIC_ASSETS = [
 
   // Static assets
   '/about-1.jpg',
-  '/about-2.jpg',
   '/apexlegends.png',
   '/biznews.png',
   '/CloudoPiya.png',
@@ -62,7 +61,7 @@ self.addEventListener('fetch', (event) => {
                   .clone()
                   .text()
                   .then((newData) => {
-                    cachedResponse.text().then((oldData) => {
+                    cachedResponse?.text().then((oldData) => {
                       if (newData !== oldData) {
                         notifyClientOfUpdate();
                       }

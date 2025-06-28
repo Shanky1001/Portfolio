@@ -5,7 +5,7 @@ const jsonLd = {
   url: 'https://shashank-rai-dev.netlify.app',
   jobTitle: 'Frontend & Mobile Application Developer',
   description:
-    'Experienced Frontend Web and Mobile Application Developer skilled in React, React Native, JavaScript, TypeScript, Redux, testing with Jest and Detox, and building performant, maintainable applications.',
+    'Experienced Frontend Web and Mobile Application Developer skilled in React, React Native, JavaScript, TypeScript, Redux, testing with Jest, Appium and Detox, and building performant, maintainable applications.',
   skills: [
     'React',
     'React Native',
@@ -35,7 +35,7 @@ const jsonLd = {
   sameAs: ['https://github.com/Shanky1001', 'https://www.linkedin.com/in/shashankrai01'],
   worksFor: {
     '@type': 'Organization',
-    name: 'Buopso Pvt Ltd',
+    name: 'GlobalLogic Pvt Ltd',
   },
   alumniOf: {
     '@type': 'CollegeOrUniversity',
