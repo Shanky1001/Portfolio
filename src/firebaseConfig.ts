@@ -18,13 +18,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-let analytics:Analytics | null = null;
-if (process.env.NODE_ENV === 'production') {
-  analytics = getAnalytics(app);
-} else {
-  // Optional: still initialize but disable sending data
-  analytics = getAnalytics(app);
+const analytics:Analytics  = getAnalytics(app);
+if (process.env.NODE_ENV === 'development') {
   setAnalyticsCollectionEnabled(analytics, false);
-}
+} 
 
 export { db, analytics, logEvent, setUserProperties };
