@@ -1,4 +1,5 @@
 import React from 'react';
+import TechStackCarousel from '../../components/ui/TechStackCarousel';
 import { main } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
 import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
@@ -63,41 +64,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         </div>
 
         <div className="relative mx-auto lg:mx-0 mt-12 md:mt-16 lg:mt-0">
-          <div className="w-48 h-48 md:w-72 md:h-72 lg:-translate-x-16 ">
-            <img
-              alt="avatar"
-              className="rounded-full w-full h-full object-cover solar-image"
-              src="images/hero-img.gif"
-            />
-          </div>
-
-          <div className="absolute grid -top-14 -left-14 lg:-top-24 lg:-left-32 w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-8 w-8 md:h-10 md:w-10 object-cover"
-              src={techStackImages[0]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid top-0 -right-20 lg:-right-8 lg:-top-14 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-8 w-8 md:h-10 md:w-10 object-cover"
-              src={techStackImages[1]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid bottom-[3rem] -right-24 md:bottom-24  md:-right-28 lg:bottom-[8.5rem] lg:-right-20 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-6 w-6 md:h-10 md:w-10 object-cover"
-              src={techStackImages[2]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid -bottom-12 -right-10 lg:-bottom-4 lg:right-0 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img alt="tech-stack" className="h-10 w-10 object-cover" src={techStackImages[3]} loading="lazy" />
-          </div>
+          <TechStackCarousel avatarSrc="images/about-2.jpg" techStackImages={techStackImages} />
         </div>
       </div>
 

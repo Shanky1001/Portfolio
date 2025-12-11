@@ -45,6 +45,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
 
+  // Bypass service worker for localhost during development
+  const isLocalhost = request.url.startsWith('http://localhost') || request.url.startsWith('http://127.0.0.1');
+  if (isLocalhost) {
+    return;
+  }
+
   if (request.method !== 'GET') return;
 
   const isFirebase = request.url.includes('firebase');
