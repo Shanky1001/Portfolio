@@ -4,7 +4,9 @@ import { CgClose, CgMenuRight } from 'react-icons/cg';
 import { motion, useScroll } from 'framer-motion';
 import CustomCursor from '../cursor/CustomCursor.tsx';
 
-const Header = ({ logo }: { logo: string }) => {
+const navs = ['home', 'about', 'projects', 'experience', 'contact'];
+
+const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
   const [theme, setTheme] = useState(localStorage.theme ?? 'dark');
@@ -25,8 +27,6 @@ const Header = ({ logo }: { logo: string }) => {
   const handleSetTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
-
-  const navs = ['home', 'about', 'projects', 'experience', 'contact'];
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -50,10 +50,8 @@ const Header = ({ logo }: { logo: string }) => {
       <CustomCursor />
       {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
-        <a href={'/'} className="2xl:ml-6">
-          <span className="text-2xl font-medium text-violet-800 hover:text-violet-500 transition-colors duration-300 capitalize">
-            {logo.split(' ')[0]}
-          </span>
+        <a href="/" className="2xl:ml-6">
+          <img src={logo} alt="logo" className="w-[150px] h-[50px]" />
         </a>
 
         <motion.ul variants={variants} initial="visible" animate="animate" className="flex items-center gap-8">
@@ -82,7 +80,7 @@ const Header = ({ logo }: { logo: string }) => {
 
       {/* Mobile Navigation (mobile) */}
       <nav className="p-4 flex sm:hidden items-center justify-between">
-        <span className="text-lg font-medium text-[#7C3AED] hover:text-white capitalize">{logo.split(' ')[0]}</span>
+        <img src={logo} alt="logo" className="w-[100px] h-[40px]" />
         <div className="flex items-center gap-4">
           <span
             onClick={() => handleSetTheme()}

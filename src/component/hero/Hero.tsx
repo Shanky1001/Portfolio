@@ -1,4 +1,5 @@
 import React from 'react';
+import TechStackCarousel from '../../components/ui/TechStackCarousel';
 import { main } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
 import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
@@ -9,18 +10,15 @@ interface HeroProps {
 }
 
 const Hero = ({ mainData, resumeUrl }: HeroProps) => {
-  const { name, shortDesc, longDesc, techStackImages } = mainData;
+  const { name, shortDesc, longDesc, techStackImages, heroImage } = mainData;
   return (
     <section id="home" className="dark:bg-grey-900 relative w-full mx-auto overflow-hidden">
-      <div className="absolute -z-10 h-full w-full">
-        <img src="/images/herobgc.jpg" loading="lazy" className="object-bottom" alt="hero-image" />
-      </div>
 
       <div className="py-16 lg:py-48 flex flex-col-reverse items-center lg:flex-row justify-around gap-16 lg:gap-0">
         <div className="flex flex-col gap-4 md:gap-6 text-left lg:w-1/2 2xl:w-1/3 mx-4 md:mx-6 xl:mx-0">
           <RevealAnimation>
             <div className="flex items-center gap-1">
-              <img alt="waving-hand" width={30} height={30} src="images/waving-hand.gif" />
+              <img alt="waving-hand" width={30} height={30} src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547813/waving-hand_oxsijj.png" />
               <p className="text-lg md:text-xl mt-2 md:mt-1.5">Hey, I&apos;m </p>
             </div>
           </RevealAnimation>
@@ -63,41 +61,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         </div>
 
         <div className="relative mx-auto lg:mx-0 mt-12 md:mt-16 lg:mt-0">
-          <div className="w-48 h-48 md:w-72 md:h-72 lg:-translate-x-16 ">
-            <img
-              alt="avatar"
-              className="rounded-full w-full h-full object-cover solar-image"
-              src="images/hero-img.gif"
-            />
-          </div>
-
-          <div className="absolute grid -top-14 -left-14 lg:-top-24 lg:-left-32 w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-8 w-8 md:h-10 md:w-10 object-cover"
-              src={techStackImages[0]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid top-0 -right-20 lg:-right-8 lg:-top-14 w-14 h-14 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-8 w-8 md:h-10 md:w-10 object-cover"
-              src={techStackImages[1]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid bottom-[3rem] -right-24 md:bottom-24  md:-right-28 lg:bottom-[8.5rem] lg:-right-20 w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img
-              alt="tech-stack"
-              className="h-6 w-6 md:h-10 md:w-10 object-cover"
-              src={techStackImages[2]}
-              loading="lazy"
-            />
-          </div>
-          <div className="absolute grid -bottom-12 -right-10 lg:-bottom-4 lg:right-0 w-14 md:w-16 h-14 md:h-16 bg-white dark:bg-grey-800 rounded-full place-items-center hover:shadow-lg transition-shadow">
-            <img alt="tech-stack" className="h-10 w-10 object-cover" src={techStackImages[3]} loading="lazy" />
-          </div>
+          <TechStackCarousel avatarSrc={heroImage} techStackImages={techStackImages} />
         </div>
       </div>
 

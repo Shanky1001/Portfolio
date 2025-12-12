@@ -31,6 +31,7 @@ type education = {
 
 type main = {
   name: string;
+  logo?: string;
   titles: string[];
   heroImage: string;
   shortDesc: string;
