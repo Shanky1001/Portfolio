@@ -13,15 +13,12 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
   const { name, shortDesc, longDesc, techStackImages, heroImage } = mainData;
   return (
     <section id="home" className="dark:bg-grey-900 relative w-full mx-auto overflow-hidden">
-      <div className="absolute -z-10 h-full w-full">
-        <img src="/images/herobgc.jpg" loading="lazy" className="object-bottom" alt="hero-image" />
-      </div>
 
       <div className="py-16 lg:py-48 flex flex-col-reverse items-center lg:flex-row justify-around gap-16 lg:gap-0">
         <div className="flex flex-col gap-4 md:gap-6 text-left lg:w-1/2 2xl:w-1/3 mx-4 md:mx-6 xl:mx-0">
           <RevealAnimation>
             <div className="flex items-center gap-1">
-              <img alt="waving-hand" width={30} height={30} src="images/waving-hand.gif" />
+              <img alt="waving-hand" width={30} height={30} src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547813/waving-hand_oxsijj.png" />
               <p className="text-lg md:text-xl mt-2 md:mt-1.5">Hey, I&apos;m </p>
             </div>
           </RevealAnimation>

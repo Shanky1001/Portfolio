@@ -1,43 +1,18 @@
-const STATIC_CACHE = 'static-v1';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const DYNAMIC_CACHE = 'dynamic-v2';
+// Remove old caches
+const staticCache = 'static-v1';
 
-const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/fallback.png',
-
-  // Static assets
-  '/about-1.jpg',
-  '/apexlegends.png',
-  '/biznews.png',
-  '/CloudoPiya.png',
-  '/contact.png',
-  '/Crypto.png',
-  '/hamleys.png',
-  '/hero-img.gif',
-  '/pouseidon.png',
-  '/sweetshop-dark.png',
-  '/sweetshop.png',
-  '/Shanky.png',
-  '/social-media.png',
-  '/library.png',
-];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_ASSETS)));
-  self.skipWaiting();
-});
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) =>
-        Promise.all(
-          keys.filter((key) => key !== STATIC_CACHE && key !== DYNAMIC_CACHE).map((key) => caches.delete(key))
-        )
-      )
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.filter((key) => key !== staticCache && key !== DYNAMIC_CACHE).map((key) => caches.delete(key))
+      );
+      // Force this SW to become active immediately
+      await self.skipWaiting();
+    })()
   );
   self.clients.claim();
 });
@@ -59,28 +34,23 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       caches.open(DYNAMIC_CACHE).then(async (cache) => {
         const cachedResponse = await cache.match(request);
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
+        return fetch(request)
+          .then(async (networkResponse) => {
             if (networkResponse.ok) {
               if (cachedResponse) {
-                networkResponse
-                  .clone()
-                  .text()
-                  .then((newData) => {
-                    cachedResponse?.text().then((oldData) => {
-                      if (newData !== oldData) {
-                        notifyClientOfUpdate();
-                      }
-                    });
-                  });
+                const [newData, oldData] = await Promise.all([networkResponse.clone().text(), cachedResponse.text()]);
+                if (newData !== oldData) {
+                  notifyClientOfUpdate();
+                }
               }
               cache.put(request, networkResponse.clone());
             }
             return networkResponse;
           })
-          .catch(() => {});
-
-        return cachedResponse || fetchPromise;
+          .catch(() => {
+            // If fetch fails, fallback to cache
+            return cachedResponse;
+          });
       })
     );
     return;
