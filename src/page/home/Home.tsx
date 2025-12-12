@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <div className="bg-gray-100/50 relative dark:bg-grey-900 text-black dark:text-white overflow-x-hidden">
     <div className="w-full max-w-[1600px] mx-auto">
-      <Header logo={data.main.name} />
+      <Header logo={data.main.logo} />
       <Hero mainData={data.main} resumeUrl={data.about.resumeUrl} />
       <Socials socials={data.socials} />
       <About aboutData={data.about} name={data.main.name} />
