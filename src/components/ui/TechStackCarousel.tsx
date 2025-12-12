@@ -11,11 +11,11 @@ let radiusStep = 35;
 let avatarSize = 12;
 
 const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techStackImages }) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
   React.useEffect(() => {
-    let throttleTimeout: number | null = null;
+    let throttleTimeout: NodeJS.Timeout | null = null;
     const handleResize = () => {
       if (throttleTimeout) return;
       throttleTimeout = setTimeout(() => {
@@ -61,7 +61,6 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
             style={{
               width: `${avatarSize}rem`,
               height: `${avatarSize}rem`,
-              background: 'black',
             }}
           >
             <img alt="avatar" className="rounded-full object-cover" src={avatarSrc} />

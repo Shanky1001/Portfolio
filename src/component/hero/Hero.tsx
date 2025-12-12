@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 const Hero = ({ mainData, resumeUrl }: HeroProps) => {
-  const { name, shortDesc, longDesc, techStackImages } = mainData;
+  const { name, shortDesc, longDesc, techStackImages, heroImage } = mainData;
   return (
     <section id="home" className="dark:bg-grey-900 relative w-full mx-auto overflow-hidden">
       <div className="absolute -z-10 h-full w-full">
@@ -64,7 +64,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         </div>
 
         <div className="relative mx-auto lg:mx-0 mt-12 md:mt-16 lg:mt-0">
-          <TechStackCarousel avatarSrc="images/about-2.jpg" techStackImages={techStackImages} />
+          <TechStackCarousel avatarSrc={heroImage} techStackImages={techStackImages} />
         </div>
       </div>
 
