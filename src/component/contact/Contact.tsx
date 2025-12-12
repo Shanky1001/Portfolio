@@ -43,7 +43,7 @@ const Contact = () => {
       <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
         <img
           alt="contact"
-          src="/images/contact.png"
+          src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547786/contact_vthwob.png"
           className="hidden md:block w-1/2 h-full object-cover"
           loading="lazy"
         />
