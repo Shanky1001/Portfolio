@@ -8,12 +8,17 @@
   .frc {
     @apply flex flex-row items-center;
   }
+
   .fcc {
-    @apply flex  flex-col items-center;
+    @apply flex flex-col items-center;
   }
 
   .sectionTitle {
     @apply text-4xl font-semibold text-center;
+  }
+
+  .toast {
+    @apply fixed bottom-5 right-5 min-w-[300px] min-h-[30px] bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white px-5 py-3 rounded-lg flex items-center justify-between gap-4 shadow-2xl animate-slide-in ring-2 ring-white/20;
   }
 }
 
@@ -23,29 +28,144 @@
   }
 }
 
+@keyframes slide-in {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Orbit rotation keyframes and classes for up to 8 tech stack images */
-@keyframes orbit-rotate-0 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-@keyframes orbit-rotate-1 { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-@keyframes orbit-rotate-2 { 0% { transform: rotate(30deg); } 100% { transform: rotate(390deg); } }
-@keyframes orbit-rotate-3 { 0% { transform: rotate(60deg); } 100% { transform: rotate(420deg); } }
-@keyframes orbit-rotate-4 { 0% { transform: rotate(90deg); } 100% { transform: rotate(450deg); } }
-@keyframes orbit-rotate-5 { 0% { transform: rotate(120deg); } 100% { transform: rotate(480deg); } }
-@keyframes orbit-rotate-6 { 0% { transform: rotate(150deg); } 100% { transform: rotate(510deg); } }
-@keyframes orbit-rotate-7 { 0% { transform: rotate(180deg); } 100% { transform: rotate(540deg); } }
+@keyframes orbit-rotate-0 {
+  0% {
+    transform: rotate(0deg);
+  }
 
-.orbit-rotate-0 { animation: orbit-rotate-0 10s linear infinite }
-.orbit-rotate-1 { animation: orbit-rotate-1 8s linear infinite  }
-.orbit-rotate-2 { animation: orbit-rotate-2 12s linear infinite }
-.orbit-rotate-3 { animation: orbit-rotate-3 15s linear infinite }
-.orbit-rotate-4 { animation: orbit-rotate-4 10s linear infinite }
-.orbit-rotate-5 { animation: orbit-rotate-5 16s linear infinite }
-.orbit-rotate-6 { animation: orbit-rotate-6 11s linear infinite }
-.orbit-rotate-7 { animation: orbit-rotate-7 7s linear infinite }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-rotate-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-rotate-2 {
+  0% {
+    transform: rotate(30deg);
+  }
+
+  100% {
+    transform: rotate(390deg);
+  }
+}
+
+@keyframes orbit-rotate-3 {
+  0% {
+    transform: rotate(60deg);
+  }
+
+  100% {
+    transform: rotate(420deg);
+  }
+}
+
+@keyframes orbit-rotate-4 {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
+  }
+}
+
+@keyframes orbit-rotate-5 {
+  0% {
+    transform: rotate(120deg);
+  }
+
+  100% {
+    transform: rotate(480deg);
+  }
+}
+
+@keyframes orbit-rotate-6 {
+  0% {
+    transform: rotate(150deg);
+  }
+
+  100% {
+    transform: rotate(510deg);
+  }
+}
+
+@keyframes orbit-rotate-7 {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(540deg);
+  }
+}
+
+.orbit-rotate-0 {
+  animation: orbit-rotate-0 10s linear infinite
+}
+
+.orbit-rotate-1 {
+  animation: orbit-rotate-1 8s linear infinite
+}
+
+.orbit-rotate-2 {
+  animation: orbit-rotate-2 12s linear infinite
+}
+
+.orbit-rotate-3 {
+  animation: orbit-rotate-3 15s linear infinite
+}
+
+.orbit-rotate-4 {
+  animation: orbit-rotate-4 10s linear infinite
+}
+
+.orbit-rotate-5 {
+  animation: orbit-rotate-5 16s linear infinite
+}
+
+.orbit-rotate-6 {
+  animation: orbit-rotate-6 11s linear infinite
+}
+
+.orbit-rotate-7 {
+  animation: orbit-rotate-7 7s linear infinite
+}
 
 * {
   box-sizing: border-box;
@@ -76,6 +196,7 @@ html {
       0 0 30px rgba(124, 58, 237, 0.4);
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     box-shadow:
       0 0 20px rgba(124, 58, 237, 0.8),
@@ -83,6 +204,7 @@ html {
       0 0 40px rgba(124, 58, 237, 0.4);
     transform: scale(1.1) rotate(180deg);
   }
+
   100% {
     box-shadow:
       0 0 10px rgba(124, 58, 237, 0.8),

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { BiLoaderAlt } from 'react-icons/bi';
 import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import useMailService from '../../hooks/useMailService.ts';
 
 const initValue = {
@@ -102,16 +100,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnHover
-        theme="colored"
-      />
     </SectionWrapper>
   );
 };
