@@ -1,14 +1,17 @@
-// Minimal service worker: removes all caches and claims clients
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
+self.addEventListener('install', event => {
+  // Install new SW but don't activate immediately
+  console.log('[SW] Installed');
 });
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-      await Promise.all(keys.map((key) => caches.delete(key)));
-      await self.clients.claim();
-    })()
-  );
+self.addEventListener('activate', event => {
+  console.log('[SW] Activated');
+  event.waitUntil(self.clients.claim());
+});
+
+// Listen for SKIP_WAITING message from app
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    console.log('[SW] Skipping waiting');
+    self.skipWaiting();
+  }
 });
