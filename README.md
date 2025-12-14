@@ -1,4 +1,4 @@
-# Shashank's React Portfolio
+# Shashank's React Portfolio  [![Netlify Status](https://api.netlify.com/api/v1/badges/bc83f673-01d4-4aa7-bdad-6c2bf23a7c12/deploy-status)](https://app.netlify.com/projects/shashank-rai-dev/deploys)
 
 Welcome to Shashank's portfolio project, built using React and enhanced with Framer Motion for smooth and engaging animations.
 
