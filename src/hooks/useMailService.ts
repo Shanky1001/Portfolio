@@ -5,15 +5,17 @@ import { toastEventBus } from '../toast';
 const useMailService = () => {
   const [loading, setLoading] = useState(false);
   const sendMail = (data: Record<string, string>) => {
+    const mailServiceId = process.env.NEXT_PUBLIC_MAIL_SERVICE_ID ?? process.env.REACT_APP_MAIL_SERVICE_ID;
+    const mailTemplateId = process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID ?? process.env.REACT_APP_MAIL_TEMPLATE_ID;
+    const mailPublicKey = process.env.NEXT_PUBLIC_MAIL_PUBLIC_KEY ?? process.env.REACT_APP_MAIL_PUBLIC_KEY;
 
-    const { REACT_APP_MAIL_SERVICE_ID, REACT_APP_MAIL_TEMPLATE_ID, REACT_APP_MAIL_PUBLIC_KEY } = process.env;
-    if (!REACT_APP_MAIL_SERVICE_ID || !REACT_APP_MAIL_TEMPLATE_ID || !REACT_APP_MAIL_PUBLIC_KEY) {
+    if (!mailServiceId || !mailTemplateId || !mailPublicKey) {
       toastEventBus.emit({ message: 'Mail service not configured.', duration: 3000 });
       return;
     }
     setLoading(true);
     return emailjs
-      .send(REACT_APP_MAIL_SERVICE_ID, REACT_APP_MAIL_TEMPLATE_ID, data, REACT_APP_MAIL_PUBLIC_KEY)
+      .send(mailServiceId, mailTemplateId, data, mailPublicKey)
       .then(
         (response) => {
           if (response.status === 200) {

@@ -1,12 +1,7 @@
-import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import React from 'react';
 
-function RouterProvider({ children }) {
-  return (
-    <BrowserRouter>
-      <Routes>{children}</Routes>
-    </BrowserRouter>
-  );
+function RouterProvider({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
 
 export default RouterProvider;

@@ -7,9 +7,10 @@ import { ref, onValue } from 'firebase/database';
 import { analytics, db, logEvent } from '../../firebaseConfig.ts';
 
 import { data } from '../../types/index.ts';
+import portfolioData from './myportfolio.json';
 import Certification from '../../component/certification/Certification.tsx';
 import { Analytics } from 'firebase/analytics';
-import { GrUpdate } from "react-icons/gr";
+import { GrUpdate } from 'react-icons/gr';
 import { toastEventBus } from '../../toast.ts';
 import ToastContainer from '../../component/toast/ToastContainer.tsx';
 
@@ -26,25 +27,39 @@ const Home = () => {
   const [data, setData] = useState<data | null>(null);
 
   useEffect(() => {
+    const fallback = (portfolioData as { data?: data })?.data ?? null;
+
+    if (!db) {
+      setData(fallback);
+      setLoading(false);
+      return;
+    }
+
     const dataRef = ref(db, 'data');
 
     const unsubscribe = onValue(
       dataRef,
-      snapshot => {
+      (snapshot) => {
         if (snapshot.exists()) {
           setData(snapshot.val());
+        } else if (fallback) {
+          setData(fallback);
         }
         setLoading(false);
       },
       () => {
-        logEvent(analytics as Analytics, 'firebase_fetch_failed');
+        if (analytics) {
+          logEvent(analytics as Analytics, 'firebase_fetch_failed');
+        }
+        if (fallback) {
+          setData(fallback);
+        }
         setLoading(false);
       }
     );
 
     return () => unsubscribe();
   }, []);
-
 
   useEffect(() => {
     const handleSWUpdate = () => {
@@ -57,10 +72,8 @@ const Home = () => {
     };
 
     window.addEventListener('update-available', handleSWUpdate as EventListener);
-    return () =>
-      window.removeEventListener('update-available', handleSWUpdate as EventListener);
+    return () => window.removeEventListener('update-available', handleSWUpdate as EventListener);
   }, []);
-
 
   if (loading || !data) {
     return (

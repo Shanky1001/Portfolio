@@ -2,7 +2,8 @@
 export default {
   darkMode: 'class',
   content: [
-    "./index.html",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -17,6 +18,6 @@ export default {
         },
       },
     },
-    plugins: [],
   },
+  plugins: [],
 };

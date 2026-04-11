@@ -2,56 +2,40 @@
   "name": "shashank-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
   "type": "module",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "firebase": "^11.0.2",
     "framer-motion": "^10.16.12",
+    "next": "^15.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
-    "react-router-dom": "^6.21.0",
-    "react-scripts": "5.0.1",
-    "sitemap": "^9.0.0",
-    "web-vitals": "^2.1.4"
+    "sitemap": "^9.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "node scripts/sitemap.js && react-scripts build",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "node scripts/sitemap.js && next build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
-    "@types/firebase": "^3.2.1",
+    "@netlify/plugin-nextjs": "^5.11.2",
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.55.0",
+    "eslint-config-next": "^15.2.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
-    "tailwindcss": "^3.3.6"
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.7.3"
   }
 }
