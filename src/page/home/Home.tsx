@@ -1,3 +1,5 @@
+'use client';
+
 import React, { lazy, useEffect, useState } from 'react';
 import Header from '../../component/header/Header.tsx';
 import Hero from '../../component/hero/Hero.tsx';
@@ -13,6 +15,7 @@ import { Analytics } from 'firebase/analytics';
 import { GrUpdate } from 'react-icons/gr';
 import { toastEventBus } from '../../toast.ts';
 import ToastContainer from '../../component/toast/ToastContainer.tsx';
+import { initServiceWorker } from '../../hooks/useServiceWorker.ts';
 
 const Socials = WithSuspense(lazy(() => import('../../component/socials/Socials.tsx')));
 const About = WithSuspense(lazy(() => import('../../component/about/About.tsx')));
@@ -22,15 +25,16 @@ const Experience = WithSuspense(lazy(() => import('../../component/experience/Ex
 const Contact = WithSuspense(lazy(() => import('../../component/contact/Contact.tsx')));
 const Footer = WithSuspense(lazy(() => import('../../component/footer/Footer.tsx')));
 
-const Home = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<data | null>(null);
+const Home = ({ initialData }: { initialData?: data }) => {
+  const fallbackData = (portfolioData as { data?: data })?.data ?? null;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<data | null>(initialData ?? fallbackData);
 
   useEffect(() => {
     const fallback = (portfolioData as { data?: data })?.data ?? null;
 
     if (!db) {
-      setData(fallback);
+      setData((prevData) => prevData ?? fallback);
       setLoading(false);
       return;
     }
@@ -59,6 +63,10 @@ const Home = () => {
     );
 
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    initServiceWorker();
   }, []);
 
   useEffect(() => {

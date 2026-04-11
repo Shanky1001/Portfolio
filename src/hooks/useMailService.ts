@@ -38,7 +38,6 @@ const useMailService = () => {
       .finally(() => {
         setLoading(false);
       });
-    return true;
   };
 
   return { loading, sendMail };

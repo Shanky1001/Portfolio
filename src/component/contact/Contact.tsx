@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { BiLoaderAlt } from 'react-icons/bi';
 import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
@@ -39,11 +40,13 @@ const Contact = () => {
       <h2 className="sectionTitle">Contact Me</h2>
 
       <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
-        <img
+        <Image
           alt="contact"
           src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547786/contact_vthwob.png"
           className="hidden md:block w-1/2 h-full object-cover"
-          loading="lazy"
+          width={640}
+          height={640}
+          sizes="(max-width: 768px) 0px, 50vw"
         />
         <div className="flex-1">
           <RevealAnimation>

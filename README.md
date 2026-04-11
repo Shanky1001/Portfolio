@@ -1,15 +1,18 @@
 # Shashank's React Portfolio  [![Netlify Status](https://api.netlify.com/api/v1/badges/bc83f673-01d4-4aa7-bdad-6c2bf23a7c12/deploy-status)](https://app.netlify.com/projects/shashank-rai-dev/deploys)
 
-Welcome to Shashank's portfolio project, built using React and enhanced with Framer Motion for smooth and engaging animations.
+Welcome to Shashank's portfolio project, built using Nextjs, React and enhanced with Framer Motion for smooth and engaging animations.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Contributing](#contributing)
-- [License](#license)
+- [Shashank's React Portfolio  ](#shashanks-react-portfolio--)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Demo](#demo)
+  - [Feedback](#feedback)
+  - [Acknowledgments](#acknowledgments)
+  - [Connect with Shashank](#connect-with-shashank)
 
 ## Introduction
 This portfolio is a showcase of Shashank's skills, projects, and experiences. The use of React provides a dynamic and responsive user interface, while Framer Motion adds a layer of captivating animations to elevate the overall user experience.

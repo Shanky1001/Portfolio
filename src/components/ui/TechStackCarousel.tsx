@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface TechStackCarouselProps {
   avatarSrc: string;
@@ -63,7 +64,14 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
               height: `${avatarSize}rem`,
             }}
           >
-            <img alt="avatar" className="rounded-full object-cover" src={avatarSrc} />
+            <Image
+              alt="avatar"
+              className="rounded-full object-cover"
+              src={avatarSrc}
+              width={avatarSize * 16}
+              height={avatarSize * 16}
+              sizes="(max-width: 768px) 128px, 192px"
+            />
           </div>
         </div>
         {/* Tech stack images, hidden until active, each with its own orbit */}
@@ -101,10 +109,13 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
                     transformOrigin: '50% 50%',
                   }}
                 >
-                  <img
+                  <Image
                     src={img}
                     alt={`tech-stack-${idx}`}
                     className={`absolute rounded-full transition-all duration-700 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+                    width={iconSize}
+                    height={iconSize}
+                    sizes={`${iconSize}px`}
                     style={{
                       left: `calc(50% - ${iconSize / 2}px)`,
                       top: `calc(50% - ${radius + iconSize / 2}px)`,
