@@ -16,6 +16,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
             target="_blank"
             rel="noreferrer"
             key={s.icon}
+            aria-label={`${s.name || s.icon} (opens in new tab)`}
             className="grid place-items-center p-3 hover:animate-bounce rounded-full bg-violet-700 text-white"
           >
             {Icon ? <Icon /> : null}

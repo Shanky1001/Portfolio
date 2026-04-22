@@ -1,12 +1,19 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { CgClose, CgMenuRight } from 'react-icons/cg';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import CustomCursor from '../cursor/CustomCursor.tsx';
+
+// CustomCursor is purely interactive (pointer-fine only) and adds nothing to the
+// initial HTML — defer its chunk and skip SSR so it never delays first paint.
+const CustomCursor = dynamic(() => import('../cursor/CustomCursor.tsx'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const navs = ['home', 'about', 'projects', 'experience', 'contact'];
 
@@ -71,9 +78,8 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 
   return (
     <header
-      className={`backdrop-filter backdrop-blur-lg ${
-        scroll ? 'border-b bg-white bg-opacity-40' : 'border-b-0'
-      } dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}
+      className={`backdrop-filter backdrop-blur-lg ${scroll ? 'border-b bg-white bg-opacity-40' : 'border-b-0'
+        } dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}
     >
       <motion.div
         className="fixed h-1 top-0 origin-left z-30 w-full bg-blue-600"
@@ -93,29 +99,30 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
             className="w-[150px] h-[50px]"
           />
         </Link>
-
-        <motion.ul variants={variants} initial="hidden" animate="shown" className="flex items-center gap-8">
-          {navs.map((e, i) => (
-            <motion.li variants={childVariants} key={i}>
-              <a
-                className="hover:text-violet-700 relative hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
-                href={`#${e}`}
-                onClick={() => setPath(`#${e}`)}
-              >
-                {mounted && path === `#${e}` && (
-                  <motion.span layoutId="underline" className="absolute left-0 top-full h-[1px] bg-violet-700 w-full" />
-                )}
-                {e}
-              </a>
-            </motion.li>
-          ))}
+        <div className='flex items-center gap-8'>
+          <motion.ul variants={variants} initial="hidden" animate="shown" className="flex items-center gap-8">
+            {navs.map((e, i) => (
+              <motion.li variants={childVariants} key={i}>
+                <a
+                  className="hover:text-violet-700 relative hover:dark:text-violet-500 transition-colors capitalize cursor-pointer"
+                  href={`#${e}`}
+                  onClick={() => setPath(`#${e}`)}
+                >
+                  {mounted && path === `#${e}` && (
+                    <motion.span layoutId="underline" className="absolute left-0 top-full h-[1px] bg-violet-700 w-full" />
+                  )}
+                  {e}
+                </a>
+              </motion.li>
+            ))}
+          </motion.ul>
           <span
             onClick={() => handleSetTheme()}
             className="hover:bg-gray-100 hover:dark:bg-violet-700 p-1.5 rounded-full cursor-pointer transition-colors toggle"
           >
             {theme === 'dark' ? <FiSun /> : <FiMoon />}
           </span>
-        </motion.ul>
+        </div>
       </nav>
 
       {/* Mobile Navigation (mobile) */}

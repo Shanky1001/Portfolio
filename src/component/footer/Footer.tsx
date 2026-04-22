@@ -4,7 +4,7 @@ import { getSocialIcon } from '../../utils/socialIcons';
 
 const Footer = ({ socials, name }: { socials: social[]; name: string }) => {
   return (
-    <footer className="w-full bg-white dark:bg-grey-800 text-gray-500 dark:text-gray-300">
+    <footer className="w-full bg-white dark:bg-grey-800 text-gray-600 dark:text-gray-300">
       <div className="xl:max-w-6xl mx-auto md:mx-6 lg:mx-10 xl:mx-auto py-4 lg:py-6 flex flex-col-reverse md:flex-row gap-2 md:gap-5 justify-center items-center">
         <p className="text-sm mt-2 md:mt-0">
           Made with
@@ -23,6 +23,7 @@ const Footer = ({ socials, name }: { socials: social[]; name: string }) => {
                 target="_blank"
                 rel="noreferrer"
                 key={s.icon}
+                aria-label={`${s.name || s.icon} (opens in new tab)`}
                 className="grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
               >
                 {Icon ? <Icon /> : null}

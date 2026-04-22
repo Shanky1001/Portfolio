@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import TechStackCarousel from '../techStackCarousel/TechStackCarousel';
 import { main } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -62,7 +63,18 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         </div>
 
         <div className="relative mx-auto lg:mx-0 mt-12 md:mt-16 lg:mt-0">
-          <TechStackCarousel avatarSrc={heroImage} techStackImages={techStackImages} />
+          <TechStackCarousel techStackImages={techStackImages}>
+            <Image
+              alt={`Portrait of ${name}`}
+              className="rounded-full object-cover w-full h-full"
+              src={heroImage}
+              width={224}
+              height={224}
+              sizes="(max-width: 768px) 160px, 224px"
+              priority
+              fetchPriority="high"
+            />
+          </TechStackCarousel>
         </div>
       </div>
 

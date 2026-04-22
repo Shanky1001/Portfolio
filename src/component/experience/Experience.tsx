@@ -113,12 +113,12 @@ const ExperienceCard = ({ index, company, position, desc, institute, degree, dur
           <h3 className="mb-2 font-medium text-lg md:text-xl">{company || institute}</h3>
         </RevealAnimation>
         <RevealAnimation>
-          <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+          <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
             {position || degree} | {duration}
           </p>
         </RevealAnimation>
         <RevealAnimation>
-          <ul className="text-sm text-gray-400 mt-2 ml-4 list-disc">
+          <ul className="text-sm text-gray-600 dark:text-gray-400 mt-2 ml-4 list-disc">
             {desc &&
               desc.map((d, i) => (
                 <li key={i} className="mb-0.5">

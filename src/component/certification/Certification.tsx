@@ -47,7 +47,7 @@ const CertificationCard = ({ data }: CertificationCardInterface) => {
       <RevealAnimation>
         <div>
           <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-1">{title}</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{issuer}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{issuer}</p>
           {desc && <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{desc}</p>}
         </div>
         <div>
