@@ -22,6 +22,8 @@ const nextConfig = {
         // Tree-shake barrel imports from these packages so a single icon or
         // animation primitive doesn't drag the whole library into the bundle.
         optimizePackageImports: ['react-icons', 'framer-motion', 'firebase'],
+        legacyBrowsers: false,
+        browsersListForSwc: true,
     },
 };
 

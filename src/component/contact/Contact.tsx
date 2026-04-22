@@ -43,7 +43,8 @@ const Contact = () => {
 
       <div className="w-full lg:w-5/6 2xl:w-3/4 mt-10 md:mt-16 mx-auto flex justify-between rounded-xl">
         <Image
-          alt="contact"
+          alt=""
+          aria-hidden="true"
           src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547786/contact_vthwob.png"
           className="hidden md:block w-1/2 h-full object-cover"
           width={640}
@@ -55,7 +56,7 @@ const Contact = () => {
             <h3 className="text-2xl">Get in touch</h3>
           </RevealAnimation>
           <RevealAnimation>
-            <p className="text-gray-400 mb-4 text-sm md:text-base">
+            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm md:text-base">
               My inbox is always open. Whether you have a question or just want to say hello, I will try my best to get
               back to you!
             </p>
@@ -69,7 +70,7 @@ const Contact = () => {
               name="name"
               type="text"
               placeholder="Full Name *"
-              className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4"
+              className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-600 dark:placeholder-gray-400 rounded-lg py-3 px-4"
             />
             <input
               onChange={handleChange}
@@ -78,7 +79,7 @@ const Contact = () => {
               name="email"
               type="email"
               placeholder="Email *"
-              className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4"
+              className="outline-none bg-gray-100 dark:bg-grey-800 placeholder-gray-600 dark:placeholder-gray-400 rounded-lg py-3 px-4"
             />
             <textarea
               onChange={handleChange}
@@ -87,7 +88,7 @@ const Contact = () => {
               name="message"
               rows={4}
               placeholder="Message *"
-              className="outline-none resize-none bg-gray-100 dark:bg-grey-800 placeholder-gray-400 rounded-lg py-3 px-4"
+              className="outline-none resize-none bg-gray-100 dark:bg-grey-800 placeholder-gray-600 dark:placeholder-gray-400 rounded-lg py-3 px-4"
             />
             <button
               disabled={loading}

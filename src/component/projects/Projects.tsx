@@ -115,6 +115,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
               <a
                 href={visit}
                 target="_blank"
+                aria-label={`Visit ${name} (opens in new tab)`}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
@@ -125,6 +126,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
               <a
                 href={code}
                 target="_blank"
+                aria-label={`View source for ${name} on GitHub (opens in new tab)`}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
@@ -135,6 +137,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
               <a
                 href={video}
                 target="_blank"
+                aria-label={`Watch ${name} demo video (opens in new tab)`}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
@@ -149,7 +152,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
           <h3 className="text-xl font-medium">{name}</h3>
         </RevealAnimation>
         <RevealAnimation>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             <span className="font-medium">Tech Stack:</span> {techstack}
           </p>
         </RevealAnimation>
