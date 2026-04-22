@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    output: 'build',
     distDir: 'build',
     compiler: {
         // Strip console.* in production builds, keep error/warn for visibility.
