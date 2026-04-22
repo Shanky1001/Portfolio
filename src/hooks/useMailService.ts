@@ -32,7 +32,6 @@ const useMailService = () => {
     } finally {
       setLoading(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // env vars are module-level constants — stable across renders
 
   return { loading, sendMail };

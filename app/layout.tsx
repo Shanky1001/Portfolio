@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from 'next';
 import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 import '../src/index.css';
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   display: 'swap',
   variable: '--font-poppins',
 });
@@ -113,16 +114,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${poppins.className}`}
+      className={poppins.variable}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preload" as="image" href={FAVICON} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <Script id="theme-bootstrap" strategy="beforeInteractive">
+          {themeBootstrap}
+        </Script>
       </head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>

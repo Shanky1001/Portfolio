@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
+import Image from 'next/image';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { project } from '../../types/index.ts';
 import { motion, useInView } from 'framer-motion';
@@ -18,6 +19,15 @@ const Projects = ({ projectsData }: Props) => {
   const [category, setCategory] = useState(categories[0]);
   const [viewAll, setViewAll] = useState(false);
 
+  // Re-sync the active category if the underlying data changes and the previous
+  // selection no longer exists in the new category list.
+  useEffect(() => {
+    if (categories.length > 0 && !categories.some((c) => c.toLowerCase() === category.toLowerCase())) {
+      setCategory(categories[0]);
+      setViewAll(false);
+    }
+  }, [categories, category]);
+
   const filteredProjects = useMemo(
     () => projectsData.filter((p) => p.category.toLowerCase() === category.toLowerCase()),
     [projectsData, category]
@@ -28,7 +38,7 @@ const Projects = ({ projectsData }: Props) => {
       <h2 className="sectionTitle">Projects</h2>
 
       <div className="overflow-x-auto scroll-hide md:w-full max-w-screen-sm mx-auto mt-6 flex justify-between items-center gap-2 md:gap-3 bg-white dark:bg-grey-800 p-2 rounded-md shadow-sm">
-        {categories.map((c: string = '') => (
+        {categories.map((c) => (
           <span
             key={c}
             onClick={() => {
@@ -39,7 +49,7 @@ const Projects = ({ projectsData }: Props) => {
               category.toLowerCase() === c.toLowerCase()
                 ? 'bg-violet-600 text-white'
                 : 'hover:bg-gray-100 hover:dark:bg-grey-900'
-            } cursor-pointer transition-all`}
+            } cursor-pointer transition-colors`}
           >
             {c}
           </span>
@@ -89,20 +99,23 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
       className="flex relative flex-col gap-2 group shadow-md bg-white dark:bg-grey-800 rounded-lg p-4"
     >
       <div className="rounded-lg bg-violet-50 overflow-hidden">
-        <div
-          style={{
-            backgroundImage: `url(${image})`,
-            transition: 'ease-in-out 3s',
-          }}
-          className="w-full h-48 max-h-full bg-top bg-cover hover:bg-bottom hover:transform hover:transition-transform"
-        ></div>
+        <div className="relative w-full h-48 overflow-hidden group/image">
+          <Image
+            src={image}
+            alt={`${name} cover`}
+            fill
+            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+            loading="lazy"
+            className="object-cover object-top transition-[object-position] duration-[3000ms] ease-in-out group-hover/image:object-bottom"
+          />
+        </div>
         {(visit.trim() || code?.trim() || video?.trim()) && (
           <div className="absolute bottom-0 bg-slate-400 bg-opacity-60 w-full scale-x-0 group-hover:scale-100 transition-transform z-40 origin-left duration-200 ease-linear right-0 h-[80px] rounded-lg flex items-center gap-4 justify-end">
             {visit && (
               <a
                 href={visit}
                 target="_blank"
-                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
                 <BiLinkExternal size={20} />
@@ -112,7 +125,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
               <a
                 href={code}
                 target="_blank"
-                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
                 <FaGithub size={20} />
@@ -122,7 +135,7 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
               <a
                 href={video}
                 target="_blank"
-                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-all"
+                className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
                 <FaVideo size={20} />

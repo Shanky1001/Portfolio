@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import TechStackCarousel from '../techStackCarousel/TechStackCarousel';
 import { main } from '../../types';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -18,12 +17,9 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         <div className="flex flex-col gap-4 md:gap-6 text-left lg:w-1/2 2xl:w-1/3 mx-4 md:mx-6 xl:mx-0">
           <RevealAnimation>
             <div className="flex items-center gap-1">
-              <Image
-                alt="waving-hand"
-                width={30}
-                height={30}
-                src="https://res.cloudinary.com/donrxmkyd/image/upload/v1765547813/waving-hand_oxsijj.png"
-              />
+              <span className="text-2xl md:text-3xl leading-none" role="img" aria-label="waving hand">
+                👋
+              </span>
               <p className="text-lg md:text-xl mt-2 md:mt-1.5">Hey, I&apos;m </p>
             </div>
           </RevealAnimation>
@@ -80,6 +76,7 @@ const Hero = ({ mainData, resumeUrl }: HeroProps) => {
         height={186}
         loading="lazy"
         decoding="async"
+        fetchPriority="low"
         className="absolute hidden md:block right-0 bottom-0 translate-x-6 translate-y-4 opacity-25 lg:opacity-60"
       />
     </section>

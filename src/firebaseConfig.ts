@@ -3,7 +3,6 @@ import {
   getAnalytics,
   logEvent,
   setUserProperties,
-  setAnalyticsCollectionEnabled,
   Analytics,
 } from 'firebase/analytics';
 
@@ -19,15 +18,28 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID ?? process.env.REACT_APP_MEASUREMENT_ID,
 };
 
-const canInitializeFirebase = Boolean(
-  firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId && firebaseConfig.databaseURL
-);
+// Skip Firebase entirely in development — the literal NODE_ENV check
+// tree-shakes away in production builds, leaving a zero-cost branch.
+const isDev = process.env.NODE_ENV === 'development';
+
+const canInitializeFirebase =
+  !isDev &&
+  Boolean(
+    firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId && firebaseConfig.databaseURL
+  );
 
 const app = canInitializeFirebase ? initializeApp(firebaseConfig) : null;
 
-const analytics: Analytics | null = app && typeof window !== 'undefined' ? getAnalytics(app) : null;
-if (analytics && process.env.NODE_ENV === 'development') {
-  setAnalyticsCollectionEnabled(analytics, false);
+let analytics: Analytics | null = null;
+if (app && typeof window !== 'undefined') {
+  try {
+    analytics = getAnalytics(app);
+  } catch {
+    // Analytics may be blocked by the browser, an extension, or unsupported
+    // environments (e.g. some private modes). Fall back to a no-op so the
+    // chunk doesn't crash the rest of the app.
+    analytics = null;
+  }
 }
 
 export { analytics, logEvent, setUserProperties };

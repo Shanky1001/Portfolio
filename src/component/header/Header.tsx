@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { CgClose, CgMenuRight } from 'react-icons/cg';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import CustomCursor from '../cursor/CustomCursor.tsx';
 
 const navs = ['home', 'about', 'projects', 'experience', 'contact'];
@@ -25,12 +25,11 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
   const [theme, setTheme] = useState(getInitialTheme); // lazy initializer — only called once
-  const colorTheme = theme === 'dark' ? 'light' : 'dark';
-  const { scrollYProgress } = useScroll();
-  const [path, setPath] = useState('#home');
+  const { scrollY, scrollYProgress } = useScroll();
+  // Initialise empty so the underline doesn't flash on "Home" before hydration
+  // when the user lands without a hash. The effect below sets the real value.
+  const [path, setPath] = useState('');
   const [mounted, setMounted] = useState(false);
-
-  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -41,22 +40,17 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 
     updatePath();
     window.addEventListener('hashchange', updatePath);
-
-    const updateScroll = () => {
-      if (rafRef.current !== null) return; // throttle via rAF
-      rafRef.current = requestAnimationFrame(() => {
-        setScroll(window.scrollY >= 90);
-        rafRef.current = null;
-      });
-    };
-
-    window.addEventListener('scroll', updateScroll, { passive: true });
     return () => {
       window.removeEventListener('hashchange', updatePath);
-      window.removeEventListener('scroll', updateScroll);
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
+
+  // Single source of truth for scroll state — framer-motion's scrollY
+  // already throttles via rAF internally, so we don't need our own listener.
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const next = latest >= 90;
+    setScroll((prev) => (prev === next ? prev : next));
+  });
 
   const handleSetTheme = useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -90,19 +84,17 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
       <CustomCursor />
       {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
-        <Link href="/" className="2xl:ml-6">
+        <Link href="/" prefetch={false} className="2xl:ml-6">
           <Image
             src={logo}
-            alt="logo"
+            alt="Shashank Rai"
             width={150}
             height={50}
             className="w-[150px] h-[50px]"
-            fetchPriority="high"
-            priority
           />
         </Link>
 
-        <motion.ul variants={variants} initial="visible" animate="animate" className="flex items-center gap-8">
+        <motion.ul variants={variants} initial="hidden" animate="shown" className="flex items-center gap-8">
           {navs.map((e, i) => (
             <motion.li variants={childVariants} key={i}>
               <a
@@ -128,7 +120,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 
       {/* Mobile Navigation (mobile) */}
       <nav className="p-4 flex sm:hidden items-center justify-between">
-        <Image src={logo} alt="logo" width={100} height={40} className="w-[100px] h-[40px]" priority />
+        <Image src={logo} alt="Shashank Rai" width={100} height={40} className="w-[100px] h-[40px]" />
         <div className="flex items-center gap-4">
           <span
             onClick={() => handleSetTheme()}
@@ -177,7 +169,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 export default Header;
 
 const variants = {
-  animate: {
+  shown: {
     transition: {
       staggerChildren: 0.1,
     },
@@ -185,6 +177,6 @@ const variants = {
 };
 
 const childVariants = {
-  visible: { opacity: 0, y: -50 },
-  animate: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -50 },
+  shown: { opacity: 1, y: 0 },
 };

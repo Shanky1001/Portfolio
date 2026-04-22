@@ -5,6 +5,9 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 async function getDevFallbackData(): Promise<data | null> {
+  // Local JSON fallback is dev-only. In production the page must come from
+  // the configured remote DB; if that's missing, we'd rather fail visibly
+  // (forever spinner) than ship stale committed data to users.
   if (process.env.NODE_ENV !== 'development') {
     return null;
   }

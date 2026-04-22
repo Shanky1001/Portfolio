@@ -7,6 +7,9 @@ const config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)', 'sans-serif'],
+      },
       colors: {
         grey: {
           800: '#18141c',

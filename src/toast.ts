@@ -1,21 +1,20 @@
-import React from "react";
+import type { ReactNode } from "react";
 
 export type ToastEvent = {
     message: string;
-    actionLabel?: string | React.ReactNode;
+    actionLabel?: string | ReactNode;
     onAction?: () => void;
     duration?: number;
 };
 
-const listeners: ((event: ToastEvent) => void)[] = [];
+const listeners = new Set<(event: ToastEvent) => void>();
 
 export const toastEventBus = {
     emit: (event: ToastEvent) => listeners.forEach(fn => fn(event)),
     subscribe: (fn: (event: ToastEvent) => void) => {
-        listeners.push(fn);
+        listeners.add(fn);
         return () => {
-            const index = listeners.indexOf(fn);
-            if (index !== -1) listeners.splice(index, 1);
+            listeners.delete(fn);
         };
     },
 };

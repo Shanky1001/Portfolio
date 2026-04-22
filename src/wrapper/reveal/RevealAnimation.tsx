@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 
 const RevealAnimation = ({
   children,
-  width = 'fit-content',
+  width = '100%',
   ready = true,
 }: {
   children: React.ReactNode;
@@ -54,7 +54,6 @@ const childrenVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25,
     },
   },
 };
@@ -67,7 +66,6 @@ const sliderVariants = {
     x: '101%',
     transition: {
       duration: 0.5,
-      delay: 0.25,
       ease: 'easeInOut',
     },
   },

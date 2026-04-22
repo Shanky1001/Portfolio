@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { skill } from '../../types';
@@ -12,6 +12,14 @@ interface Props {
 const Skills = ({ skillData }: Props) => {
   const categories = useMemo(() => Array.from(new Set(skillData.map((s) => s.category))), [skillData]);
   const [category, setCategory] = useState(categories[0]);
+
+  // Re-sync the active category if the underlying data changes and the previous
+  // selection no longer exists in the new category list.
+  useEffect(() => {
+    if (categories.length > 0 && !categories.some((c) => c.toLowerCase() === category.toLowerCase())) {
+      setCategory(categories[0]);
+    }
+  }, [categories, category]);
 
   return (
     <SectionWrapper id="skills" className="mt-12 md:mt-0 mx-4 md:mx-0 xl:my-10 py-14">
@@ -26,7 +34,7 @@ const Skills = ({ skillData }: Props) => {
               category.toLowerCase() === c.toLowerCase()
                 ? 'bg-violet-600 dark:bg-violet-600 text-white'
                 : 'bg-white dark:bg-grey-800 hover:bg-gray-100 hover:dark:bg-grey-900'
-            } transition-all capitalize`}
+            } transition-colors capitalize`}
           >
             {c}
           </span>

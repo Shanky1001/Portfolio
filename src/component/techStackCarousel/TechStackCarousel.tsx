@@ -36,18 +36,20 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
   useEffect(() => {
     setWindowWidth(window.innerWidth);
 
-    let throttleTimeout: NodeJS.Timeout | null = null;
+    // Trailing-edge debounce: only commit the size after the user has
+    // stopped resizing for 150 ms, so we don't end up with a stale width.
+    let debounceTimeout: ReturnType<typeof setTimeout> | null = null;
     const handleResize = () => {
-      if (throttleTimeout) return;
-      throttleTimeout = setTimeout(() => {
+      if (debounceTimeout) clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
         setWindowWidth(window.innerWidth);
-        throttleTimeout = null;
+        debounceTimeout = null;
       }, 150);
     };
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (throttleTimeout) clearTimeout(throttleTimeout);
+      if (debounceTimeout) clearTimeout(debounceTimeout);
     };
   }, []);
 
@@ -135,7 +137,7 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
                   <Image
                     src={img}
                     alt={`tech-stack-${idx}`}
-                    className={`absolute rounded-full transition-all duration-700 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+                    className={`absolute rounded-full transition-[opacity,transform] duration-700 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
                     width={iconSize}
                     height={iconSize}
                     sizes={`${iconSize}px`}
