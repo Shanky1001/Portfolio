@@ -1,65 +1,72 @@
-import { useEffect, useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import React from 'react';
+'use client';
 
-const RevealAnimation = ({ children, width = 'fit-content' }) => {
+import React, { memo, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+
+const RevealAnimation = ({
+  children,
+  width = '100%',
+  ready = true,
+}: {
+  children: React.ReactNode;
+  width?: string;
+  ready?: boolean;
+}) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const animateControl = useAnimation();
-  const slideControl = useAnimation();
-
-  useEffect(() => {
-    let timeout: any = null;
-    if (inView) {
-      timeout = setTimeout(() => {
-        animateControl.start('animate');
-        slideControl.start('animate');
-      }, 200);
-    }
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [inView, animateControl, slideControl]);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const revealed = ready && isInView;
+  const [hideMask, setHideMask] = useState(false);
 
   return (
     <div ref={ref} className="relative overflow-hidden" style={{ width }}>
-      <motion.div variants={childrenVariants} initial={'initial'} animate={animateControl}>
+      <motion.div
+        variants={childrenVariants}
+        initial="hidden"
+        animate={revealed ? 'visible' : 'hidden'}
+        className="will-change-transform"
+      >
         {children}
       </motion.div>
-      <motion.div
-        variants={sliderVariants}
-        initial={'initial'}
-        animate={slideControl}
-        className="absolute top-4 bottom-4 h-full left-0 right-0 z-50 bg-[#7C3AED]"
-      />
+      {!hideMask && (
+        <motion.div
+          variants={sliderVariants}
+          initial="hidden"
+          animate={revealed ? 'visible' : 'hidden'}
+          onAnimationComplete={() => {
+            if (revealed) setHideMask(true);
+          }}
+          className="absolute inset-0 z-50 bg-[#7C3AED] pointer-events-none will-change-transform"
+        />
+      )}
     </div>
   );
 };
 
-export default RevealAnimation;
+export default memo(RevealAnimation);
 
 const childrenVariants = {
-  initial: {
+  hidden: {
     opacity: 0,
     y: 70,
   },
-  animate: {
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      delay: 0.25,
     },
   },
 };
 
 const sliderVariants = {
-  initial: {
-    left: 0,
+  hidden: {
+    x: '0%',
   },
-  animate: {
-    left: '100%',
-    duration: 0.5,
-    delay: 0.5,
+  visible: {
+    x: '101%',
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+    },
   },
 };

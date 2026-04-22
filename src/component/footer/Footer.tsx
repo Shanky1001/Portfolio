@@ -1,6 +1,6 @@
 import React from 'react';
-import * as Fa from 'react-icons/fa';
 import { social } from '../../types';
+import { getSocialIcon } from '../../utils/socialIcons';
 
 const Footer = ({ socials, name }: { socials: social[]; name: string }) => {
   return (
@@ -15,18 +15,20 @@ const Footer = ({ socials, name }: { socials: social[]; name: string }) => {
 
         {/* Social Links */}
         <div className="flex xl:hidden items-center gap-2">
-          {socials.map((s: any) => (
-            <a
-              href={s.link}
-              target="_blank"
-              rel="noreferrer"
-              key={s.icon}
-              className="grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
-            >
-              {/* @ts-ignore */}
-              {React.createElement(Fa[`${s.icon}`])}
-            </a>
-          ))}
+          {socials.map((s: social) => {
+            const Icon = getSocialIcon(s.icon);
+            return (
+              <a
+                href={s.link}
+                target="_blank"
+                rel="noreferrer"
+                key={s.icon}
+                className="grid place-items-center p-3 rounded-full text-lg hover:bg-gray-100 hover:dark:bg-grey-900 transition-colors"
+              >
+                {Icon ? <Icon /> : null}
+              </a>
+            );
+          })}
         </div>
       </div>
     </footer>

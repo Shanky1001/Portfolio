@@ -1,39 +1,73 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { CgClose, CgMenuRight } from 'react-icons/cg';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import CustomCursor from '../cursor/CustomCursor.tsx';
 
 const navs = ['home', 'about', 'projects', 'experience', 'contact'];
 
+const getInitialTheme = (): string => {
+  if (typeof window === 'undefined') return 'dark';
+  try {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch {
+    return 'dark';
+  }
+};
+
 const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
-  const [theme, setTheme] = useState(localStorage.theme ?? 'dark');
-  const colorTheme = theme === 'dark' ? 'light' : 'dark';
-  const { scrollYProgress } = useScroll();
-  const [path, setPath] = useState(window.location.hash || '');
+  const [theme, setTheme] = useState(getInitialTheme); // lazy initializer — only called once
+  const { scrollY, scrollYProgress } = useScroll();
+  // Initialise empty so the underline doesn't flash on "Home" before hydration
+  // when the user lands without a hash. The effect below sets the real value.
+  const [path, setPath] = useState('');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const updateScroll = () => {
-      window.scrollY >= 90 ? setScroll(true) : setScroll(false);
+    setMounted(true);
+
+    const updatePath = () => {
+      setPath(window.location.hash || '');
     };
-    window.addEventListener('scroll', updateScroll);
+
+    updatePath();
+    window.addEventListener('hashchange', updatePath);
     return () => {
-      return window.removeEventListener('scroll', updateScroll);
+      window.removeEventListener('hashchange', updatePath);
     };
   }, []);
 
-  const handleSetTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  // Single source of truth for scroll state — framer-motion's scrollY
+  // already throttles via rAF internally, so we don't need our own listener.
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const next = latest >= 90;
+    setScroll((prev) => (prev === next ? prev : next));
+  });
+
+  const handleSetTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove(colorTheme);
+    const opposite = theme === 'dark' ? 'light' : 'dark'; // derived inline — only `theme` needed in deps
+    root.classList.remove(opposite);
     root.classList.add(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme, colorTheme]);
+
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Ignore storage write failures (private mode / restricted storage)
+    }
+  }, [theme]);
 
   return (
     <header
@@ -50,11 +84,17 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
       <CustomCursor />
       {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
-        <a href="/" className="2xl:ml-6">
-          <img src={logo} alt="logo" className="w-[150px] h-[50px]" />
-        </a>
+        <Link href="/" prefetch={false} className="2xl:ml-6">
+          <Image
+            src={logo}
+            alt="Shashank Rai"
+            width={150}
+            height={50}
+            className="w-[150px] h-[50px]"
+          />
+        </Link>
 
-        <motion.ul variants={variants} initial="visible" animate="animate" className="flex items-center gap-8">
+        <motion.ul variants={variants} initial="hidden" animate="shown" className="flex items-center gap-8">
           {navs.map((e, i) => (
             <motion.li variants={childVariants} key={i}>
               <a
@@ -62,7 +102,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
                 href={`#${e}`}
                 onClick={() => setPath(`#${e}`)}
               >
-                {path === `#${e}` && (
+                {mounted && path === `#${e}` && (
                   <motion.span layoutId="underline" className="absolute left-0 top-full h-[1px] bg-violet-700 w-full" />
                 )}
                 {e}
@@ -80,7 +120,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 
       {/* Mobile Navigation (mobile) */}
       <nav className="p-4 flex sm:hidden items-center justify-between">
-        <img src={logo} alt="logo" className="w-[100px] h-[40px]" />
+        <Image src={logo} alt="Shashank Rai" width={100} height={40} className="w-[100px] h-[40px]" />
         <div className="flex items-center gap-4">
           <span
             onClick={() => handleSetTheme()}
@@ -91,39 +131,37 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
           <CgMenuRight size={20} className="cursor-pointer" onClick={() => setNavCollapse(false)} />
         </div>
       </nav>
-      <div
-        className={`flex min-h-screen w-screen absolute md:hidden top-0 ${
-          !navCollapse ? 'right-0' : 'right-[-100%]'
-        } bottom-0 z-50 ease-in duration-300`}
-      >
-        <div className="w-1/4" onClick={() => setNavCollapse(true)}></div>
+      {!navCollapse && (
+        <div className="flex min-h-screen w-screen absolute md:hidden top-0 right-0 bottom-0 z-50">
+          <div className="w-1/4" onClick={() => setNavCollapse(true)}></div>
 
-        <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
-          <CgClose
-            className="self-end my-2 cursor-pointer dark:text-white"
-            size={20}
-            onClick={() => setNavCollapse(true)}
-          />
-
-          {navs.slice(0, 4).map((e) => (
-            <a
-              key={e}
-              className="hover:text-purple-600 py-1.5 px-4 rounded transition-colors capitalize cursor-pointer"
-              href={`#${e}`}
+          <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
+            <CgClose
+              className="self-end my-2 cursor-pointer dark:text-white"
+              size={20}
               onClick={() => setNavCollapse(true)}
+            />
+
+            {navs.slice(0, -1).map((e) => (
+              <a
+                key={e}
+                className="hover:text-purple-600 py-1.5 px-4 rounded transition-colors capitalize cursor-pointer"
+                href={`#${e}`}
+                onClick={() => setNavCollapse(true)}
+              >
+                {e}
+              </a>
+            ))}
+            <a
+              href={`#${navs[navs.length - 1]}`}
+              onClick={() => setNavCollapse(true)}
+              className="px-6 py-1.5 rounded-md bg-violet-600 hover:bg-violet-700 text-white text-center capitalize"
             >
-              {e}
+              {navs[navs.length - 1]}
             </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setNavCollapse(true)}
-            className="px-6 py-1.5 rounded-md bg-violet-600 hover:bg-violet-700 text-white text-center"
-          >
-            Contact
-          </a>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
@@ -131,7 +169,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 export default Header;
 
 const variants = {
-  animate: {
+  shown: {
     transition: {
       staggerChildren: 0.1,
     },
@@ -139,6 +177,6 @@ const variants = {
 };
 
 const childVariants = {
-  visible: { opacity: 0, y: -50 },
-  animate: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: -50 },
+  shown: { opacity: 1, y: 0 },
 };

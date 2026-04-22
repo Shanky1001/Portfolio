@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { about } from '../../types/index.ts';
 import RevealAnimation from '../../wrapper/reveal/RevealAnimation.tsx';
@@ -33,11 +34,12 @@ const About = ({ aboutData, name }: Props) => {
 
       <div className="w-full lg:w-11/12 2xl:w-4/5 mt-2 lg:mt-20 mx-auto flex flex-col md:gap-4 lg:flex-row justify-between items-center">
         <div className="p-3 w-56 self-start md:w-2/5 lg:w-72 bg-white dark:bg-grey-800 flex flex-col gap-2 items-center rounded-2xl mx-auto lg:mx-16 hover:-translate-y-2 transition-transform duration-300 lg:-rotate-3">
-          <img
+          <Image
             alt="profile"
-            loading="lazy"
-            className="w-full h-60 md:h-80 rounded-2xl object-cover grayscale hover:grayscale-0 transition-all bg-violet-100"
+            className="w-full h-60 md:h-80 rounded-2xl object-cover grayscale hover:grayscale-0 transition-[filter] bg-violet-100"
             src={aboutImage}
+            width={320}
+            height={420}
           />
           <span className="font-medium font-sans">{aboutImageCaption || '< I Build Stuff 🚀 />'}</span>
         </div>

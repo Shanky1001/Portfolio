@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   darkMode: 'class',
   content: [
-    "./index.html",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)', 'sans-serif'],
+      },
       colors: {
         grey: {
           800: '#18141c',
@@ -17,6 +20,8 @@ export default {
         },
       },
     },
-    plugins: [],
   },
+  plugins: [],
 };
+
+export default config;

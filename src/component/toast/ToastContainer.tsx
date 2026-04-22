@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useCallback, useEffect, useState } from 'react';
 import { ToastEvent, toastEventBus } from '../../toast';
 import Toast from './Toast';
 
@@ -12,6 +14,9 @@ const ToastContainer: React.FC = () => {
         return unsubscribe;
     }, []);
 
+    // Stable identity prevents Toast's dismiss timer from resetting on every render.
+    const handleClose = useCallback(() => setToast(null), []);
+
     if (!toast) return null;
 
     return (
@@ -20,7 +25,7 @@ const ToastContainer: React.FC = () => {
             actionLabel={toast.actionLabel}
             onAction={toast.onAction}
             duration={toast.duration}
-            onClose={() => setToast(null)}
+            onClose={handleClose}
         />
     );
 };

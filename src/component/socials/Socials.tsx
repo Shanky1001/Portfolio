@@ -1,6 +1,6 @@
 import React from 'react';
 import { social } from '../../types';
-import * as Fa from 'react-icons/fa';
+import { getSocialIcon } from '../../utils/socialIcons';
 
 const Socials = ({ socials }: { socials: social[] }) => {
   return (
@@ -9,6 +9,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
       className="fixed xl:bottom-20 xl:left-4 2xl:bottom-20 2xl:left-10 hidden lg:flex flex-col items-center gap-3 z-20"
     >
       {socials.map((s: social) => {
+        const Icon = getSocialIcon(s.icon);
         return (
           <a
             href={s.link}
@@ -17,7 +18,7 @@ const Socials = ({ socials }: { socials: social[] }) => {
             key={s.icon}
             className="grid place-items-center p-3 hover:animate-bounce rounded-full bg-violet-700 text-white"
           >
-            {React.createElement(Fa[`${s.icon}`])}
+            {Icon ? <Icon /> : null}
           </a>
         );
       })}

@@ -1,46 +1,68 @@
-import React, { useEffect } from "react";
-import { analytics, logEvent, setUserProperties } from "./firebaseConfig.ts";
+'use client';
 
-const Firebase = ({ children }) => {
-  // Initialize Firebase Analytics
+import React, { useEffect } from 'react';
+
+type IdleWindow = Window &
+  typeof globalThis & {
+    requestIdleCallback?: (cb: () => void, options?: { timeout?: number }) => number;
+    cancelIdleCallback?: (handle: number) => void;
+  };
+
+const Firebase = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
-    if(!analytics) return
-    // Example: Log an event when a user clicks a button
-    logEvent(analytics, "button_click");
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
 
-    logEvent(analytics, "social_media_click", {
-      platform: "LinkedIn",
-    });
+    const init = async () => {
+      // Dynamically import firebaseConfig so the firebase/analytics SDK
+      // (~40 KB gzipped) is split into its own chunk and never blocks
+      // first paint.
+      const { analytics, logEvent } = await import('./firebaseConfig.ts');
+      if (cancelled || !analytics) return;
 
-    // Log event when a user clicks on GitHub link
-    logEvent(analytics, "social_media_click", {
-      platform: "GitHub",
-    });
+      // Log scroll depth — fire only once when the user passes 50% of the page.
+      // Tied to a real user action (scroll), not page mount, so it doesn't
+      // pollute analytics with synthetic events on every load.
+      const hasLoggedScroll = { current: false };
+      const handleScroll = () => {
+        if (hasLoggedScroll.current) return;
+        const scrollPercentage = (window.scrollY / document.documentElement.scrollHeight) * 100;
+        if (scrollPercentage > 50) {
+          logEvent(analytics, 'scroll_depth', { percentage: 50 });
+          hasLoggedScroll.current = true;
+        }
+      };
 
-    logEvent(analytics, "resume_download", {
-      action: "download",
-      file_type: "PDF",
-    });
-    setUserProperties(analytics, { first_visit: true });
+      window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Log event when a user scrolls past 50% of the page
-    const handleScroll = () => {
-    if(!analytics) return
-      const scrollPercentage =
-        (window.scrollY / document.documentElement.scrollHeight) * 100;
-      if (scrollPercentage > 50) {
-        logEvent(analytics, "scroll_depth", {
-          percentage: 50,
-        });
-      }
+      cleanup = () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const idleWindow = typeof window !== 'undefined' ? (window as IdleWindow) : undefined;
+    let idleHandle: number | undefined;
+    let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
+
+    const schedule = () => {
+      void init();
+    };
+
+    if (idleWindow?.requestIdleCallback) {
+      idleHandle = idleWindow.requestIdleCallback(schedule, { timeout: 2000 });
+    } else {
+      timeoutHandle = setTimeout(schedule, 1);
+    }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if(!analytics) return
-      logEvent(analytics, "sign_out");
+      cancelled = true;
+      if (idleHandle !== undefined && idleWindow?.cancelIdleCallback) {
+        idleWindow.cancelIdleCallback(idleHandle);
+      }
+      if (timeoutHandle !== undefined) {
+        clearTimeout(timeoutHandle);
+      }
+      cleanup?.();
     };
   }, []);
 
