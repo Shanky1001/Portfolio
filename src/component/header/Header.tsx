@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiSun, FiMoon } from 'react-icons/fi';
@@ -8,24 +10,30 @@ import CustomCursor from '../cursor/CustomCursor.tsx';
 
 const navs = ['home', 'about', 'projects', 'experience', 'contact'];
 
+const getInitialTheme = (): string => {
+  if (typeof window === 'undefined') return 'dark';
+  try {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch {
+    return 'dark';
+  }
+};
+
 const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
   const [navCollapse, setNavCollapse] = useState(true);
   const [scroll, setScroll] = useState(false);
-  const [theme, setTheme] = useState('dark');
-  const colorTheme = theme === 'dark' ? 'dark' : 'light';
+  const [theme, setTheme] = useState(getInitialTheme); // lazy initializer — only called once
+  const colorTheme = theme === 'dark' ? 'light' : 'dark';
   const { scrollYProgress } = useScroll();
   const [path, setPath] = useState('#home');
   const [mounted, setMounted] = useState(false);
 
+  const rafRef = useRef<number | null>(null);
+
   useEffect(() => {
     setMounted(true);
-
-    try {
-      const currentTheme = localStorage.theme ?? 'dark';
-      setTheme(currentTheme);
-    } catch {
-      setTheme('dark');
-    }
 
     const updatePath = () => {
       setPath(window.location.hash || '');
@@ -35,23 +43,29 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
     window.addEventListener('hashchange', updatePath);
 
     const updateScroll = () => {
-      window.scrollY >= 90 ? setScroll(true) : setScroll(false);
+      if (rafRef.current !== null) return; // throttle via rAF
+      rafRef.current = requestAnimationFrame(() => {
+        setScroll(window.scrollY >= 90);
+        rafRef.current = null;
+      });
     };
 
-    window.addEventListener('scroll', updateScroll);
+    window.addEventListener('scroll', updateScroll, { passive: true });
     return () => {
       window.removeEventListener('hashchange', updatePath);
       window.removeEventListener('scroll', updateScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  const handleSetTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  const handleSetTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove(colorTheme);
+    const opposite = theme === 'dark' ? 'light' : 'dark'; // derived inline — only `theme` needed in deps
+    root.classList.remove(opposite);
     root.classList.add(theme);
 
     try {
@@ -59,7 +73,7 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
     } catch {
       // Ignore storage write failures (private mode / restricted storage)
     }
-  }, [theme, colorTheme]);
+  }, [theme]);
 
   return (
     <header
@@ -125,39 +139,37 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
           <CgMenuRight size={20} className="cursor-pointer" onClick={() => setNavCollapse(false)} />
         </div>
       </nav>
-      <div
-        className={`flex min-h-screen w-screen absolute md:hidden top-0 ${
-          !navCollapse ? 'right-0' : 'right-[-100%]'
-        } bottom-0 z-50 ease-in duration-300`}
-      >
-        <div className="w-1/4" onClick={() => setNavCollapse(true)}></div>
+      {!navCollapse && (
+        <div className="flex min-h-screen w-screen absolute md:hidden top-0 right-0 bottom-0 z-50">
+          <div className="w-1/4" onClick={() => setNavCollapse(true)}></div>
 
-        <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
-          <CgClose
-            className="self-end my-2 cursor-pointer dark:text-white"
-            size={20}
-            onClick={() => setNavCollapse(true)}
-          />
-
-          {navs.slice(0, 4).map((e) => (
-            <a
-              key={e}
-              className="hover:text-purple-600 py-1.5 px-4 rounded transition-colors capitalize cursor-pointer"
-              href={`#${e}`}
+          <div className="flex flex-col p-4 gap-5 bg-gray-100/95 backdrop-filter backdrop-blur-sm dark:bg-grey-900/95 w-3/4">
+            <CgClose
+              className="self-end my-2 cursor-pointer dark:text-white"
+              size={20}
               onClick={() => setNavCollapse(true)}
+            />
+
+            {navs.slice(0, -1).map((e) => (
+              <a
+                key={e}
+                className="hover:text-purple-600 py-1.5 px-4 rounded transition-colors capitalize cursor-pointer"
+                href={`#${e}`}
+                onClick={() => setNavCollapse(true)}
+              >
+                {e}
+              </a>
+            ))}
+            <a
+              href={`#${navs[navs.length - 1]}`}
+              onClick={() => setNavCollapse(true)}
+              className="px-6 py-1.5 rounded-md bg-violet-600 hover:bg-violet-700 text-white text-center capitalize"
             >
-              {e}
+              {navs[navs.length - 1]}
             </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setNavCollapse(true)}
-            className="px-6 py-1.5 rounded-md bg-violet-600 hover:bg-violet-700 text-white text-center"
-          >
-            Contact
-          </a>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

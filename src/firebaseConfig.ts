@@ -1,4 +1,3 @@
-import { getDatabase } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import {
   getAnalytics,
@@ -24,13 +23,11 @@ const canInitializeFirebase = Boolean(
   firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId && firebaseConfig.databaseURL
 );
 
-// Initialize Firebase
 const app = canInitializeFirebase ? initializeApp(firebaseConfig) : null;
-const db = app ? getDatabase(app) : null;
 
 const analytics: Analytics | null = app && typeof window !== 'undefined' ? getAnalytics(app) : null;
 if (analytics && process.env.NODE_ENV === 'development') {
   setAnalyticsCollectionEnabled(analytics, false);
 }
 
-export { db, analytics, logEvent, setUserProperties };
+export { analytics, logEvent, setUserProperties };

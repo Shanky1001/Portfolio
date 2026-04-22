@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+'use client';
+
+import React, { useState, useRef, useMemo } from 'react';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { project } from '../../types/index.ts';
 import { motion, useInView } from 'framer-motion';
@@ -12,26 +14,14 @@ interface Props {
 }
 
 const Projects = ({ projectsData }: Props) => {
-  const [projects] = useState<project[]>([...projectsData]);
-
-  const categories = useMemo(() => [...Array.from(new Set(projects.map((s) => s.category)))], [projects]);
+  const categories = useMemo(() => [...new Set(projectsData.map((s) => s.category))], [projectsData]);
   const [category, setCategory] = useState(categories[0]);
-
-  const [filteredProjects, setFilteredProjects] = useState<project[]>([]);
   const [viewAll, setViewAll] = useState(false);
 
-  const filterProjects = useCallback(
-    (cat: string) => {
-      setViewAll(false);
-      setCategory(cat);
-      setFilteredProjects([...projects.filter((p: project) => p.category.toLowerCase() === cat.toLowerCase())]);
-    },
-    [projects]
+  const filteredProjects = useMemo(
+    () => projectsData.filter((p) => p.category.toLowerCase() === category.toLowerCase()),
+    [projectsData, category]
   );
-
-  useEffect(() => {
-    filterProjects(categories[0]);
-  }, [filterProjects, categories]);
 
   return (
     <SectionWrapper id="projects" className="mx-4 md:mx-0 py-10">
@@ -41,7 +31,10 @@ const Projects = ({ projectsData }: Props) => {
         {categories.map((c: string = '') => (
           <span
             key={c}
-            onClick={() => filterProjects(c)}
+            onClick={() => {
+              setCategory(c);
+              setViewAll(false);
+            }}
             className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md ${
               category.toLowerCase() === c.toLowerCase()
                 ? 'bg-violet-600 text-white'
@@ -60,7 +53,7 @@ const Projects = ({ projectsData }: Props) => {
       </div>
 
       {filteredProjects.length > 6 && (
-        <div className='mt-16'>
+        <div className="mt-16">
           <ViewAll
             scrollTo="#projects"
             title={viewAll ? 'Okay, I got it' : 'View All'}
@@ -74,22 +67,23 @@ const Projects = ({ projectsData }: Props) => {
 
 export default Projects;
 
+const projectCardVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6, ease: 'easeInOut' },
+  },
+};
+
 const ProjectCard = ({ name, image, techstack, links }: project) => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: 'easeInOut' },
-    },
-  };
+  const isInView = useInView(ref, { once: true });
   const { video, visit, code } = links;
   return (
     <motion.div
       ref={ref}
-      variants={cardVariants}
+      variants={projectCardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       className="flex relative flex-col gap-2 group shadow-md bg-white dark:bg-grey-800 rounded-lg p-4"

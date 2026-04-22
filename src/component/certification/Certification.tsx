@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { certification } from '../../types';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper';
@@ -25,7 +27,7 @@ interface CertificationCardInterface {
 const CertificationCard = ({ data }: CertificationCardInterface) => {
   const { title, issuer, desc, link } = data;
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
   const cardVariants = {
     hidden: { y: 50, opacity: 0 },
     visible: {

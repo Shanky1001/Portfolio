@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useMemo } from 'react';
 import { education, experience } from '../../types/index.ts';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
@@ -76,7 +78,7 @@ interface ExperienceProps {
 
 const ExperienceCard = ({ index, company, position, desc, institute, degree, duration }: ExperienceProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
 
   const cardVariants = {
     hidden: { x: index % 2 === 0 ? 20 : -20, opacity: 0 },

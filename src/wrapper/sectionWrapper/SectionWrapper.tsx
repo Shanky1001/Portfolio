@@ -1,9 +1,17 @@
+'use client';
+
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const SectionWrapper = ({ children, id, className }) => {
+interface SectionWrapperProps {
+  children: React.ReactNode;
+  id?: string;
+  className?: string;
+}
+
+const SectionWrapper = ({ children, id, className }: SectionWrapperProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.section

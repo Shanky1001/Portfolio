@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+'use client';
+
+import React, { useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import SectionWrapper from '../../wrapper/sectionWrapper/SectionWrapper.tsx';
 import { skill } from '../../types';
@@ -8,7 +10,7 @@ interface Props {
 }
 
 const Skills = ({ skillData }: Props) => {
-  const categories = Array.from(new Set(skillData.map((s: { category: any }) => s.category)));
+  const categories = useMemo(() => Array.from(new Set(skillData.map((s) => s.category))), [skillData]);
   const [category, setCategory] = useState(categories[0]);
 
   return (
@@ -46,19 +48,22 @@ export default Skills;
 
 const SkillCard = ({ name, image, index }: skill & { index: number }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
-  const cardVariants = {
-    hidden: { y: 80, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: index * 0.15,
-        duration: 0.75,
-        type: 'spring',
+  const isInView = useInView(ref, { once: true });
+  const cardVariants = useMemo(
+    () => ({
+      hidden: { y: 80, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+          delay: index * 0.15,
+          duration: 0.75,
+          type: 'spring',
+        },
       },
-    },
-  };
+    }),
+    [index]
+  );
 
   return (
     <motion.div

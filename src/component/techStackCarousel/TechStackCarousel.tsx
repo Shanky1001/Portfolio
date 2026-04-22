@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 
 interface TechStackCarouselProps {
   avatarSrc: string;
   techStackImages: string[];
 }
-// Responsive values
-let iconSize = 40;
-let baseRadius = 120;
-let radiusStep = 35;
-let avatarSize = 12;
+
+const DEFAULT_WINDOW_WIDTH = 1200;
+
+// Per-orbit rotation timing. `duration` is the full revolution time in
+// seconds; `start` is the initial angle (degrees) the icon appears at.
+// We apply both inline so a single shared `@keyframes orbit-rotate`
+// (in `src/index.css`) drives all orbits. The starting angle is achieved
+// by setting `animation-delay = -(start / 360) * duration`, which fast-
+// forwards the animation to the desired offset without extra keyframes.
+const ORBIT_TIMINGS: ReadonlyArray<{ duration: number; start: number }> = [
+  { duration: 10, start: 0 },
+  { duration: 8, start: 0 },
+  { duration: 12, start: 30 },
+  { duration: 15, start: 60 },
+  { duration: 10, start: 90 },
+  { duration: 16, start: 120 },
+  { duration: 11, start: 150 },
+  { duration: 7, start: 180 },
+];
 
 const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techStackImages }) => {
   const [active, setActive] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  // Always start from a deterministic value so SSR markup matches the first client render.
+  // The actual window width is read in the effect below, after hydration.
+  const [windowWidth, setWindowWidth] = useState(DEFAULT_WINDOW_WIDTH);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
     let throttleTimeout: NodeJS.Timeout | null = null;
     const handleResize = () => {
       if (throttleTimeout) return;
@@ -31,17 +51,11 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
     };
   }, []);
 
-  if (windowWidth < 500) {
-    iconSize = 28;
-    baseRadius = 60;
-    radiusStep = 22;
-    avatarSize = 5;
-  } else if (windowWidth < 900) {
-    iconSize = 34;
-    baseRadius = 90;
-    radiusStep = 28;
-    avatarSize = 8;
-  }
+  const { iconSize, baseRadius, radiusStep, avatarSize } = useMemo(() => {
+    if (windowWidth < 500) return { iconSize: 28, baseRadius: 60, radiusStep: 22, avatarSize: 5 };
+    if (windowWidth < 900) return { iconSize: 34, baseRadius: 90, radiusStep: 28, avatarSize: 8 };
+    return { iconSize: 40, baseRadius: 120, radiusStep: 35, avatarSize: 12 };
+  }, [windowWidth]);
 
   return (
     <>
@@ -71,6 +85,7 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
               width={avatarSize * 16}
               height={avatarSize * 16}
               sizes="(max-width: 768px) 128px, 192px"
+              priority
             />
           </div>
         </div>
@@ -99,7 +114,6 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
                   />
                 )}
                 <div
-                  className={active ? `orbit-rotate-${idx}` : ''}
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -107,6 +121,15 @@ const TechStackCarousel: React.FC<TechStackCarouselProps> = ({ avatarSrc, techSt
                     width: '100%',
                     height: '100%',
                     transformOrigin: '50% 50%',
+                    ...(active
+                      ? (() => {
+                          const timing = ORBIT_TIMINGS[idx % ORBIT_TIMINGS.length];
+                          return {
+                            animation: `orbit-rotate ${timing.duration}s linear infinite`,
+                            animationDelay: `-${(timing.start / 360) * timing.duration}s`,
+                          };
+                        })()
+                      : {}),
                   }}
                 >
                   <Image
