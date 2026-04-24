@@ -2,7 +2,7 @@
 
 // Bump CACHE_VERSION on every deploy so old caches are evicted and
 // `updatefound` fires in clients running the previous version.
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 const OFFLINE_URL = '/';
