@@ -78,8 +78,9 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
 
   return (
     <header
-      className={`backdrop-filter backdrop-blur-lg ${scroll ? 'border-b bg-white bg-opacity-40' : 'border-b-0'
-        } dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}
+      className={`backdrop-filter backdrop-blur-lg ${
+        scroll ? 'border-b bg-white bg-opacity-40' : 'border-b-0'
+      } dark:bg-grey-900 dark:bg-opacity-40 border-gray-200 dark:border-b-0 z-30 min-w-full flex flex-col fixed`}
     >
       <motion.div
         className="fixed h-1 top-0 origin-left z-30 w-full bg-blue-600"
@@ -91,15 +92,9 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
       {/* Top Navigation (Desktop) */}
       <nav className="lg:w-11/12 2xl:w-4/5 w-full md:px-6 2xl:px-0 mx-auto py-4 hidden sm:flex items-center justify-between">
         <Link href="/" prefetch={false} className="2xl:ml-6">
-          <Image
-            src={logo}
-            alt="Shashank Rai"
-            width={150}
-            height={50}
-            className="w-[150px] h-[50px]"
-          />
+          <Image src={logo} alt="Shashank Rai" width={150} height={63} className="w-[150px] h-[63px]" />
         </Link>
-        <div className='flex items-center gap-8'>
+        <div className="flex items-center gap-8">
           <motion.ul variants={variants} initial="hidden" animate="shown" className="flex items-center gap-8">
             {navs.map((e, i) => (
               <motion.li variants={childVariants} key={i}>
@@ -109,7 +104,10 @@ const Header = ({ logo = 'images/logo.png' }: { logo?: string }) => {
                   onClick={() => setPath(`#${e}`)}
                 >
                   {mounted && path === `#${e}` && (
-                    <motion.span layoutId="underline" className="absolute left-0 top-full h-[1px] bg-violet-700 w-full" />
+                    <motion.span
+                      layoutId="underline"
+                      className="absolute left-0 top-full h-[1px] bg-violet-700 w-full"
+                    />
                   )}
                   {e}
                 </a>

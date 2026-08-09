@@ -45,6 +45,9 @@ const Projects = ({ projectsData }: Props) => {
               setCategory(c);
               setViewAll(false);
             }}
+            data-analytics-event="project_interaction"
+            data-interaction-type="filter_used"
+            data-project-category={c}
             className={`p-1.5 md:p-2 w-full text-sm md:text-base text-center capitalize rounded-md ${
               category.toLowerCase() === c.toLowerCase()
                 ? 'bg-violet-600 text-white'
@@ -116,6 +119,9 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
                 href={visit}
                 target="_blank"
                 aria-label={`Visit ${name} (opens in new tab)`}
+                data-analytics-event="project_interaction"
+                data-interaction-type="visit_click"
+                data-project-name={name}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
@@ -127,6 +133,9 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
                 href={code}
                 target="_blank"
                 aria-label={`View source for ${name} on GitHub (opens in new tab)`}
+                data-analytics-event="project_interaction"
+                data-interaction-type="code_click"
+                data-project-name={name}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
@@ -138,6 +147,9 @@ const ProjectCard = ({ name, image, techstack, links }: project) => {
                 href={video}
                 target="_blank"
                 aria-label={`Watch ${name} demo video (opens in new tab)`}
+                data-analytics-event="project_interaction"
+                data-interaction-type="video_click"
+                data-project-name={name}
                 className="bg-white text-black p-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                 rel="noreferrer"
               >
